@@ -1,11 +1,5 @@
 import React from "react";
 
-export interface PanelData {
-    id: number;
-    name: string;
-    organID: number;
-}
-
 interface PanelProps {
     id: number;
     name: string;
