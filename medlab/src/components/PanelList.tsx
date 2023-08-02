@@ -2,7 +2,6 @@ import React from "react";
 import Panel from "./Panel";
 
 export interface PanelData {
-    panels: any;
     id: number;
     name: string;
     organID: number;

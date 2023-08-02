@@ -8,9 +8,9 @@ const kBaseURLPanels = 'http://127.0.0.1:8000/panels/';
 
 const getAllPanels = () => {
   return axios
-    .get<PanelData> (kBaseURLPanels)
+    .get<{panels:PanelData[]}>(kBaseURLPanels)
     .then((res) => {
-      console.log(res)
+      console.log(res);
       return res.data.panels.map(convertPanelFromAPI)
     })
     .catch((err) => {
@@ -19,11 +19,14 @@ const getAllPanels = () => {
     });
 };
 
-const convertPanelFromAPI = (apiPanel: { id: number; name: string; organ_id: number; }) => {
-  const { id, name, organ_id } = apiPanel;
-  const newPanel = { id, name, organID: organ_id };
-  return newPanel;
+const convertPanelFromAPI = (panel: PanelData): { id: number; name: string; organID: number } => {
+  return {
+    id: panel.id,
+    name: panel.name,
+    organID: panel.organID,
+  };
 };
+
 
 const App: React.FC = () => {
   const [panelData, setPanelData] = useState<PanelData[]>([]);
@@ -45,3 +48,12 @@ const App: React.FC = () => {
 }
 
 export default App;
+
+
+
+
+
+
+
+
+
