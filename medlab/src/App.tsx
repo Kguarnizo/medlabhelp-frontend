@@ -6,9 +6,7 @@ import PanelList, { PanelData } from './components/PanelList';
 import OrganList, { OrganData } from './components/OrganList';
 import LabTestList, { labTestData } from './components/LabTestList';
 
-const kBaseURLPanels = 'http://127.0.0.1:8000/panels/';
-const kBaseURLOrgans = 'http://127.0.0.1:8000/organs/';
-const kBaseURLTests = 'http://127.0.0.1:8000/tests/';
+const kBaseURL = 'http://127.0.0.1:8000';
 
 const App: React.FC = () => {
   const [panelData, setPanelData] = useState<PanelData[]>([]);
@@ -36,7 +34,7 @@ const App: React.FC = () => {
 
   const getAllPanels = () => {
     return axios
-      .get<{ panels: PanelData[] }>(kBaseURLPanels)
+      .get<{ panels: PanelData[] }>(`${kBaseURL}/panels/`)
       .then((res) => {
         console.log(res);
         return res.data.panels;
@@ -49,7 +47,7 @@ const App: React.FC = () => {
 
   const getAllTests = () => {
     return axios
-      .get<{tests: labTestData[] }>(kBaseURLTests)
+      .get<{tests: labTestData[] }>(`${kBaseURL}/tests`)
       .then((res) => {
         console.log(res);
         return res.data.tests;
@@ -62,7 +60,7 @@ const App: React.FC = () => {
 
   const getAllOrgans = () => {
     return axios
-      .get<{ organs: OrganData[] }>(kBaseURLOrgans)
+      .get<{ organs: OrganData[] }>(`${kBaseURL}/organs/`)
       .then((res) => {
         console.log(res);
         return res.data.organs;
