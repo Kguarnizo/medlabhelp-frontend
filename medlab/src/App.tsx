@@ -94,26 +94,13 @@ const App: React.FC = () => {
         <OrganList organData={organData} />
       </div>
       <div>
-        {selectedPanel && (
-          <>
-            <h2>Tests for: {selectedPanel.name}</h2>
+          <h2>Tests for: {selectedPanel !== null ? selectedPanel.name : ''}</h2>
 
-            <LabTestList testList={filterTest}  onTestClick={handleTestClick}/>
-          </>
-        )}
-      </div>
-      {selectedTest && (
-        <div>
-          <h2>Test Details</h2>
-          <p>Name: {selectedTest.name}</p>
-          <p>Description: {selectedTest.description}</p>
-          <p>Info URL: {selectedTest.info_url}</p>
-          <p>Normal Reference: {selectedTest.normal_reference}</p>
-          <p>Unit of Measure: {selectedTest.unit_of_measure}</p>
-        </div>
-      )}
+          <LabTestList testList={filterTest} onTestClick={handleTestClick} selectedTest={selectedTest} />
+      </div>    
     </section>
   );
 };
 
 export default App;
+
