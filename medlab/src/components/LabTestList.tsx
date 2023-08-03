@@ -13,9 +13,10 @@ export interface labTestData {
 
 interface LabTestListProps {
     testList:labTestData[];
+    onTestClick: (test: labTestData) => void;
 }
 
-const LabTestList: React.FC<LabTestListProps> = ({ testList }) => {
+const LabTestList: React.FC<LabTestListProps> = ({ testList, onTestClick}) => {
     // if (testList.length === 0) {
     //     return <div>No tests available for this panel.</div>;
     // }
@@ -24,6 +25,7 @@ const LabTestList: React.FC<LabTestListProps> = ({ testList }) => {
         <section>
         <ul>
             {testList.map((test) => (
+                <li key={test.id} onClick={() => onTestClick(test)}>
             <LabTest
                 key={test.id}
                 id={test.id}
@@ -34,6 +36,7 @@ const LabTestList: React.FC<LabTestListProps> = ({ testList }) => {
                 info_url={test.info_url}
                 unit_of_measure={test.unit_of_measure}
             />
+            </li>
             ))}
         </ul>
         </section>

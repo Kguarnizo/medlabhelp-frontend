@@ -13,6 +13,7 @@ const App: React.FC = () => {
   const [organData, setOrganData] = useState<OrganData[]>([]);
   const [selectedPanel, setSelectedPanel] = useState<PanelData | null>(null);
   const [labTestData, setlabTestData] = useState<labTestData[]>([])
+  const [selectedTest, setSelectedTest] = useState<labTestData | null>(null);
 
   useEffect(() => {
     getAllPanels().then((panels) => {
@@ -79,6 +80,10 @@ const App: React.FC = () => {
 
   const filterTest = labTestData.filter((test) => test.panel_id === selectedPanel?.id);
 
+  const handleTestClick = (test: labTestData) => {
+    setSelectedTest(test);
+  };
+
   return (
     <section>
       <div>
@@ -93,10 +98,20 @@ const App: React.FC = () => {
           <>
             <h2>Tests for: {selectedPanel.name}</h2>
 
-            <LabTestList testList={filterTest} />
+            <LabTestList testList={filterTest}  onTestClick={handleTestClick}/>
           </>
         )}
       </div>
+      {selectedTest && (
+        <div>
+          <h2>Test Details</h2>
+          <p>Name: {selectedTest.name}</p>
+          <p>Description: {selectedTest.description}</p>
+          <p>Info URL: {selectedTest.info_url}</p>
+          <p>Normal Reference: {selectedTest.normal_reference}</p>
+          <p>Unit of Measure: {selectedTest.unit_of_measure}</p>
+        </div>
+      )}
     </section>
   );
 };
