@@ -3,12 +3,18 @@ import React from "react";
 interface PanelProps {
     id: number;
     name: string;
-    organID: number;
+    organ_id: number;
+    handlePanelSelection: (panel_id: number) => void;
 }
 
-const Panel: React.FC<PanelProps> = ({ id, name, organID }) => {
+
+const Panel: React.FC<PanelProps> = ({ id, name, organ_id, handlePanelSelection }) => {
+    const panelOnClick = () => {
+        handlePanelSelection(id);
+    };
+
     return (
-        <ul>
+        <ul onClick={panelOnClick}>
             <li>{name}</li>
         </ul>
 );

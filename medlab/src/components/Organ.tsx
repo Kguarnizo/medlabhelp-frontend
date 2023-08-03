@@ -14,3 +14,4 @@ const Organ: React.FC<OrganProps> = ({ id, name}) => {
 };
 
 export default Organ;
+
