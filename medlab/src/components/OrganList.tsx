@@ -8,10 +8,11 @@ export interface OrganData {
 
 interface OrganListProps {
     organData: OrganData[];
+    onOrganClick: (organ: OrganData) => void;
 }
 
 const OrganList: React.FC<OrganListProps> = (props) => {
-    const { organData } = props;
+    const { organData , onOrganClick} = props;
 
     if (organData.length === 0) {
         return <div>No data available.</div>;
@@ -21,11 +22,13 @@ const OrganList: React.FC<OrganListProps> = (props) => {
         <section>
         <ul>
             {organData.map((organ) => (
+                <li key={organ.id} onClick={() => onOrganClick(organ)}>
             <Organ
                 id={organ.id}
                 name={organ.name}
                 key={organ.id}
             />
+                </li>
             ))}
         </ul>
         </section>
