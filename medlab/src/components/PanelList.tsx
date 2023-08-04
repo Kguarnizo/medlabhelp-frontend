@@ -13,6 +13,7 @@ interface PanelListProps {
 }
 
 const PanelList: React.FC<PanelListProps> = ({ panelData, handlePanelSelection }) => {
+
     if (panelData.length === 0) {
         return <div>No data available.</div>;
     }
