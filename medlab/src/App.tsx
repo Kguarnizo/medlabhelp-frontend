@@ -6,6 +6,10 @@ import PanelList, { PanelData } from './components/PanelList';
 import OrganList, { OrganData } from './components/OrganList';
 import LabTestList, { labTestData } from './components/LabTestList';
 
+import About from './pages/about';
+import LabTestsInfo from './pages/labtestsinfo';
+import { Route, Routes } from 'react-router-dom';
+
 const kBaseURL = 'http://127.0.0.1:8000';
 
 const App: React.FC = () => {
@@ -105,41 +109,38 @@ const App: React.FC = () => {
   };
 
   return (
+  <>
+    <Routes>
+      {/* <Route index element={<Home />} path='home'/> */}
+      <Route element={<About />} path='about' />
+      <Route element={<LabTestsInfo />} path='labtestsinfo' />
+    </Routes>
+
     <section>
       <div>
         <PanelList panelData={panelData} handlePanelSelection={handlePanelSelection} />
+
       </div>
       <div>
-        <OrganList organData={organData} onOrganClick={handleOrganClick} />
+        <OrganList organData={organData} onOrganClick={handleOrganClick}/>
       </div>
       <div>
-        <h2>{selectedPanel !== null ? selectedPanel.name : ''}</h2>
-        <LabTestList testList={filterTest} onTestClick={handleTestClick} selectedTest={selectedTest} />
+          <h2>Tests for: {selectedPanel !== null ? selectedPanel.name : ''}</h2>
+          <LabTestList testList={filterTest} onTestClick={handleTestClick} selectedTest={selectedTest} />
       </div>
+      
       <div>
         {selectedOrgan && (
           <>
             <h2>Tests related to: {selectedOrgan.name}</h2>
-            <LabTestList
-              testList={relatedTests}
-              onTestClick={handleOrganRelatedTestClick}
-              selectedTest={organRelatedTestDetails}
-            />
+            <LabTestList testList={relatedTests} onTestClick={handleTestClick} selectedTest={selectedTest} />
           </>
         )}
       </div>
-      {selectedTest && (
-        <div>
-          <h2>Test Details</h2>
-          <p>Name: {selectedTest.name}</p>
-          <p>Description: {selectedTest.description}</p>
-          <p>Info URL: {selectedTest.info_url}</p>
-          <p>Normal Reference: {selectedTest.normal_reference}</p>
-          <p>Unit of Measure: {selectedTest.unit_of_measure}</p>
-        </div>
-      )}
     </section>
+</>
   );
 };
+
 
 export default App;
