@@ -5,12 +5,65 @@ import './App.css';
 import PanelList, { PanelData } from './components/PanelList';
 import OrganList, { OrganData } from './components/OrganList';
 import LabTestList, { labTestData } from './components/LabTestList';
+import AltNameList, {AltNameData} from './components/AltNameList';
 
 import About from './pages/about';
 import LabTestsInfo from './pages/labtestsinfo';
 import { Route, Routes } from 'react-router-dom';
 
 const kBaseURL = 'http://127.0.0.1:8000';
+
+const getAllPanels = () => {
+  return axios
+    .get<{ panels: PanelData[] }>(`${kBaseURL}/panels/`)
+    .then((res) => {
+      console.log(res);
+      return res.data.panels;
+    })
+    .catch((err) => {
+      console.log('Error fetching panels:', err);
+      return [];
+    });
+};
+
+const getAllTests = () => {
+  return axios
+    .get<{ tests: labTestData[] }>(`${kBaseURL}/tests/`)
+    .then((res) => {
+      console.log(res);
+      return res.data.tests;
+    })
+    .catch((err) => {
+      console.log('Error fetching tests:', err);
+      return [];
+    });
+};
+
+const getAllOrgans = () => {
+  return axios
+    .get<{ organs: OrganData[] }>(`${kBaseURL}/organs/`)
+    .then((res) => {
+      console.log(res);
+      return res.data.organs;
+    })
+    .catch((err) => {
+      console.log('Error fetching organs:', err);
+      return [];
+    });
+  };
+
+const getAltNamesToTests = (labTestID: number) => {
+  return axios
+  .get<AltNameData[]>(`${kBaseURL}/tests/${labTestID}/alternatenames/`)
+  .then((res)=> {
+    console.log(res);
+    return res.data;
+  })
+  .catch((err) => {
+    console.log("Error fetching tests:", err);
+    return [];
+  })
+}
 
 const App: React.FC = () => {
   const [panelData, setPanelData] = useState<PanelData[]>([]);
@@ -20,63 +73,26 @@ const App: React.FC = () => {
   const [selectedTest, setSelectedTest] = useState<labTestData | null>(null);
   const [selectedOrgan, setSelectedOrgan] = useState<OrganData | null>(null);
   const [relatedTests, setRelatedTests] = useState<labTestData[]>([]);
-  const [organRelatedTestDetails, setOrganRelatedTestDetails] = useState<labTestData | null>(null);
+  const [altNameData, setAltNameData] = useState<AltNameData[]>([]);
+  // const [organRelatedTestDetails, setOrganRelatedTestDetails] = useState<labTestData | null>(null);
 
-  useEffect(() => {
-    getAllPanels().then((panels) => {
-      console.log('Fetched panels:', panels);
-      setPanelData(panels);
-    });
+useEffect(() => {
+  getAllPanels().then((panels) => {
+    console.log('Fetched panels:', panels);
+    setPanelData(panels);
+  });
 
-    getAllOrgans().then((organs) => {
-      console.log('Fetched organs:', organs);
-      setOrganData(organs);
-    });
+  getAllOrgans().then((organs) => {
+    console.log('Fetched organs:', organs);
+    setOrganData(organs);
+  });
 
-    getAllTests().then((tests) => {
-      console.log('Fetched tests:', tests);
-      setlabTestData(tests);
-    });
-  }, []);
+  getAllTests().then((tests) => {
+    console.log('Fetched tests:', tests);
+    setlabTestData(tests);
+  });
+}, []);
 
-  const getAllPanels = () => {
-    return axios
-      .get<{ panels: PanelData[] }>(`${kBaseURL}/panels/`)
-      .then((res) => {
-        console.log(res);
-        return res.data.panels;
-      })
-      .catch((err) => {
-        console.log('Error fetching panels:', err);
-        return [];
-      });
-  };
-
-  const getAllTests = () => {
-    return axios
-      .get<{ tests: labTestData[] }>(`${kBaseURL}/tests/`)
-      .then((res) => {
-        console.log(res);
-        return res.data.tests;
-      })
-      .catch((err) => {
-        console.log('Error fetching tests:', err);
-        return [];
-      });
-  };
-
-  const getAllOrgans = () => {
-    return axios
-      .get<{ organs: OrganData[] }>(`${kBaseURL}/organs/`)
-      .then((res) => {
-        console.log(res);
-        return res.data.organs;
-      })
-      .catch((err) => {
-        console.log('Error fetching organs:', err);
-        return [];
-      });
-  };
 
   const handlePanelSelection = (panelID: number) => {
     const panel = panelData.find((panel) => panel.id === panelID);
@@ -104,8 +120,21 @@ const App: React.FC = () => {
       });
   };
 
-  const handleOrganRelatedTestClick = (test: labTestData) => {
-    setOrganRelatedTestDetails(test);
+  // const handleOrganRelatedTestClick = (test: labTestData) => {
+  //   setOrganRelatedTestDetails(test);
+  // };
+
+  const findLabTestById = (labTestID: number) => {
+    return labTestData.find((labTest) => {return labTest.id === labTestID})
+  };
+
+  const handleLabTestSelection = (labTestID: number)=> {
+    let labTest = findLabTestById(labTestID);
+    setSelectedTest(labTest || null);
+    getAltNamesToTests(labTestID).then((tests)=> {
+      console.log(tests);
+      setAltNameData(tests);
+    });
   };
 
   return (
@@ -125,17 +154,20 @@ const App: React.FC = () => {
         <OrganList organData={organData} onOrganClick={handleOrganClick}/>
       </div>
       <div>
-          <h2>Tests for: {selectedPanel !== null ? selectedPanel.name : ''}</h2>
-          <LabTestList testList={filterTest} onTestClick={handleTestClick} selectedTest={selectedTest} />
+          <h2>{selectedPanel !== null ? selectedPanel.name : ''}</h2>
+          <LabTestList testList={filterTest} onTestClick={handleTestClick} selectedTest={selectedTest} handleLabTestSelection={handleLabTestSelection} getAltNamesToTests={getAltNamesToTests} />
       </div>
-      
+
       <div>
         {selectedOrgan && (
           <>
             <h2>Tests related to: {selectedOrgan.name}</h2>
-            <LabTestList testList={relatedTests} onTestClick={handleTestClick} selectedTest={selectedTest} />
+            <LabTestList testList={relatedTests} onTestClick={handleTestClick} selectedTest={selectedTest} handleLabTestSelection={handleLabTestSelection} getAltNamesToTests={getAltNamesToTests}/>
           </>
         )}
+      </div>
+      <div>
+          <AltNameList altNameData={altNameData}/>
       </div>
     </section>
 </>

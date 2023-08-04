@@ -1,5 +1,6 @@
 import React from 'react';
 import LabTest from './LabTest';
+import { AltNameData } from "./AltNameList";
 
 export interface labTestData {
     id: number,
@@ -15,9 +16,11 @@ interface LabTestListProps {
     testList: labTestData[];
     onTestClick: (test: labTestData) => void;
     selectedTest: labTestData | null;
+    handleLabTestSelection: (labTestID: number) => void;
+    getAltNamesToTests: (labTestID: number) => Promise<never[] | AltNameData[]>;
     }
 
-    const LabTestList: React.FC<LabTestListProps> = ({ testList, onTestClick, selectedTest }) => {
+    const LabTestList: React.FC<LabTestListProps> = ({ testList, onTestClick, selectedTest, handleLabTestSelection, getAltNamesToTests }) => {
     if (!testList || testList.length === 0) {
         return null;
     }
@@ -36,6 +39,8 @@ interface LabTestListProps {
                     normal_reference={test.normal_reference}
                     info_url={test.info_url}
                     unit_of_measure={test.unit_of_measure}
+                    handleLabTestSelection={handleLabTestSelection}
+                    getAltNamesToTests={getAltNamesToTests}
                 />
                 </li>
             ))}
@@ -49,6 +54,7 @@ interface LabTestListProps {
                 <p>Info URL: {selectedTest.info_url}</p>
                 <p>Normal Reference: {selectedTest.normal_reference}</p>
                 <p>Unit of Measure: {selectedTest.unit_of_measure}</p>
+                <p>Alternate Name: </p>
             </div>
             )}
         </section>

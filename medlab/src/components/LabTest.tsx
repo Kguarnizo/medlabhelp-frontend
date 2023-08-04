@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { AltNameData } from "./AltNameList";
 
 export interface LabTestProps {
     id: number,
@@ -8,19 +9,39 @@ export interface LabTestProps {
     info_url: string,
     normal_reference: string,
     unit_of_measure: string,
+    handleLabTestSelection: (labTestID: number) => void,
+    getAltNamesToTests: (labTestID: number) => Promise<never[] | AltNameData[]>;
 }
 
 
-const LabTest: React.FC<LabTestProps> = ({ name, description, info_url, normal_reference, unit_of_measure }) => {
+const LabTest: React.FC<LabTestProps> = ({ id, name, description, info_url, normal_reference, unit_of_measure, handleLabTestSelection, getAltNamesToTests }) => {
+    const testOnClick = () => {
+        handleLabTestSelection(id);
+    };
+
+
+    const [altNameData, setAltNameData] = useState<AltNameData[]>([]);
+
+    useEffect(() => {
+        getAltNamesToTests(id)
+            .then((altNames) => {
+                setAltNameData(altNames);
+            })
+            .catch((error) => {
+                console.error("Error fetching alternate names:", error);
+            });
+    }, [id, getAltNamesToTests]);
+
     return (
         <div>
-        <p>{name}</p>
-        {/* <p>Description: {description}</p>
-        <p>Info URL: {info_url}</p>
-        <p>Normal Reference: {normal_reference}</p>
-        <p>Unit of Measure: {unit_of_measure}</p> */}
+            <p onClick={testOnClick}>{name}</p>
+            <ul>
+                {altNameData.map((altName, index) => (
+                    <li key={index}>{altName.name}</li>
+                ))}
+            </ul>
         </div>
-);
+    );
 };
 
 export default LabTest;
