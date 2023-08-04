@@ -16,12 +16,12 @@ interface LabTestListProps {
     onTestClick: (test: labTestData) => void;
     selectedTest: labTestData | null;
     }
-    
+
     const LabTestList: React.FC<LabTestListProps> = ({ testList, onTestClick, selectedTest }) => {
     if (!testList || testList.length === 0) {
-        return <div>No tests available for this panel.</div>;
+        return null;
     }
-    
+
     return (
         <section>
             <ul>
@@ -40,7 +40,7 @@ interface LabTestListProps {
                 </li>
             ))}
             </ul>
-    
+
             {selectedTest && (
             <div>
                 <h2>Test Details</h2>
@@ -54,6 +54,5 @@ interface LabTestListProps {
         </section>
         );
     };
-    
+
     export default LabTestList;
-    

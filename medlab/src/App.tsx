@@ -12,10 +12,11 @@ const App: React.FC = () => {
   const [panelData, setPanelData] = useState<PanelData[]>([]);
   const [organData, setOrganData] = useState<OrganData[]>([]);
   const [selectedPanel, setSelectedPanel] = useState<PanelData | null>(null);
-  const [labTestData, setlabTestData] = useState<labTestData[]>([])
+  const [labTestData, setlabTestData] = useState<labTestData[]>([]);
   const [selectedTest, setSelectedTest] = useState<labTestData | null>(null);
   const [selectedOrgan, setSelectedOrgan] = useState<OrganData | null>(null);
   const [relatedTests, setRelatedTests] = useState<labTestData[]>([]);
+  const [organRelatedTestDetails, setOrganRelatedTestDetails] = useState<labTestData | null>(null);
 
   useEffect(() => {
     getAllPanels().then((panels) => {
@@ -32,7 +33,6 @@ const App: React.FC = () => {
       console.log('Fetched tests:', tests);
       setlabTestData(tests);
     });
-
   }, []);
 
   const getAllPanels = () => {
@@ -50,7 +50,7 @@ const App: React.FC = () => {
 
   const getAllTests = () => {
     return axios
-      .get<{tests: labTestData[] }>(`${kBaseURL}/tests/`)
+      .get<{ tests: labTestData[] }>(`${kBaseURL}/tests/`)
       .then((res) => {
         console.log(res);
         return res.data.tests;
@@ -59,7 +59,7 @@ const App: React.FC = () => {
         console.log('Error fetching tests:', err);
         return [];
       });
-  }
+  };
 
   const getAllOrgans = () => {
     return axios
@@ -77,7 +77,6 @@ const App: React.FC = () => {
   const handlePanelSelection = (panelID: number) => {
     const panel = panelData.find((panel) => panel.id === panelID);
     setSelectedPanel(panel || null);
-
   };
 
   const filterTest = labTestData.filter((test) => test.panel_id === selectedPanel?.id);
@@ -90,40 +89,55 @@ const App: React.FC = () => {
     setSelectedOrgan(organ);
 
     axios
-    .get<labTestData[] >(`${kBaseURL}/organs/${organ.id}/tests/`)
-    .then((res) => {
-      console.log('tests related to organ:', res);
-      setRelatedTests(res.data);
-    })
-    .catch((err) => {
-      console.log('Error fetching related tests:', err);
-      setRelatedTests([]);
-    });
-};
+      .get<labTestData[]>(`${kBaseURL}/organs/${organ.id}/tests/`)
+      .then((res) => {
+        console.log('tests related to organ:', res);
+        setRelatedTests(res.data);
+      })
+      .catch((err) => {
+        console.log('Error fetching related tests:', err);
+        setRelatedTests([]);
+      });
+  };
 
+  const handleOrganRelatedTestClick = (test: labTestData) => {
+    setOrganRelatedTestDetails(test);
+  };
 
   return (
     <section>
       <div>
         <PanelList panelData={panelData} handlePanelSelection={handlePanelSelection} />
-
       </div>
       <div>
-        <OrganList organData={organData} onOrganClick={handleOrganClick}/>
+        <OrganList organData={organData} onOrganClick={handleOrganClick} />
       </div>
       <div>
-          <h2>Tests for: {selectedPanel !== null ? selectedPanel.name : ''}</h2>
-
-          <LabTestList testList={filterTest} onTestClick={handleTestClick} selectedTest={selectedTest} />
+        <h2>{selectedPanel !== null ? selectedPanel.name : ''}</h2>
+        <LabTestList testList={filterTest} onTestClick={handleTestClick} selectedTest={selectedTest} />
       </div>
       <div>
         {selectedOrgan && (
           <>
             <h2>Tests related to: {selectedOrgan.name}</h2>
-            <LabTestList testList={relatedTests} onTestClick={() => {}} selectedTest={selectedTest} />
+            <LabTestList
+              testList={relatedTests}
+              onTestClick={handleOrganRelatedTestClick}
+              selectedTest={organRelatedTestDetails}
+            />
           </>
         )}
       </div>
+      {selectedTest && (
+        <div>
+          <h2>Test Details</h2>
+          <p>Name: {selectedTest.name}</p>
+          <p>Description: {selectedTest.description}</p>
+          <p>Info URL: {selectedTest.info_url}</p>
+          <p>Normal Reference: {selectedTest.normal_reference}</p>
+          <p>Unit of Measure: {selectedTest.unit_of_measure}</p>
+        </div>
+      )}
     </section>
   );
 };
