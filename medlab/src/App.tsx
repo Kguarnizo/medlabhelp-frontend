@@ -115,7 +115,6 @@ const App: React.FC = () => {
           <h2>Tests for: {selectedPanel !== null ? selectedPanel.name : ''}</h2>
           <LabTestList testList={filterTest} onTestClick={handleTestClick} selectedTest={selectedTest} />
       </div>
-      
       <div>
         {selectedOrgan && (
           <>
