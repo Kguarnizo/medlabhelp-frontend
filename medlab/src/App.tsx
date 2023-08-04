@@ -7,9 +7,6 @@ import OrganList, { OrganData } from './components/OrganList';
 import LabTestList, { labTestData } from './components/LabTestList';
 
 const kBaseURL = 'http://127.0.0.1:8000';
-const kBaseURLOrgans = 'http://127.0.0.1:8000/organs/';
-const kBaseURLTests = 'http://127.0.0.1:8000/tests/';
-
 
 const App: React.FC = () => {
   const [panelData, setPanelData] = useState<PanelData[]>([]);
@@ -19,8 +16,6 @@ const App: React.FC = () => {
   const [selectedTest, setSelectedTest] = useState<labTestData | null>(null);
   const [selectedOrgan, setSelectedOrgan] = useState<OrganData | null>(null);
   const [relatedTests, setRelatedTests] = useState<labTestData[]>([]);
-
-
 
   useEffect(() => {
     getAllPanels().then((panels) => {
@@ -55,7 +50,7 @@ const App: React.FC = () => {
 
   const getAllTests = () => {
     return axios
-      .get<{tests: labTestData[] }>(`${kBaseURL}/tests`)
+      .get<{tests: labTestData[] }>(`${kBaseURL}/tests/`)
       .then((res) => {
         console.log(res);
         return res.data.tests;
@@ -95,10 +90,10 @@ const App: React.FC = () => {
     setSelectedOrgan(organ);
 
     axios
-    .get<{ tests: labTestData[] }>(`${kBaseURLOrgans}${organ.id}/tests/`)
+    .get<labTestData[] >(`${kBaseURL}/organs/${organ.id}/tests/`)
     .then((res) => {
       console.log('tests related to organ:', res);
-      setRelatedTests(res.data.tests);
+      setRelatedTests(res.data);
     })
     .catch((err) => {
       console.log('Error fetching related tests:', err);
@@ -118,14 +113,14 @@ const App: React.FC = () => {
       </div>
       <div>
           <h2>Tests for: {selectedPanel !== null ? selectedPanel.name : ''}</h2>
-
           <LabTestList testList={filterTest} onTestClick={handleTestClick} selectedTest={selectedTest} />
-      </div> 
+      </div>
+      
       <div>
         {selectedOrgan && (
           <>
             <h2>Tests related to: {selectedOrgan.name}</h2>
-            <LabTestList testList={relatedTests} onTestClick={() => {}} selectedTest={selectedTest} />
+            <LabTestList testList={relatedTests} onTestClick={handleTestClick} selectedTest={selectedTest} />
           </>
         )}
       </div>
@@ -134,4 +129,3 @@ const App: React.FC = () => {
 };
 
 export default App;
-

@@ -11,26 +11,23 @@ interface OrganListProps {
     onOrganClick: (organ: OrganData) => void;
 }
 
-const OrganList: React.FC<OrganListProps> = (props) => {
-    const { organData , onOrganClick} = props;
-
+const OrganList: React.FC<OrganListProps> = ({ organData, onOrganClick }) => {
     if (organData.length === 0) {
         return <div>No data available.</div>;
     }
 
     return (
         <section>
-        <ul>
-            {organData.map((organ) => (
-                <li key={organ.id} onClick={() => onOrganClick(organ)}>
-            <Organ
-                id={organ.id}
-                name={organ.name}
-                key={organ.id}
-            />
-                </li>
-            ))}
-        </ul>
+            <ul>
+                {organData.map((organ) => (
+                    <Organ
+                        key={organ.id}
+                        id={organ.id}
+                        name={organ.name}
+                        onClick={() => onOrganClick(organ)}
+                    />
+                ))}
+            </ul>
         </section>
     );
 };
