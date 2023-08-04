@@ -89,20 +89,16 @@ const App: React.FC = () => {
     setSelectedOrgan(organ);
 
     axios
-      .get<labTestData[]>(`${kBaseURL}/organs/${organ.id}/tests/`)
-      .then((res) => {
-        console.log('tests related to organ:', res);
-        setRelatedTests(res.data);
-      })
-      .catch((err) => {
-        console.log('Error fetching related tests:', err);
-        setRelatedTests([]);
-      });
-  };
-
-  const handleOrganRelatedTestClick = (test: labTestData) => {
-    setOrganRelatedTestDetails(test);
-  };
+    .get<labTestData[] >(`${kBaseURL}/organs/${organ.id}/tests/`)
+    .then((res) => {
+      console.log('tests related to organ:', res);
+      setRelatedTests(res.data);
+    })
+    .catch((err) => {
+      console.log('Error fetching related tests:', err);
+      setRelatedTests([]);
+    });
+};
 
   return (
     <section>
@@ -113,18 +109,14 @@ const App: React.FC = () => {
         <OrganList organData={organData} onOrganClick={handleOrganClick} />
       </div>
       <div>
-        <h2>{selectedPanel !== null ? selectedPanel.name : ''}</h2>
-        <LabTestList testList={filterTest} onTestClick={handleTestClick} selectedTest={selectedTest} />
+          <h2>Tests for: {selectedPanel !== null ? selectedPanel.name : ''}</h2>
+          <LabTestList testList={filterTest} onTestClick={handleTestClick} selectedTest={selectedTest} />
       </div>
       <div>
         {selectedOrgan && (
           <>
             <h2>Tests related to: {selectedOrgan.name}</h2>
-            <LabTestList
-              testList={relatedTests}
-              onTestClick={handleOrganRelatedTestClick}
-              selectedTest={organRelatedTestDetails}
-            />
+            <LabTestList testList={relatedTests} onTestClick={handleTestClick} selectedTest={selectedTest} />
           </>
         )}
       </div>
