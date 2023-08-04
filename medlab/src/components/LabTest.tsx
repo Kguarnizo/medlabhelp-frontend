@@ -10,7 +10,6 @@ export interface LabTestProps {
     unit_of_measure: string,
 }
 
-
 const LabTest: React.FC<LabTestProps> = ({ name, description, info_url, normal_reference, unit_of_measure }) => {
     return (
         <div>
