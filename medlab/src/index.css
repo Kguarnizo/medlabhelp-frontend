@@ -15,6 +15,10 @@ code {
   text-align: center;
 }
 
-.labtestsinfo {
-  color: red
+.paneldetails {
+  color: red;
+}
+
+.organdetails {
+  color: green;
 }

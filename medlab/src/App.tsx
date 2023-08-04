@@ -8,7 +8,9 @@ import LabTestList, { labTestData } from './components/LabTestList';
 import AltNameList, {AltNameData} from './components/AltNameList';
 
 import About from './pages/about';
-import LabTestsInfo from './pages/labtestsinfo';
+import Home from './pages/home';
+import PanelDetails from './pages/paneldetails';
+import OrganDetails from './pages/organdetails';
 import { Route, Routes } from 'react-router-dom';
 
 const kBaseURL = 'http://127.0.0.1:8000';
@@ -140,9 +142,10 @@ useEffect(() => {
   return (
   <>
     <Routes>
-      {/* <Route index element={<Home />} path='home'/> */}
+      <Route index element={<Home />} />
       <Route element={<About />} path='about' />
-      <Route element={<LabTestsInfo />} path='labtestsinfo' />
+      <Route element={<PanelDetails />} path='paneldetails' />
+      <Route element={<OrganDetails />} path='organdetails' />
     </Routes>
 
     <section>
