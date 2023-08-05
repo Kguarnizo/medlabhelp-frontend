@@ -1,9 +1,9 @@
 import React from "react";
 
 interface AltNameProps {
-    id: number;
-    test_id:number;
-    name: string;
+    id: number,
+    test_id:number,
+    name: string,
 }
 
 

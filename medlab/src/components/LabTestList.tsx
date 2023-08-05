@@ -13,11 +13,11 @@ export interface labTestData {
 }
 
 interface LabTestListProps {
-    testList: labTestData[];
-    onTestClick: (test: labTestData) => void;
-    selectedTest: labTestData | null;
-    handleLabTestSelection: (labTestID: number) => void;
-    getAltNamesToTests: (labTestID: number) => Promise<never[] | AltNameData[]>;
+    testList: labTestData[],
+    onTestClick: (test: labTestData) => void,
+    selectedTest: labTestData | null,
+    handleLabTestSelection: (labTestID: number) => void,
+    getAltNamesToTests: (labTestID: number) => Promise<never[] | AltNameData[]>,
     }
 
     const LabTestList: React.FC<LabTestListProps> = ({ testList, onTestClick, selectedTest, handleLabTestSelection, getAltNamesToTests }) => {
@@ -51,7 +51,9 @@ interface LabTestListProps {
                 <h2>Test Details</h2>
                 <p>Name: {selectedTest.name}</p>
                 <p>Description: {selectedTest.description}</p>
-                <p>Info URL: {selectedTest.info_url}</p>
+                <p>Learn More:
+                    <a href="test info link">{selectedTest.info_url}</a>
+                </p>
                 <p>Normal Reference: {selectedTest.normal_reference}</p>
                 <p>Unit of Measure: {selectedTest.unit_of_measure}</p>
                 <p>Alternate Name: </p>

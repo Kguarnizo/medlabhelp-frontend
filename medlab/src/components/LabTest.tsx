@@ -10,7 +10,7 @@ export interface LabTestProps {
     normal_reference: string,
     unit_of_measure: string,
     handleLabTestSelection: (labTestID: number) => void,
-    getAltNamesToTests: (labTestID: number) => Promise<never[] | AltNameData[]>;
+    getAltNamesToTests: (labTestID: number) => Promise<never[] | AltNameData[]>,
 }
 
 

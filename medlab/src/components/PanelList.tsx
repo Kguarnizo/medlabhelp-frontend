@@ -2,14 +2,14 @@ import React from "react";
 import Panel from "./Panel";
 
 export interface PanelData {
-    id: number;
-    name: string;
-    organ_id: number;
+    id: number,
+    name: string,
+    organ_id: number,
 }
 
 interface PanelListProps {
-    panelData: PanelData[];
-    handlePanelSelection: (panelID: number) => void;
+    panelData: PanelData[],
+    handlePanelSelection: (panelID: number) => void,
 }
 
 const PanelList: React.FC<PanelListProps> = ({ panelData, handlePanelSelection }) => {

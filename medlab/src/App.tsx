@@ -156,21 +156,19 @@ useEffect(() => {
       <div>
         <OrganList organData={organData} onOrganClick={handleOrganClick}/>
       </div>
+      
       <div>
-          <h2>{selectedPanel !== null ? selectedPanel.name : ''}</h2>
-          <LabTestList testList={filterTest} onTestClick={handleTestClick} selectedTest={selectedTest} handleLabTestSelection={handleLabTestSelection} getAltNamesToTests={getAltNamesToTests} />
+        <h2>{selectedPanel !== null ? selectedPanel.name : ''}</h2>
+        <LabTestList testList={filterTest} onTestClick={handleTestClick} selectedTest={selectedTest} handleLabTestSelection={handleLabTestSelection} getAltNamesToTests={getAltNamesToTests} />
       </div>
 
       <div>
-        {selectedOrgan && (
-          <>
-            <h2>Tests related to: {selectedOrgan.name}</h2>
-            <LabTestList testList={relatedTests} onTestClick={handleTestClick} selectedTest={selectedTest} handleLabTestSelection={handleLabTestSelection} getAltNamesToTests={getAltNamesToTests}/>
-          </>
-        )}
+        <h2>{selectedOrgan !== null ? selectedOrgan.name : ''}</h2>
+        <LabTestList testList={relatedTests} onTestClick={handleTestClick} selectedTest={selectedTest} handleLabTestSelection={handleLabTestSelection} getAltNamesToTests={getAltNamesToTests}/>
       </div>
+
       <div>
-          <AltNameList altNameData={altNameData}/>
+        <AltNameList altNameData={altNameData}/>
       </div>
     </section>
 </>

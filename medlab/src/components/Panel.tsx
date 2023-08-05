@@ -1,10 +1,10 @@
 import React from "react";
 
 interface PanelProps {
-    id: number;
-    name: string;
-    organ_id: number;
-    handlePanelSelection: (panel_id: number) => void;
+    id: number,
+    name: string,
+    organ_id: number,
+    handlePanelSelection: (panel_id: number) => void,
 }
 
 

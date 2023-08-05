@@ -2,13 +2,13 @@ import React from "react";
 import Organ from "./Organ";
 
 export interface OrganData {
-    id: number;
-    name: string;
+    id: number,
+    name: string,
 }
 
 interface OrganListProps {
-    organData: OrganData[];
-    onOrganClick: (organ: OrganData) => void;
+    organData: OrganData[],
+    onOrganClick: (organ: OrganData) => void,
 }
 
 const OrganList: React.FC<OrganListProps> = ({ organData, onOrganClick }) => {

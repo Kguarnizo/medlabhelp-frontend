@@ -2,13 +2,13 @@ import React from "react";
 import AltName from "./AltName"
 
 export interface AltNameData {
-    id: number;
-    test_id: number;
-    name: string;
+    id: number,
+    test_id: number,
+    name: string,
 }
 
 interface AltNameListProps {
-    altNameData: AltNameData[] | null;
+    altNameData: AltNameData[] | null,
 }
 
 const AltNameList: React.FC<AltNameListProps> = ({ altNameData }) => {
