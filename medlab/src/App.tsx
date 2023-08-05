@@ -16,44 +16,44 @@ import { Route, Routes, useNavigate } from 'react-router-dom';
 const kBaseURL = 'http://127.0.0.1:8000';
 
 
-const getAllPanels = () => {
-  return axios
-    .get<{ panels: PanelData[] }>(`${kBaseURL}/panels/`)
-    .then((res) => {
-      console.log(res);
-      return res.data.panels;
-    })
-    .catch((err) => {
-      console.log('Error fetching panels:', err);
-      return [];
-    });
-};
+// const getAllPanels = () => {
+//   return axios
+//     .get<{ panels: PanelData[] }>(`${kBaseURL}/panels/`)
+//     .then((res) => {
+//       console.log(res);
+//       return res.data.panels;
+//     })
+//     .catch((err) => {
+//       console.log('Error fetching panels:', err);
+//       return [];
+//     });
+// };
 
-const getAllTests = () => {
-  return axios
-    .get<{ tests: labTestData[] }>(`${kBaseURL}/tests/`)
-    .then((res) => {
-      console.log(res);
-      return res.data.tests;
-    })
-    .catch((err) => {
-      console.log('Error fetching tests:', err);
-      return [];
-    });
-};
+// const getAllTests = () => {
+//   return axios
+//     .get<{ tests: labTestData[] }>(`${kBaseURL}/tests/`)
+//     .then((res) => {
+//       console.log(res);
+//       return res.data.tests;
+//     })
+//     .catch((err) => {
+//       console.log('Error fetching tests:', err);
+//       return [];
+//     });
+// };
 
-const getAllOrgans = () => {
-  return axios
-    .get<{ organs: OrganData[] }>(`${kBaseURL}/organs/`)
-    .then((res) => {
-      console.log(res);
-      return res.data.organs;
-    })
-    .catch((err) => {
-      console.log('Error fetching organs:', err);
-      return [];
-    });
-  };
+// const getAllOrgans = () => {
+//   return axios
+//     .get<{ organs: OrganData[] }>(`${kBaseURL}/organs/`)
+//     .then((res) => {
+//       console.log(res);
+//       return res.data.organs;
+//     })
+//     .catch((err) => {
+//       console.log('Error fetching organs:', err);
+//       return [];
+//     });
+//   };
 
 const getAltNamesToTests = (labTestID: number) => {
   return axios
@@ -79,22 +79,22 @@ const App: React.FC = () => {
   const [altNameData, setAltNameData] = useState<AltNameData[]>([]);
   // const [organRelatedTestDetails, setOrganRelatedTestDetails] = useState<labTestData | null>(null);
 
-useEffect(() => {
-  getAllPanels().then((panels) => {
-    console.log('Fetched panels:', panels);
-    setPanelData(panels);
-  });
+// useEffect(() => {
+//   getAllPanels().then((panels) => {
+//     console.log('Fetched panels:', panels);
+//     setPanelData(panels);
+//   });
 
-  getAllOrgans().then((organs) => {
-    console.log('Fetched organs:', organs);
-    setOrganData(organs);
-  });
+//   getAllOrgans().then((organs) => {
+//     console.log('Fetched organs:', organs);
+//     setOrganData(organs);
+//   });
 
-  getAllTests().then((tests) => {
-    console.log('Fetched tests:', tests);
-    setlabTestData(tests);
-  });
-}, []);
+//   getAllTests().then((tests) => {
+//     console.log('Fetched tests:', tests);
+//     setlabTestData(tests);
+//   });
+// }, [];
 
 
   const handlePanelSelection = (panelID: number) => {
@@ -148,8 +148,8 @@ useEffect(() => {
   <>
     <Menu
         onAboutClick={() => navigate('/about')}
-        onPanelsClick={() => navigate('/paneldetails')}
-        onOrgansClick={() => navigate('/organdetails')}
+        // onPanelsClick={() => navigate('/paneldetails')}
+        // onOrgansClick={() => navigate('/organdetails')}
       />
 
       <Routes>
@@ -161,12 +161,12 @@ useEffect(() => {
 
       <section className="container mt-4">
         <div className="row">
-          <div className="col-md-4">
+          {/* <div className="col-md-4">
             <PanelList panelData={panelData} handlePanelSelection={handlePanelSelection} />
           </div>
           <div className="col-md-4">
             <OrganList organData={organData} onOrganClick={handleOrganClick} />
-          </div>
+          </div> */}
           <div className="col-md-4">
             <h2>{selectedPanel !== null ? selectedPanel.name : ''}</h2>
             <LabTestList

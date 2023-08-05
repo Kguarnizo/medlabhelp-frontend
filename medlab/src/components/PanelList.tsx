@@ -9,7 +9,7 @@ export interface PanelData {
 
 interface PanelListProps {
     panelData: PanelData[],
-    handlePanelSelection: (panelID: number) => void,
+    handlePanelSelection: (panelID: number) => void
 }
 
 const PanelList: React.FC<PanelListProps> = ({ panelData, handlePanelSelection }) => {
@@ -19,7 +19,7 @@ const PanelList: React.FC<PanelListProps> = ({ panelData, handlePanelSelection }
     }
 
     return (
-        <section>
+        <section className="col-md-4" >
         <ul>
             {panelData.map((panel) => (
             <Panel

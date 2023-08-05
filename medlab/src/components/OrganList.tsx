@@ -17,7 +17,7 @@ const OrganList: React.FC<OrganListProps> = ({ organData, onOrganClick }) => {
     }
 
     return (
-        <section>
+        <section className="col-md-4">
             <ul>
                 {organData.map((organ) => (
                     <Organ

@@ -8,9 +8,9 @@ interface OrganProps {
 
 const Organ: React.FC<OrganProps> = ({ id, name, onClick}) => {
     return (
-        <ul onClick={onClick}>
-            <li>{name}</li>
-        </ul>
+        <li onClick={onClick}>
+            {name}
+        </li>
 );
 };
 

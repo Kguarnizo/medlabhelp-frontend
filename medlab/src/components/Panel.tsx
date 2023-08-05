@@ -14,9 +14,9 @@ const Panel: React.FC<PanelProps> = ({ id, name, organ_id, handlePanelSelection 
     };
 
     return (
-        <ul onClick={panelOnClick}>
-            <li>{name}</li>
-        </ul>
+            <li onClick={panelOnClick}>
+            {name}
+            </li>
 );
 };
 

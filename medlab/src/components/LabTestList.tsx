@@ -52,8 +52,8 @@ interface LabTestListProps {
                 <p>Name: {selectedTest.name}</p>
                 <p>Description: {selectedTest.description}</p>
                 <p>Learn More:
-                    <a href="test info link">{selectedTest.info_url}</a>
-                </p>
+                <a href={selectedTest.info_url} target="_blank" rel="noopener noreferrer">{selectedTest.info_url}</a>
+                </p>                
                 <p>Normal Reference: {selectedTest.normal_reference}</p>
                 <p>Unit of Measure: {selectedTest.unit_of_measure}</p>
                 <p>Alternate Name: </p>
@@ -64,3 +64,5 @@ interface LabTestListProps {
     };
 
     export default LabTestList;
+
+

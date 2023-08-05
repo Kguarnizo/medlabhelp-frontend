@@ -1,17 +1,96 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import PanelList, { PanelData } from './PanelList';
+import OrganList, { OrganData } from './OrganList';
+import axios from 'axios';
+import { labTestData } from './LabTestList';
 
 interface MenuProps {
     onAboutClick: () => void;
-    onPanelsClick: () => void;
-    onOrgansClick: () => void;
 }
+const kBaseURL = 'http://127.0.0.1:8000';
 
-const Menu: React.FC<MenuProps> = ({ onAboutClick, onPanelsClick, onOrgansClick }) => {
+
+const getAllPanels = () => {
+    return axios
+        .get<{ panels: PanelData[] }>(`${kBaseURL}/panels/`)
+        .then((res) => {
+        console.log(res);
+        return res.data.panels;
+        })
+        .catch((err) => {
+        console.log('Error fetching panels:', err);
+        return [];
+        });
+    };
+
+    const getAllOrgans = () => {
+        return axios
+            .get<{ organs: OrganData[] }>(`${kBaseURL}/organs/`)
+            .then((res) => {
+            console.log(res);
+            return res.data.organs;
+            })
+            .catch((err) => {
+            console.log('Error fetching organs:', err);
+            return [];
+            });
+        };
+
+        const getAllTests = () => {
+            return axios
+                .get<{ tests: labTestData[] }>(`${kBaseURL}/tests/`)
+                .then((res) => {
+                console.log(res);
+                return res.data.tests;
+                })
+                .catch((err) => {
+                console.log('Error fetching tests:', err);
+                return [];
+                });
+            };
+
+const Menu: React.FC<MenuProps> = ({ onAboutClick }) => {
+    const onPanelsClick = () => {setPanelVisibility(!panelVisibility)};
+    
+    const onOrgansClick = () => {setOrganVisibility(!organVisibility)};
+    const [panelData, setPanelData] = useState<PanelData[]>([]);
+    const [organData, setOrganData] = useState<OrganData[]>([]);
+    const [labTestData, setlabTestData] = useState<labTestData[]>([]);
+    const [panelVisibility, setPanelVisibility] = useState(false)
+    const [organVisibility, setOrganVisibility] = useState(false)
+
+    function handlePanelSelection(panelID: number): void {
+        throw new Error('Function not implemented.');
+    }
+
+    function handleOrganClick(organ: OrganData): void {
+        throw new Error('Function not implemented.');
+    }
+
+    useEffect(() => {
+        getAllPanels().then((panels: React.SetStateAction<PanelData[]>) => {
+            console.log('Fetched panels:', panels);
+            setPanelData(panels);
+        });
+        
+        getAllOrgans().then((organs: React.SetStateAction<OrganData[]>) => {
+            console.log('Fetched organs:', organs);
+            setOrganData(organs);
+        });
+
+        getAllTests().then((tests) => {
+            console.log('Fetched tests:', tests);
+            setlabTestData(tests);
+            });
+    }, []);
+
+
     return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
-        <Link to="/" className="navbar-brand">MEDLAB HELP</Link>        <button
+        <Link to="/" className="navbar-brand">MEDLAB HELP</Link>        
+        <button
             className="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
@@ -33,11 +112,21 @@ const Menu: React.FC<MenuProps> = ({ onAboutClick, onPanelsClick, onOrgansClick 
                 <button className="nav-link btn" onClick={onPanelsClick}>
                 Panels
                 </button>
+                <div className="col-md-4">
+                    {
+                    panelVisibility && <PanelList panelData={panelData} handlePanelSelection={handlePanelSelection} />
+                    }
+                </div>
             </li>
             <li className="nav-item">
                 <button className="nav-link btn" onClick={onOrgansClick}>
                 Organs
                 </button>
+                <div className="col-md-4">
+                {
+                organVisibility && <OrganList organData={organData} onOrganClick={handleOrganClick} />
+                }
+                </div>
             </li>
             </ul>
         </div>
@@ -47,3 +136,4 @@ const Menu: React.FC<MenuProps> = ({ onAboutClick, onPanelsClick, onOrgansClick 
 };
 
 export default Menu;
+
