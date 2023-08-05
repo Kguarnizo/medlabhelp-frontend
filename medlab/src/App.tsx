@@ -5,15 +5,16 @@ import './App.css';
 import PanelList, { PanelData } from './components/PanelList';
 import OrganList, { OrganData } from './components/OrganList';
 import LabTestList, { labTestData } from './components/LabTestList';
-import AltNameList, {AltNameData} from './components/AltNameList';
-
+import AltNameList, { AltNameData } from './components/AltNameList';
+import Menu from './components/Menu';
 import About from './pages/about';
 import Home from './pages/home';
 import PanelDetails from './pages/paneldetails';
 import OrganDetails from './pages/organdetails';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 
 const kBaseURL = 'http://127.0.0.1:8000';
+
 
 const getAllPanels = () => {
   return axios
@@ -139,41 +140,66 @@ useEffect(() => {
     });
   };
 
+  const navigate = useNavigate();
+
+
+
   return (
   <>
-    <Routes>
-      <Route index element={<Home />} />
-      <Route element={<About />} path='about' />
-      <Route element={<PanelDetails />} path='paneldetails' />
-      <Route element={<OrganDetails />} path='organdetails' />
-    </Routes>
+    <Menu
+        onAboutClick={() => navigate('/about')}
+        onPanelsClick={() => navigate('/paneldetails')}
+        onOrgansClick={() => navigate('/organdetails')}
+      />
 
-    <section>
-      <div>
-        <PanelList panelData={panelData} handlePanelSelection={handlePanelSelection} />
+      <Routes>
+        <Route index element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/paneldetails" element={<PanelDetails />} />
+        <Route path="/organdetails" element={<OrganDetails />} />
+      </Routes>
 
-      </div>
-      <div>
-        <OrganList organData={organData} onOrganClick={handleOrganClick}/>
-      </div>
-      
-      <div>
-        <h2>{selectedPanel !== null ? selectedPanel.name : ''}</h2>
-        <LabTestList testList={filterTest} onTestClick={handleTestClick} selectedTest={selectedTest} handleLabTestSelection={handleLabTestSelection} getAltNamesToTests={getAltNamesToTests} />
-      </div>
-
-      <div>
-        <h2>{selectedOrgan !== null ? selectedOrgan.name : ''}</h2>
-        <LabTestList testList={relatedTests} onTestClick={handleTestClick} selectedTest={selectedTest} handleLabTestSelection={handleLabTestSelection} getAltNamesToTests={getAltNamesToTests}/>
-      </div>
-
-      <div>
-        <AltNameList altNameData={altNameData}/>
-      </div>
-    </section>
-</>
+      <section className="container mt-4">
+        <div className="row">
+          <div className="col-md-4">
+            <PanelList panelData={panelData} handlePanelSelection={handlePanelSelection} />
+          </div>
+          <div className="col-md-4">
+            <OrganList organData={organData} onOrganClick={handleOrganClick} />
+          </div>
+          <div className="col-md-4">
+            <h2>{selectedPanel !== null ? selectedPanel.name : ''}</h2>
+            <LabTestList
+              testList={filterTest}
+              onTestClick={handleTestClick}
+              selectedTest={selectedTest}
+              handleLabTestSelection={handleLabTestSelection}
+              getAltNamesToTests={getAltNamesToTests}
+            />
+          </div>
+        </div>
+        <div className="row mt-4">
+          <div className="col-md-8">
+            {selectedOrgan && (
+              <>
+                <h2>Tests related to: {selectedOrgan.name}</h2>
+                <LabTestList
+                  testList={relatedTests}
+                  onTestClick={handleTestClick}
+                  selectedTest={selectedTest}
+                  handleLabTestSelection={handleLabTestSelection}
+                  getAltNamesToTests={getAltNamesToTests}
+                />
+              </>
+            )}
+          </div>
+          <div className="col-md-4">
+            <AltNameList altNameData={altNameData} />
+          </div>
+        </div>
+      </section>
+    </>
   );
 };
-
 
 export default App;
