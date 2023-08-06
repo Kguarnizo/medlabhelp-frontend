@@ -11,6 +11,7 @@ const Homepage: React.FC = () => {
     return (
         <div>
       {/* Image Carousel */}
+        <div id="carouselExampleIndicators" className="carousel slide position-static" data-ride="carousel">
         <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
         <ol className="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
@@ -57,6 +58,7 @@ const Homepage: React.FC = () => {
             </div>
         )}
         </div>
+    </div>
     </div>
     );
 };

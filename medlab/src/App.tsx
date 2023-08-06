@@ -16,44 +16,44 @@ import { Route, Routes, useNavigate } from 'react-router-dom';
 const kBaseURL = 'http://127.0.0.1:8000';
 
 
-// const getAllPanels = () => {
-//   return axios
-//     .get<{ panels: PanelData[] }>(`${kBaseURL}/panels/`)
-//     .then((res) => {
-//       console.log(res);
-//       return res.data.panels;
-//     })
-//     .catch((err) => {
-//       console.log('Error fetching panels:', err);
-//       return [];
-//     });
-// };
+const getAllPanels = () => {
+  return axios
+    .get<{ panels: PanelData[] }>(`${kBaseURL}/panels/`)
+    .then((res) => {
+      console.log(res);
+      return res.data.panels;
+    })
+    .catch((err) => {
+      console.log('Error fetching panels:', err);
+      return [];
+    });
+};
 
-// const getAllTests = () => {
-//   return axios
-//     .get<{ tests: labTestData[] }>(`${kBaseURL}/tests/`)
-//     .then((res) => {
-//       console.log(res);
-//       return res.data.tests;
-//     })
-//     .catch((err) => {
-//       console.log('Error fetching tests:', err);
-//       return [];
-//     });
-// };
+const getAllTests = () => {
+  return axios
+    .get<{ tests: labTestData[] }>(`${kBaseURL}/tests/`)
+    .then((res) => {
+      console.log(res);
+      return res.data.tests;
+    })
+    .catch((err) => {
+      console.log('Error fetching tests:', err);
+      return [];
+    });
+};
 
-// const getAllOrgans = () => {
-//   return axios
-//     .get<{ organs: OrganData[] }>(`${kBaseURL}/organs/`)
-//     .then((res) => {
-//       console.log(res);
-//       return res.data.organs;
-//     })
-//     .catch((err) => {
-//       console.log('Error fetching organs:', err);
-//       return [];
-//     });
-//   };
+const getAllOrgans = () => {
+  return axios
+    .get<{ organs: OrganData[] }>(`${kBaseURL}/organs/`)
+    .then((res) => {
+      console.log(res);
+      return res.data.organs;
+    })
+    .catch((err) => {
+      console.log('Error fetching organs:', err);
+      return [];
+    });
+  };
 
 const getAltNamesToTests = (labTestID: number) => {
   return axios
@@ -79,26 +79,27 @@ const App: React.FC = () => {
   const [altNameData, setAltNameData] = useState<AltNameData[]>([]);
   // const [organRelatedTestDetails, setOrganRelatedTestDetails] = useState<labTestData | null>(null);
 
-// useEffect(() => {
-//   getAllPanels().then((panels) => {
-//     console.log('Fetched panels:', panels);
-//     setPanelData(panels);
-//   });
+useEffect(() => {
+  getAllPanels().then((panels) => {
+    console.log('Fetched panels:', panels);
+    setPanelData(panels);
+  });
 
-//   getAllOrgans().then((organs) => {
-//     console.log('Fetched organs:', organs);
-//     setOrganData(organs);
-//   });
+  getAllOrgans().then((organs) => {
+    console.log('Fetched organs:', organs);
+    setOrganData(organs);
+  });
 
-//   getAllTests().then((tests) => {
-//     console.log('Fetched tests:', tests);
-//     setlabTestData(tests);
-//   });
-// }, [];
+  getAllTests().then((tests) => {
+    console.log('Fetched tests:', tests);
+    setlabTestData(tests);
+  });
+}, []);
 
 
   const handlePanelSelection = (panelID: number) => {
     const panel = panelData.find((panel) => panel.id === panelID);
+    console.log(panelID, panel, panelData)
     setSelectedPanel(panel || null);
   };
 
@@ -150,14 +151,18 @@ const App: React.FC = () => {
         onAboutClick={() => navigate('/about')}
         // onPanelsClick={() => navigate('/paneldetails')}
         // onOrgansClick={() => navigate('/organdetails')}
+        handlePanelSelection={handlePanelSelection} 
+        panelData={panelData}
+
       />
 
       <Routes>
         <Route index element={<Home />} />
         <Route path="/about" element={<About />} />
-        <Route path="/paneldetails" element={<PanelDetails />} />
+        <Route path="/paneldetails/:id" element={<PanelDetails panelData={panelData} />} />
         <Route path="/organdetails" element={<OrganDetails />} />
       </Routes>
+
 
       <section className="container mt-4">
         <div className="row">

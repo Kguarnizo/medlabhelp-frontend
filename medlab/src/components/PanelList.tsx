@@ -1,5 +1,6 @@
 import React from "react";
 import Panel from "./Panel";
+import { Link } from "react-router-dom";
 
 export interface PanelData {
     id: number,
@@ -9,7 +10,7 @@ export interface PanelData {
 
 interface PanelListProps {
     panelData: PanelData[],
-    handlePanelSelection: (panelID: number) => void
+    handlePanelSelection: (panelID: number) => void,
 }
 
 const PanelList: React.FC<PanelListProps> = ({ panelData, handlePanelSelection }) => {
@@ -19,16 +20,18 @@ const PanelList: React.FC<PanelListProps> = ({ panelData, handlePanelSelection }
     }
 
     return (
-        <section className="col-md-4" >
+        <section>
         <ul>
             {panelData.map((panel) => (
-            <Panel
+            <div><Panel
                 id={panel.id}
                 name={panel.name}
                 organ_id={panel.organ_id}
                 key={panel.id}
                 handlePanelSelection={handlePanelSelection}
             />
+            <Link to={`paneldetails/${panel.id}`}>{panel.name} </Link>
+            </div>
             ))}
         </ul>
         </section>
