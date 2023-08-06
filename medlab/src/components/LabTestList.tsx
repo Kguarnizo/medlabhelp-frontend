@@ -2,7 +2,7 @@ import React from 'react';
 import LabTest from './LabTest';
 import { AltNameData } from "./AltNameList";
 
-export interface labTestData {
+export interface LabTestData {
     id: number,
     panel_id: number,
     name: string,
@@ -13,9 +13,9 @@ export interface labTestData {
 }
 
 interface LabTestListProps {
-    testList: labTestData[],
-    onTestClick: (test: labTestData) => void,
-    selectedTest: labTestData | null,
+    testList: LabTestData[],
+    onTestClick: (test: LabTestData) => void,
+    selectedTest: LabTestData | null,
     handleLabTestSelection: (labTestID: number) => void,
     getAltNamesToTests: (labTestID: number) => Promise<never[] | AltNameData[]>,
     }
@@ -39,7 +39,7 @@ interface LabTestListProps {
                     normal_reference={test.normal_reference}
                     info_url={test.info_url}
                     unit_of_measure={test.unit_of_measure}
-                    handleLabTestSelection={handleLabTestSelection}
+                    // handleLabTestSelection={handleLabTestSelection}
                     getAltNamesToTests={getAltNamesToTests}
                 />
                 </li>

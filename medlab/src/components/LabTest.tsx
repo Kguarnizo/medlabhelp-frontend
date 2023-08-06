@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { AltNameData } from "./AltNameList";
+import axios from "axios";
 
 export interface LabTestProps {
     id: number,
@@ -9,14 +10,29 @@ export interface LabTestProps {
     info_url: string,
     normal_reference: string,
     unit_of_measure: string,
-    handleLabTestSelection: (labTestID: number) => void,
-    getAltNamesToTests: (labTestID: number) => Promise<never[] | AltNameData[]>,
+    // handleLabTestSelection?: (labTestID: number) => void,
+    getAltNamesToTests?: (labTestID: number) => Promise<never[] | AltNameData[]>,
 }
+const kBaseURL = 'http://127.0.0.1:8000';
 
 
-const LabTest: React.FC<LabTestProps> = ({ id, name, description, info_url, normal_reference, unit_of_measure, handleLabTestSelection, getAltNamesToTests }) => {
+const getAltNamesToTests = (labTestID: number) => {
+    return axios
+    .get<AltNameData[]>(`${kBaseURL}/tests/${labTestID}/alternatenames/`)
+    .then((res)=> {
+        console.log(res);
+        return res.data;
+    })
+    .catch((err) => {
+        console.log("Error fetching tests:", err);
+        return [];
+    })
+    }
+
+
+const LabTest: React.FC<LabTestProps> = ({ id, name, description, info_url, normal_reference, unit_of_measure }) => {
     const testOnClick = () => {
-        handleLabTestSelection(id);
+        // handleLabTestSelection(id);
     };
 
 

@@ -13,10 +13,10 @@ const Panel: React.FC<PanelProps> = ({ id, name, organ_id, handlePanelSelection 
         handlePanelSelection(id);
     };
 
-    return (
-            <li onClick={panelOnClick}>
-            {name}
-            </li>
+    return ( <></>
+            // <li onClick={panelOnClick}>
+            // {name}
+            // </li>
 );
 };
 

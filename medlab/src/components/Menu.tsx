@@ -3,8 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 import PanelList, { PanelData } from './PanelList';
 import OrganList, { OrganData } from './OrganList';
 import axios from 'axios';
-import { labTestData } from './LabTestList';
-import Popper from 'popper.js';
+import { LabTestData } from './LabTestList';
 
 ;
 
@@ -62,7 +61,7 @@ const Menu: React.FC<MenuProps> = ({ onAboutClick, handlePanelSelection, panelDa
     const onOrgansClick = () => {setOrganVisibility(!organVisibility)};
     // const [panelData, setPanelData] = useState<PanelData[]>([]);
     const [organData, setOrganData] = useState<OrganData[]>([]);
-    const [labTestData, setlabTestData] = useState<labTestData[]>([]);
+    const [labTestData, setlabTestData] = useState<LabTestData[]>([]);
     const [panelVisibility, setPanelVisibility] = useState(false)
     const [organVisibility, setOrganVisibility] = useState(false)
 

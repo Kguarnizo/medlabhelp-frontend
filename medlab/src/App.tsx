@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import PanelList, { PanelData } from './components/PanelList';
 import OrganList, { OrganData } from './components/OrganList';
-import LabTestList, { labTestData } from './components/LabTestList';
+import LabTestList, { LabTestData } from './components/LabTestList';
 import AltNameList, { AltNameData } from './components/AltNameList';
 import Menu from './components/Menu';
 import About from './pages/about';
@@ -12,6 +12,7 @@ import Home from './pages/home';
 import PanelDetails from './pages/paneldetails';
 import OrganDetails from './pages/organdetails';
 import { Route, Routes, useNavigate } from 'react-router-dom';
+import LabTest from './components/LabTest';
 
 const kBaseURL = 'http://127.0.0.1:8000';
 
@@ -31,7 +32,7 @@ const getAllPanels = () => {
 
 const getAllTests = () => {
   return axios
-    .get<{ tests: labTestData[] }>(`${kBaseURL}/tests/`)
+    .get<{ tests: LabTestData[] }>(`${kBaseURL}/tests/`)
     .then((res) => {
       console.log(res);
       return res.data.tests;
@@ -55,27 +56,27 @@ const getAllOrgans = () => {
     });
   };
 
-const getAltNamesToTests = (labTestID: number) => {
-  return axios
-  .get<AltNameData[]>(`${kBaseURL}/tests/${labTestID}/alternatenames/`)
-  .then((res)=> {
-    console.log(res);
-    return res.data;
-  })
-  .catch((err) => {
-    console.log("Error fetching tests:", err);
-    return [];
-  })
-}
+// const getAltNamesToTests = (labTestID: number) => {
+//   return axios
+//   .get<AltNameData[]>(`${kBaseURL}/tests/${labTestID}/alternatenames/`)
+//   .then((res)=> {
+//     console.log(res);
+//     return res.data;
+//   })
+//   .catch((err) => {
+//     console.log("Error fetching tests:", err);
+//     return [];
+//   })
+// }
 
 const App: React.FC = () => {
   const [panelData, setPanelData] = useState<PanelData[]>([]);
   const [organData, setOrganData] = useState<OrganData[]>([]);
   const [selectedPanel, setSelectedPanel] = useState<PanelData | null>(null);
-  const [labTestData, setlabTestData] = useState<labTestData[]>([]);
-  const [selectedTest, setSelectedTest] = useState<labTestData | null>(null);
+  const [labTestData, setlabTestData] = useState<LabTestData[]>([]);
+  const [selectedTest, setSelectedTest] = useState<LabTestData | null>(null);
   const [selectedOrgan, setSelectedOrgan] = useState<OrganData | null>(null);
-  const [relatedTests, setRelatedTests] = useState<labTestData[]>([]);
+  const [relatedTests, setRelatedTests] = useState<LabTestData[]>([]);
   const [altNameData, setAltNameData] = useState<AltNameData[]>([]);
   // const [organRelatedTestDetails, setOrganRelatedTestDetails] = useState<labTestData | null>(null);
 
@@ -103,9 +104,9 @@ useEffect(() => {
     setSelectedPanel(panel || null);
   };
 
-  const filterTest = labTestData.filter((test) => test.panel_id === selectedPanel?.id);
+  // const filterTest = labTestData.filter((test) => test.panel_id === selectedPanel?.id);
 
-  const handleTestClick = (test: labTestData) => {
+  const handleTestClick = (test: LabTestData) => {
     setSelectedTest(test);
   };
 
@@ -113,7 +114,7 @@ useEffect(() => {
     setSelectedOrgan(organ);
 
     axios
-      .get<labTestData[]>(`${kBaseURL}/organs/${organ.id}/tests/`)
+      .get<LabTestData[]>(`${kBaseURL}/organs/${organ.id}/tests/`)
       .then((res) => {
         console.log('tests related to organ:', res);
         setRelatedTests(res.data);
@@ -132,14 +133,14 @@ useEffect(() => {
     return labTestData.find((labTest) => {return labTest.id === labTestID})
   };
 
-  const handleLabTestSelection = (labTestID: number)=> {
-    let labTest = findLabTestById(labTestID);
-    setSelectedTest(labTest || null);
-    getAltNamesToTests(labTestID).then((tests)=> {
-      console.log(tests);
-      setAltNameData(tests);
-    });
-  };
+  // const handleLabTestSelection = (labTestID: number)=> {
+  //   let labTest = findLabTestById(labTestID);
+  //   setSelectedTest(labTest || null);
+  //   getAltNamesToTests(labTestID).then((tests)=> {
+  //     console.log(tests);
+  //     setAltNameData(tests);
+  //   });
+  // };
 
   const navigate = useNavigate();
 
@@ -159,20 +160,22 @@ useEffect(() => {
       <Routes>
         <Route index element={<Home />} />
         <Route path="/about" element={<About />} />
-        <Route path="/paneldetails/:id" element={<PanelDetails panelData={panelData} />} />
+        <Route path="/paneldetails/:id" element={<PanelDetails panelData={panelData} labTestData={labTestData}  />} />
         <Route path="/organdetails" element={<OrganDetails />} />
-      </Routes>
+      </Routes> 
+      </>
+);
+};
 
-
-      <section className="container mt-4">
-        <div className="row">
+      {/* <section className="container mt-4">
+        <div className="row"> */}
           {/* <div className="col-md-4">
             <PanelList panelData={panelData} handlePanelSelection={handlePanelSelection} />
           </div>
           <div className="col-md-4">
             <OrganList organData={organData} onOrganClick={handleOrganClick} />
           </div> */}
-          <div className="col-md-4">
+          {/* <div className="col-md-4">
             <h2>{selectedPanel !== null ? selectedPanel.name : ''}</h2>
             <LabTestList
               testList={filterTest}
@@ -205,6 +208,6 @@ useEffect(() => {
       </section>
     </>
   );
-};
+}; */}
 
 export default App;
