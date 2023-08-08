@@ -19,17 +19,11 @@ const OrganList: React.FC<OrganListProps> = ({ organData, handleOrganSelection }
     if (organData.length === 0) {
         return <div>No data available.</div>;
     }
+
     const onChange = (e: React.FormEvent<HTMLInputElement>) => {
         const newValue = e.currentTarget.value;
         setInputText(newValue);
-        console.log('new value is:', newValue);
     }
-
-
-// const OrganList: React.FC<OrganListProps> = ({ organData, onOrganClick }) => {
-//     if (organData.length === 0) {
-//         return <div>No data available.</div>;
-//     }
 
     return (
         <section className="col-md-4">

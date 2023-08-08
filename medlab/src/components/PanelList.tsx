@@ -24,12 +24,11 @@ const PanelList: React.FC<PanelListProps> = ({ panelData, handlePanelSelection }
     const onChange = (e: React.FormEvent<HTMLInputElement>) => {
         const newValue = e.currentTarget.value;
         setInputText(newValue);
-        console.log('new value is:', newValue);
     }
 
     return (
         <section>
-            <input type="text" id="search" placeholder="Search..." onChange={onChange}/>
+            <input type="text" id="search" placeholder="Search.../" onChange={onChange}/>
             <ul>
                 {panelData.filter((panel) => {
                     return panel.name.toLowerCase().includes(inputText.toLowerCase());

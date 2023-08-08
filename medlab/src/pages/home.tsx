@@ -10,7 +10,7 @@ const Homepage: React.FC = () => {
 
     return (
         <div>
-        <img className="logo" src="/images/full.png" alt="" />
+        <img className="logo" src="/images/newlogo.png" alt="" />
       {/* Image Carousel */}
         <div id="carouselExampleIndicators" className="carousel slide position-static" data-ride="carousel">
         <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
