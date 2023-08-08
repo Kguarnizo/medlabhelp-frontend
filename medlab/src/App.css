@@ -8,12 +8,12 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
     }
-    
+
     code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
         monospace;
     }
-    
+
   /* Custom color scheme */
     :root {
     --primary-color: #007bff;
@@ -21,17 +21,17 @@ body {
     --bg-color: #f8f9fa;
     --text-color: #333;
     }
-    
+
     a {
     color: var(--primary-color);
     text-decoration: none;
     }
-    
+
     a:hover {
     color: #0056b3;
     text-decoration: underline;
     }
-    
+
   /* Custom button styles */
     .btn {
     background-color: var(--primary-color);
@@ -40,12 +40,13 @@ body {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+
     }
-    
+
     .btn:hover {
     background-color: #0056b3;
     }
-    
+
   /* Custom header styles */
     header {
     background-color: var(--primary-color);
@@ -53,7 +54,7 @@ body {
     padding: 20px;
     text-align: center;
     }
-    
+
   /* Custom footer styles */
     footer {
     background-color: var(--secondary-color);
@@ -61,7 +62,7 @@ body {
     padding: 10px;
     text-align: center;
     }
-    
+
   /* Custom image styles */
     .img-fluid {
     width: 100%;
@@ -69,4 +70,8 @@ body {
     object-fit: cover;
     border-radius: 8px;
     margin-bottom: 10px;
+    }
+
+    #site-name {
+      align-self: flex-start;
     }

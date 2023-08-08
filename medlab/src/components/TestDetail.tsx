@@ -1,5 +1,5 @@
 import React from 'react';
-import LabTest from './LabTest';
+import LabTestList from './LabTestList';
 import { AltNameData } from "./AltNameList";
 
 export interface LabTestData {
@@ -27,7 +27,7 @@ interface TestDetailProps {
                 <p>Description: {selectedTest.description}</p>
                 <p>Learn More:
                 <a href={selectedTest.info_url} target="_blank" rel="noopener noreferrer">{selectedTest.info_url}</a>
-                </p>                
+                </p>
                 <p>Normal Reference: {selectedTest.normal_reference}</p>
                 <p>Unit of Measure: {selectedTest.unit_of_measure}</p>
                 <p>Alternate Name: </p>
@@ -38,5 +38,3 @@ interface TestDetailProps {
     };
 
     export default TestDetail;
-
-

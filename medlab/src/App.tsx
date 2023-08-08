@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import PanelList, { PanelData } from './components/PanelList';
 import OrganList, { OrganData } from './components/OrganList';
-import LabTestList, { LabTestData } from './components/TestDetail';
+import TestDetail, { LabTestData } from './components/TestDetail';
 import AltNameList, { AltNameData } from './components/AltNameList';
 import Menu from './components/Menu';
 import About from './pages/about';
@@ -12,9 +12,9 @@ import Home from './pages/home';
 import PanelDetails from './pages/paneldetails';
 import OrganDetails from './pages/organdetails';
 import { Route, Routes, useNavigate } from 'react-router-dom';
-import LabTest from './components/LabTest';
+import LabTestList from './components/LabTestList';
 
-const kBaseURL = 'http://127.0.0.1:8000';
+const kBaseURL = 'https://medlab-help-api.onrender.com';
 
 
 const getAllPanels = () => {
@@ -152,7 +152,7 @@ useEffect(() => {
         onAboutClick={() => navigate('/about')}
         // onPanelsClick={() => navigate('/paneldetails')}
         // onOrgansClick={() => navigate('/organdetails')}
-        handlePanelSelection={handlePanelSelection} 
+        handlePanelSelection={handlePanelSelection}
         panelData={panelData}
 
       />
@@ -162,7 +162,7 @@ useEffect(() => {
         <Route path="/about" element={<About />} />
         <Route path="/paneldetails/:id" element={<PanelDetails panelData={panelData} labTestData={labTestData}  />} />
         <Route path="/organdetails" element={<OrganDetails />} />
-      </Routes> 
+      </Routes>
       </>
 );
 };
