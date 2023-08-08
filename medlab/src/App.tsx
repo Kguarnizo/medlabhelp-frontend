@@ -56,18 +56,6 @@ const getAllOrgans = () => {
     });
   };
 
-// const getAltNamesToTests = (labTestID: number) => {
-//   return axios
-//   .get<AltNameData[]>(`${kBaseURL}/tests/${labTestID}/alternatenames/`)
-//   .then((res)=> {
-//     console.log(res);
-//     return res.data;
-//   })
-//   .catch((err) => {
-//     console.log("Error fetching tests:", err);
-//     return [];
-//   })
-// }
 
 const App: React.FC = () => {
   const [panelData, setPanelData] = useState<PanelData[]>([]);
@@ -111,9 +99,9 @@ useEffect(() => {
 
   // const filterTest = labTestData.filter((test) => test.panel_id === selectedPanel?.id);
 
-  const handleTestClick = (test: LabTestData) => {
-    setSelectedTest(test);
-  };
+  // const handleTestClick = (test: LabTestData) => {
+  //   setSelectedTest(test);
+  // };
 
   const handleOrganClick = (organ: OrganData) => {
     setSelectedOrgan(organ);
@@ -155,13 +143,10 @@ useEffect(() => {
   <>
     <Menu
         onAboutClick={() => navigate('/about')}
-        // onPanelsClick={() => navigate('/paneldetails')}
-        // onOrgansClick={() => navigate('/organdetails')}
         handlePanelSelection={handlePanelSelection}
         handleOrganSelection={handleOrganSelection}
         panelData={panelData}
         organData={organData}
-
       />
 
       <Routes>
@@ -174,47 +159,6 @@ useEffect(() => {
 );
 };
 
-      {/* <section className="container mt-4">
-        <div className="row"> */}
-          {/* <div className="col-md-4">
-            <PanelList panelData={panelData} handlePanelSelection={handlePanelSelection} />
-          </div>
-          <div className="col-md-4">
-            <OrganList organData={organData} onOrganClick={handleOrganClick} />
-          </div> */}
-          {/* <div className="col-md-4">
-            <h2>{selectedPanel !== null ? selectedPanel.name : ''}</h2>
-            <LabTestList
-              testList={filterTest}
-              onTestClick={handleTestClick}
-              selectedTest={selectedTest}
-              handleLabTestSelection={handleLabTestSelection}
-              getAltNamesToTests={getAltNamesToTests}
-            />
-          </div>
-        </div>
-        <div className="row mt-4">
-          <div className="col-md-8">
-            {selectedOrgan && (
-              <>
-                <h2>Tests related to: {selectedOrgan.name}</h2>
-                <LabTestList
-                  testList={relatedTests}
-                  onTestClick={handleTestClick}
-                  selectedTest={selectedTest}
-                  handleLabTestSelection={handleLabTestSelection}
-                  getAltNamesToTests={getAltNamesToTests}
-                />
-              </>
-            )}
-          </div>
-          <div className="col-md-4">
-            <AltNameList altNameData={altNameData} />
-          </div>
-        </div>
-      </section>
-    </>
-  );
-}; */}
+
 
 export default App;
