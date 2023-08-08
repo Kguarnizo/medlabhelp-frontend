@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState, useEffect} from "react";
 import { AltNameData } from "./AltNameList";
 import TestDetail, { LabTestData } from './TestDetail';
 import axios from "axios";
@@ -23,6 +23,12 @@ const LabTestList: React.FC<LabTestProps> = ({ id, name, description, info_url, 
     const [labTestData, setlabTestData] = useState<LabTestData | null>(null);
 
     const testOnClick = () => handleLabTestSelection(id);
+
+    useEffect(() => {
+        getAltNamesToTests(id).then((tests) => {
+            setAltNameData(tests);
+        });
+    }, [id]);
 
     const getAltNamesToTests = (labTestID: number) => {
         return axios
@@ -53,17 +59,17 @@ const LabTestList: React.FC<LabTestProps> = ({ id, name, description, info_url, 
             console.log("following is our labtest object!!!")
             console.dir(labTest);
             setSelectedTest(labTest || null);
-            getAltNamesToTests(labTestID).then((tests)=> {
-                console.log(tests);
-                setAltNameData(tests);
-            });
+            // getAltNamesToTests(labTestID).then((tests)=> {
+            //     console.log(tests);
+            //     setAltNameData(tests);
+            // });
         };
 
     return (
-        <div >
-            <p>{name} (Alternate Names: {altNameData.map(e => e.name).join(' , ')})</p>
+        <div onClick={testOnClick}>
+            <p >{name} {(altNameData.map(e => e.name).join(' , '))}</p>
 
-            <TestDetail selectedTest={selectedTest}/>
+            <TestDetail selectedTest={selectedTest} altNameData={altNameData}/>
         </div>
     );
 };

@@ -103,6 +103,11 @@ useEffect(() => {
     console.log(panelID, panel, panelData)
     setSelectedPanel(panel || null);
   };
+  const handleOrganSelection = (organID: number) => {
+    const organ = organData.find((organ) => organ.id === organID);
+    console.log(organID, organ, organData)
+    setSelectedOrgan(organ || null);
+  };
 
   // const filterTest = labTestData.filter((test) => test.panel_id === selectedPanel?.id);
 
@@ -153,7 +158,9 @@ useEffect(() => {
         // onPanelsClick={() => navigate('/paneldetails')}
         // onOrgansClick={() => navigate('/organdetails')}
         handlePanelSelection={handlePanelSelection}
+        handleOrganSelection={handleOrganSelection}
         panelData={panelData}
+        organData={organData}
 
       />
 
@@ -161,7 +168,7 @@ useEffect(() => {
         <Route index element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/paneldetails/:id" element={<PanelDetails panelData={panelData} labTestData={labTestData}  />} />
-        <Route path="/organdetails" element={<OrganDetails />} />
+        <Route path="/organdetails/:id" element={<OrganDetails organData={organData} labTestData={labTestData} />} />
       </Routes>
       </>
 );

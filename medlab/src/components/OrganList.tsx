@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import Organ from "./Organ";
+import { Link } from "react-router-dom";
 
 export interface OrganData {
     id: number,
@@ -8,10 +9,10 @@ export interface OrganData {
 
 interface OrganListProps {
     organData: OrganData[],
-    onOrganClick: (organ: OrganData) => void,
+    handleOrganSelection: (organID: number) => void,
 }
 
-const OrganList: React.FC<OrganListProps> = ({ organData, onOrganClick }) => {
+const OrganList: React.FC<OrganListProps> = ({ organData, handleOrganSelection }) => {
     if (organData.length === 0) {
         return <div>No data available.</div>;
     }
@@ -20,12 +21,15 @@ const OrganList: React.FC<OrganListProps> = ({ organData, onOrganClick }) => {
         <section className="col-md-4">
             <ul>
                 {organData.map((organ) => (
+                    <div>
                     <Organ
                         key={organ.id}
                         id={organ.id}
                         name={organ.name}
-                        onClick={() => onOrganClick(organ)}
+                        handleOrganSelection={handleOrganSelection}
                     />
+                <Link to={`organdetails/${organ.id}`}>{organ.name} </Link>
+                </div>
                 ))}
             </ul>
         </section>

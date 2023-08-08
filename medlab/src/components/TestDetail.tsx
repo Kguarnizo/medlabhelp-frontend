@@ -5,6 +5,7 @@ import { AltNameData } from "./AltNameList";
 export interface LabTestData {
     id: number,
     panel_id: number,
+    organ_id: number,
     name: string,
     description: string,
     info_url: string,
@@ -14,9 +15,10 @@ export interface LabTestData {
 
 interface TestDetailProps {
     selectedTest: LabTestData | null,
+    altNameData: AltNameData[],
     }
 
-    const TestDetail: React.FC<TestDetailProps> = ({ selectedTest }) => {
+    const TestDetail: React.FC<TestDetailProps> = ({ selectedTest, altNameData}) => {
 
     return (
         <section>
@@ -31,6 +33,11 @@ interface TestDetailProps {
                 <p>Normal Reference: {selectedTest.normal_reference}</p>
                 <p>Unit of Measure: {selectedTest.unit_of_measure}</p>
                 <p>Alternate Name: </p>
+                <ul>
+                    {altNameData.map((altName)=> (
+                        <li key={altName.id}>{altName.name}</li>
+                    ))}
+                </ul>
             </div>
             )}
         </section>

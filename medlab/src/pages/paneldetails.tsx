@@ -5,7 +5,6 @@ import LabTestList from '../components/LabTestList';
 import {LabTestData } from '../components/TestDetail';
 
 
-
 interface PanelDetailsProps {
     panelData: PanelData[],
     labTestData: LabTestData[]

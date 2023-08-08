@@ -11,6 +11,9 @@ interface MenuProps {
     onAboutClick: () => void;
     handlePanelSelection: (panelID: number) => void;
     panelData: PanelData[],
+    handleOrganSelection: (organID: number) => void;
+    organData: OrganData[],
+
 
 }
 
@@ -53,11 +56,11 @@ interface MenuProps {
 //                 });
 //             };
 
-const Menu: React.FC<MenuProps> = ({ onAboutClick, handlePanelSelection, panelData }) => {
+const Menu: React.FC<MenuProps> = ({ onAboutClick, handlePanelSelection, panelData ,handleOrganSelection, organData }) => {
 
     const onOrgansClick = () => {setOrganVisibility(!organVisibility)};
 
-    const [organData, setOrganData] = useState<OrganData[]>([]);
+    // const [organData, setOrganData] = useState<OrganData[]>([]);
     const [labTestData, setlabTestData] = useState<LabTestData[]>([]);
     const [panelVisibility, setPanelVisibility] = useState(false)
     const [organVisibility, setOrganVisibility] = useState(false)
@@ -126,7 +129,7 @@ const Menu: React.FC<MenuProps> = ({ onAboutClick, handlePanelSelection, panelDa
             </div>
             {organVisibility && (
                 <div className="dropdown-item">
-                    <OrganList organData={organData} onOrganClick={handleOrganClick} />
+                    <OrganList organData={organData} handleOrganSelection={handleOrganSelection} />
                 </div>
             )}
     </li>
