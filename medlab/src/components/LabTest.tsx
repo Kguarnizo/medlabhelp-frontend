@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { AltNameData } from "./AltNameList";
+import TestDetail, { LabTestData } from './TestDetail';
 import axios from "axios";
+
 
 export interface LabTestProps {
     id: number,
@@ -10,43 +12,54 @@ export interface LabTestProps {
     info_url: string,
     normal_reference: string,
     unit_of_measure: string,
-    // handleLabTestSelection?: (labTestID: number) => void,
     getAltNamesToTests?: (labTestID: number) => Promise<never[] | AltNameData[]>,
-}
-const kBaseURL = 'http://127.0.0.1:8000';
-
-
-const getAltNamesToTests = (labTestID: number) => {
-    return axios
-    .get<AltNameData[]>(`${kBaseURL}/tests/${labTestID}/alternatenames/`)
-    .then((res)=> {
-        console.log(res);
-        return res.data;
-    })
-    .catch((err) => {
-        console.log("Error fetching tests:", err);
-        return [];
-    })
-    }
-
+}   
 
 const LabTest: React.FC<LabTestProps> = ({ id, name, description, info_url, normal_reference, unit_of_measure }) => {
-    const testOnClick = () => {
-        // handleLabTestSelection(id);
-    };
+    const kBaseURL = 'http://127.0.0.1:8000';
 
-
+    const [selectedTest, setSelectedTest] = useState<LabTestData | null>(null);
     const [altNameData, setAltNameData] = useState<AltNameData[]>([]);
+    const [labTestData, setlabTestData] = useState<LabTestData | null>(null);
+    
+    const testOnClick = () => handleLabTestSelection(id);
 
-    useEffect(() => {
-        getAltNamesToTests(id)
-            .then((altNames) => {
-                setAltNameData(altNames);
+    const getAltNamesToTests = (labTestID: number) => {
+        return axios
+        .get<AltNameData[]>(`${kBaseURL}/tests/${labTestID}/alternatenames/`)
+        .then((res)=> {
+            console.log(res);
+            return res.data;
+        })
+        .catch((err) => {
+            console.log("Error fetching tests:", err);
+            return [];
+        })
+        }
+
+        const getTestByID = (labTestID: number) => {
+            return axios
+            .get<LabTestData>(`${kBaseURL}/tests/${labTestID}`)
+            .then((res)=> {
+                console.log(res);
+                return res.data;
             })
-            .catch((error) => {
-                console.error("Error fetching alternate names:", error);
+            .catch((err) => {
+                console.log("Error fetching test:", err);
+                return null;
+            })
+            }
+        
+        const handleLabTestSelection = async (labTestID: number)=> {
+            let labTest = await getTestByID(labTestID);
+            console.log("following is our labtest object!!!")
+            console.dir(labTest);
+            setSelectedTest(labTest || null);
+            getAltNamesToTests(labTestID).then((tests)=> {
+                console.log(tests);
+                setAltNameData(tests);
             });
-    }, [id, getAltNamesToTests]);
+        };
 
     return (
         <div onClick={testOnClick}>
@@ -56,8 +69,10 @@ const LabTest: React.FC<LabTestProps> = ({ id, name, description, info_url, norm
                     <li key={index}>{altName.name}</li>
                 ))}
             </ul>
+            <TestDetail selectedTest={selectedTest}/>
         </div>
     );
 };
 
 export default LabTest;
+

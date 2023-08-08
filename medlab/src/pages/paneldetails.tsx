@@ -2,8 +2,8 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import { PanelData } from '../components/PanelList';
 import LabTest from '../components/LabTest';
-import {LabTestData } from '../components/LabTestList';
-import { LabTestProps } from '../components/LabTest';
+import {LabTestData } from '../components/TestDetail';
+
 
 
 interface PanelDetailsProps {
@@ -13,17 +13,14 @@ interface PanelDetailsProps {
 
 const PanelDetails: React.FC<PanelDetailsProps> = ({panelData, labTestData }) => {
     let { id } = useParams();
-    console.log(id)
     const panel = panelData.find((panel) => panel.id === Number(id));
-    const panelLabTest = labTestData.filter((test) => test.panel_id === panel?.id).map((test) => <LabTest {...test} />)
+    const panelLabTest = labTestData.filter((test) => test.panel_id === panel?.id).map((lab) => <LabTest {...lab} />)
 
     return (
     <div className="paneldetails">
-        <h2>This is the PanelDetails page</h2>
         {panel && panelLabTest && (
             <div>
-                <h2>Test Details</h2>
-                <p>Name: {panel.name}</p>
+                <h2>Name: {panel.name}</h2>
                 {panelLabTest}
                 {/* <p>Description: {panelLabTest.description}</p>
                 <p>Learn More:
@@ -31,7 +28,7 @@ const PanelDetails: React.FC<PanelDetailsProps> = ({panelData, labTestData }) =>
                 </p>                
                 <p>Normal Reference: {panelLabTest.normal_reference}</p>
                 <p>Unit of Measure: {panelLabTest.unit_of_measure}</p> */}
-                <p>Alternate Name: </p>
+                {/* <p>Alternate Name: </p> */}
             </div>
             )}
     </div>

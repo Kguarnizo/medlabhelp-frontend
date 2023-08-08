@@ -20,7 +20,7 @@ const Homepage: React.FC = () => {
         </ol>
         <div className="carousel-inner">
             <div className="carousel-item active">
-            <img className="d-block w-100" src="images/medical-laboratory-microscope-chemistry-biology-lab-test-scientific-research-development-healthcare-concept-background-149837485.jpg.webp" alt="First slide"/>
+            <img className="d-block w-100 " src="images/medical-laboratory-microscope-chemistry-biology-lab-test-scientific-research-development-healthcare-concept-background-149837485.jpg.webp" alt="First slide"/>
             </div>
             <div className="carousel-item">
             <img className="d-block w-100" src="/images/istockphoto-1132211698-612x612.jpg" alt="Second slide"/>

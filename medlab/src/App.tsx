@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import PanelList, { PanelData } from './components/PanelList';
 import OrganList, { OrganData } from './components/OrganList';
-import LabTestList, { LabTestData } from './components/LabTestList';
+import LabTestList, { LabTestData } from './components/TestDetail';
 import AltNameList, { AltNameData } from './components/AltNameList';
 import Menu from './components/Menu';
 import About from './pages/about';
@@ -129,9 +129,9 @@ useEffect(() => {
   //   setOrganRelatedTestDetails(test);
   // };
 
-  const findLabTestById = (labTestID: number) => {
-    return labTestData.find((labTest) => {return labTest.id === labTestID})
-  };
+  // const findLabTestById = (labTestID: number) => {
+  //   return labTestData.find((labTest) => {return labTest.id === labTestID})
+  // };
 
   // const handleLabTestSelection = (labTestID: number)=> {
   //   let labTest = findLabTestById(labTestID);

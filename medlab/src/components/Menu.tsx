@@ -3,7 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 import PanelList, { PanelData } from './PanelList';
 import OrganList, { OrganData } from './OrganList';
 import axios from 'axios';
-import { LabTestData } from './LabTestList';
+import { LabTestData } from './TestDetail';
 
 ;
 
@@ -100,56 +100,86 @@ const Menu: React.FC<MenuProps> = ({ onAboutClick, handlePanelSelection, panelDa
     
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <div className="container-fluid">
-                <Link to="/" className="navbar-brand">MEDLAB HELP</Link>
-                <button
-                    className="navbar-toggler"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#navbarNavDropdown"
-                    aria-controls="navbarNavDropdown"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
-                >
-                    <span className="navbar-toggler-icon"></span>
-                </button>
-                <div className="collapse navbar-collapse" id="navbarNavDropdown">
-                    <ul className="navbar-nav">
-                        <li className="nav-item">
-                            <button className="nav-link btn" onClick={onAboutClick}>
-                                About
-                            </button>
-                        </li>
-                        <li className="nav-item">
-                            <div className="btn-group">
-                                <button className="btn nav-link dropdown-toggle" onClick={togglePanelVisibility}>
-                                    Panels
-                                </button>
-                                {panelVisibility && (
-                                    <div className="col-md-4">
-                                        <PanelList panelData={panelData} handlePanelSelection={handlePanelSelection} />
-                                    </div>
-                                )}
-                            </div>
-                        </li>
-                        <li className="nav-item">
-                            <div className="btn-group">
-                                <button className="btn nav-link dropdown-toggle" onClick={toggleOrganVisibility}>
-                                    Organs
-                                </button>
-                                {organVisibility && (
-                                    <div className="col-md-4">
-                                        <OrganList organData={organData} onOrganClick={handleOrganClick} />
-                                    </div>
-                                )}
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+    //     <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    //         <div className="container-fluid">
+    //             <Link to="/" className="navbar-brand">MEDLAB HELP</Link>
+    //             <button
+    //                 className="navbar-toggler"
+    //                 type="button"
+    //                 data-bs-toggle="collapse"
+    //                 data-bs-target="#navbarNavDropdown"
+    //                 aria-controls="navbarNavDropdown"
+    //                 aria-expanded="false"
+    //                 aria-label="Toggle navigation"
+    //             >
+    //                 <span className="navbar-toggler-icon"></span>
+    //             </button>
+    //             <div className="collapse navbar-collapse" id="navbarNavDropdown">
+    //                 <ul className="navbar-nav">
+    //                     <li className="nav-item">
+    //                         <button className="nav-link btn" onClick={onAboutClick}>
+    //                             About
+    //                         </button>
+    //                     </li>
+    //                     <li className="nav-item">
+    //                         <div className="btn-group">
+    //                             <button className="btn nav-link dropdown-toggle" onClick={togglePanelVisibility}>
+    //                                 Panels
+    //                             </button>
+    //                             {panelVisibility && (
+    //                                 <div className="col-md-4">
+    //                                     <PanelList panelData={panelData} handlePanelSelection={handlePanelSelection} />
+    //                                 </div>
+    //                             )}
+    //                         </div>
+    //                     </li>
+    //                     <li className="nav-item">
+    //                         <div className="btn-group">
+    //                             <button className="btn nav-link dropdown-toggle" onClick={toggleOrganVisibility}>
+    //                                 Organs
+    //                             </button>
+    //                             {organVisibility && (
+    //                                 <div className="col-md-4">
+    //                                     <OrganList organData={organData} onOrganClick={handleOrganClick} />
+    //                                 </div>
+    //                             )}
+    //                         </div>
+    //                     </li>
+    //                 </ul>
+    //             </div>
+    //         </div>
+    //     </nav>
+    // );
+// };
+
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <Link to="/" className="navbar-brand">MEDLAB HELP</Link>
+    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span className="navbar-toggler-icon"></span>
+    </button>
+    <div className="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul className="navbar-nav">
+        {/* <li className="nav-item active">
+            <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
+        </li> */}
+        <li className="nav-item">
+            <a href =" " className="nav-link" onClick={onAboutClick}>About</a>
+        </li>
+        <li className="nav-item dropdown">
+            <a href=" " className="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Panels
+            </a>
+            <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a href=" " className="dropdown-item" ><PanelList panelData={panelData} handlePanelSelection={handlePanelSelection} /></a>
+            {/* <a className="dropdown-item" href="#">Another action</a>
+            <a className="dropdown-item" href="#">Something else here</a> */}
             </div>
-        </nav>
-    );
-};
+        </li>
+        </ul>
+    </div>
+    </nav>
+
+    )};
+
 
 export default Menu;
