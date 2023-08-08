@@ -31,8 +31,10 @@ const getAltNamesToTests = (labTestID: number) => {
 
 
 const LabTest: React.FC<LabTestProps> = ({ id, name, description, info_url, normal_reference, unit_of_measure }) => {
-    const testOnClick = () => {
+    const testOnClick = (e: React.MouseEvent<HTMLLIElement, MouseEvent>, testID: number) => {
         // handleLabTestSelection(id);
+        console.log(testID)
+
     };
 
 
@@ -49,11 +51,11 @@ const LabTest: React.FC<LabTestProps> = ({ id, name, description, info_url, norm
     }, [id, getAltNamesToTests]);
 
     return (
-        <div onClick={testOnClick}>
+        <div>
             <p >{name}</p>
             <ul>
                 {altNameData.map((altName, index) => (
-                    <li key={index}>{altName.name}</li>
+                    <li onClick={(e) => testOnClick(e, altName.id)} key={index}>{altName.name}</li>
                 ))}
             </ul>
         </div>
@@ -61,3 +63,5 @@ const LabTest: React.FC<LabTestProps> = ({ id, name, description, info_url, norm
 };
 
 export default LabTest;
+
+// need state to hold test details, have a component to display, clicking on test will call function and update to current details to show, have compnonent to show those details

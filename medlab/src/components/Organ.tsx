@@ -3,15 +3,20 @@ import React from "react";
 interface OrganProps {
     id: number,
     name: string,
-    onClick: () => void,
+    handleOrganSelection: (organ_id: number) => void,
 }
 
-const Organ: React.FC<OrganProps> = ({ id, name, onClick}) => {
-    return (
-        <li onClick={onClick}>
-            {name}
-        </li>
+const Organ: React.FC<OrganProps> = ({ id, name, handleOrganSelection}) => {
+    const organOnClick = () => {
+        handleOrganSelection(id);
+    };
+
+    return ( <></>
+            // <li onClick={panelOnClick}>
+            // {name}
+            // </li>
 );
 };
+
 
 export default Organ;

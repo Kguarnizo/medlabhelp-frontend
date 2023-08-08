@@ -10,6 +10,7 @@ const Homepage: React.FC = () => {
 
     return (
         <div>
+        <img className="logo" src="/images/full.png" alt="" />
       {/* Image Carousel */}
         <div id="carouselExampleIndicators" className="carousel slide position-static" data-ride="carousel">
         <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
@@ -38,6 +39,7 @@ const Homepage: React.FC = () => {
             <span className="sr-only">Next</span>
         </a>
         </div>
+
 
         <div className="container mt-4">
         {/* Conditionally render the selected list */}

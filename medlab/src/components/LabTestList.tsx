@@ -3,6 +3,7 @@ import LabTest from './LabTest';
 import { AltNameData } from "./AltNameList";
 
 export interface LabTestData {
+    organ_id: number | undefined;
     id: number,
     panel_id: number,
     name: string,

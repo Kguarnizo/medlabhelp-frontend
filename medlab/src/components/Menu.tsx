@@ -10,7 +10,9 @@ import { LabTestData } from './LabTestList';
 interface MenuProps {
     onAboutClick: () => void;
     handlePanelSelection: (panelID: number) => void;
+    handleOrganSelection: (organID: number) => void;
     panelData: PanelData[],
+    organData: OrganData[],
 
 }
 const kBaseURL = 'http://127.0.0.1:8000';
@@ -55,12 +57,12 @@ const kBaseURL = 'http://127.0.0.1:8000';
 //                 });
 //             };
 
-const Menu: React.FC<MenuProps> = ({ onAboutClick, handlePanelSelection, panelData }) => {
+const Menu: React.FC<MenuProps> = ({ onAboutClick, handlePanelSelection, panelData, handleOrganSelection, organData }) => {
     const onPanelsClick = () => {setPanelVisibility(!panelVisibility)};
     
     const onOrgansClick = () => {setOrganVisibility(!organVisibility)};
     // const [panelData, setPanelData] = useState<PanelData[]>([]);
-    const [organData, setOrganData] = useState<OrganData[]>([]);
+    // const [organData, setOrganData] = useState<OrganData[]>([]);
     const [labTestData, setlabTestData] = useState<LabTestData[]>([]);
     const [panelVisibility, setPanelVisibility] = useState(false)
     const [organVisibility, setOrganVisibility] = useState(false)
@@ -140,7 +142,7 @@ const Menu: React.FC<MenuProps> = ({ onAboutClick, handlePanelSelection, panelDa
                                 </button>
                                 {organVisibility && (
                                     <div className="col-md-4">
-                                        <OrganList organData={organData} onOrganClick={handleOrganClick} />
+                                        <OrganList organData={organData} handleOrganSelection={handleOrganSelection} />
                                     </div>
                                 )}
                             </div>
