@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import Panel from "./Panel";
 import { Link } from "react-router-dom";
 
@@ -13,16 +13,28 @@ interface PanelListProps {
     handlePanelSelection: (panelID: number) => void,
 }
 
+
 const PanelList: React.FC<PanelListProps> = ({ panelData, handlePanelSelection }) => {
+
+    const [inputText, setInputText] = useState<string>('');
 
     if (panelData.length === 0) {
         return <div>No data available.</div>;
     }
+    const onChange = (e: React.FormEvent<HTMLInputElement>) => {
+        const newValue = e.currentTarget.value;
+        setInputText(newValue);
+    }
+
 
     return (
         <section>
+            <input type="text" id="search" placeholder="Search..." onChange={onChange}/>
         <ul>
-            {panelData.map((panel) => (
+            {panelData.filter((panel) => {
+                return panel.name.toLowerCase().includes(inputText.toLowerCase());
+            }).map((panel) => (
+            
             <div><Panel
                 id={panel.id}
                 name={panel.name}

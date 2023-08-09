@@ -42,27 +42,28 @@ const LabTestList: React.FC<LabTestProps> = ({ id, name, description, info_url, 
         })
         }
 
-        const getTestByID = (labTestID: number) => {
-            return axios
-            .get<LabTestData>(`${kBaseURL}/tests/${labTestID}`)
-            .then((res)=> {
-                return res.data;
-            })
-            .catch((err) => {
-                console.log("Error fetching test:", err);
-                return null;
-            })
-            }
+    const getTestByID = (labTestID: number) => {
+        return axios
+        .get<LabTestData>(`${kBaseURL}/tests/${labTestID}`)
+        .then((res)=> {
+            return res.data;
+        })
+        .catch((err) => {
+            console.log("Error fetching test:", err);
+            return null;
+        })
+        }
 
-        const handleLabTestSelection = async (labTestID: number)=> {
-            let labTest = await getTestByID(labTestID);
-            console.log("following is our labtest object!!!")
-            console.dir(labTest);
-            setSelectedTest(labTest || null);
-            // getAltNamesToTests(labTestID).then((tests)=> {
-            //     console.log(tests);
-            //     setAltNameData(tests);
-            // });
+    const handleLabTestSelection = (labTestID: number) => {
+        getTestByID(labTestID)
+            .then((labTest) => {
+                console.log("following is our labtest object!!!");
+                console.dir(labTest);
+                setSelectedTest(labTest || null);
+            })
+            .catch((error) => {
+                console.error("An error occurred:", error);
+            });
         };
 
     return (

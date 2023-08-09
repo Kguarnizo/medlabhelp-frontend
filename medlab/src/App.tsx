@@ -13,6 +13,7 @@ import PanelDetails from './pages/paneldetails';
 import OrganDetails from './pages/organdetails';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import LabTestList from './components/LabTestList';
+// import Popup from 'react-popup';
 
 const kBaseURL = 'https://medlab-help-api.onrender.com';
 
