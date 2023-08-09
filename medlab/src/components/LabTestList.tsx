@@ -21,8 +21,15 @@ const LabTestList: React.FC<LabTestProps> = ({ id, name, description, info_url, 
     const [selectedTest, setSelectedTest] = useState<LabTestData | null>(null);
     const [altNameData, setAltNameData] = useState<AltNameData[]>([]);
     const [labTestData, setlabTestData] = useState<LabTestData | null>(null);
+    // handles Modals
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
-    const testOnClick = () => handleLabTestSelection(id);
+    const testOnClick = () => {
+        handleLabTestSelection(id);
+        handleShow()
+        };
 
     useEffect(() => {
         getAltNamesToTests(id).then((tests) => {
@@ -70,7 +77,7 @@ const LabTestList: React.FC<LabTestProps> = ({ id, name, description, info_url, 
         <div onClick={testOnClick}>
             <p>{name} {(altNameData.map(e => e.name).join(' , '))}</p>
             
-            <TestDetail selectedTest={selectedTest} altNameData={altNameData}/>
+            <TestDetail selectedTest={selectedTest} altNameData={altNameData} handleClose={handleClose} show={show} setShow={setShow}/>
         </div>
     );
 };
