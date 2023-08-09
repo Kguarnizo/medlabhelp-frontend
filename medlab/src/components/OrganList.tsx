@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import Organ from "./Organ";
-import { Link } from "react-router-dom";
 
 export interface OrganData {
     id: number,
@@ -9,38 +8,24 @@ export interface OrganData {
 
 interface OrganListProps {
     organData: OrganData[],
-    handleOrganSelection: (organID: number) => void,
+    onOrganClick: (organ: OrganData) => void,
 }
 
-const OrganList: React.FC<OrganListProps> = ({ organData, handleOrganSelection }) => {
-
-    const [inputText, setInputText] = useState<string>('');
-
+const OrganList: React.FC<OrganListProps> = ({ organData, onOrganClick }) => {
     if (organData.length === 0) {
         return <div>No data available.</div>;
     }
 
-    const onChange = (e: React.FormEvent<HTMLInputElement>) => {
-        const newValue = e.currentTarget.value;
-        setInputText(newValue);
-    }
-
     return (
-        <section className="col-md-4">
-            <input type="text" id="search" placeholder="Search..." onChange={onChange}/>
+        <section>
             <ul>
-                {organData.filter((organ) => {
-                        return organ.name.toLowerCase().includes(inputText.toLowerCase());
-                }).map((organ) => (
-                <div>
+                {organData.map((organ) => (
                     <Organ
                         key={organ.id}
                         id={organ.id}
                         name={organ.name}
-                        handleOrganSelection={handleOrganSelection}
+                        onClick={() => onOrganClick(organ)}
                     />
-                <Link to={`organdetails/${organ.id}`}>{organ.name} </Link>
-                </div>
                 ))}
             </ul>
         </section>
