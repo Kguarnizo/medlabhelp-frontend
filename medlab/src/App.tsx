@@ -16,6 +16,7 @@ import LabTestList from './components/LabTestList';
 // import Popup from 'react-popup';
 
 const kBaseURL = 'https://medlab-help-api.onrender.com';
+// export const kBaseURL = process.env.REACT_APP_BACKEND_URL;
 
 
 const getAllPanels = () => {

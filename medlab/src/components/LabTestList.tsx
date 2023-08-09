@@ -3,6 +3,7 @@ import { AltNameData } from "./AltNameList";
 import TestDetail, { LabTestData } from './TestDetail';
 import axios from "axios";
 
+// import { kBaseURL } from "../App";
 
 export interface LabTestProps {
     id: number,
