@@ -9,12 +9,12 @@ interface PanelProps {
 
 
 const Panel: React.FC<PanelProps> = ({ id, name, organ_id, handlePanelSelection }) => {
-    const panelOnClick = () => {
+    const onPanelClick = () => {
         handlePanelSelection(id);
     };
 
     return (
-        <ul onClick={panelOnClick}>
+        <ul onClick={onPanelClick}>
             <li>{name}</li>
         </ul>
 );

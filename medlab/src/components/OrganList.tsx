@@ -6,7 +6,7 @@ export interface OrganData {
     name: string,
 }
 
-interface OrganListProps {
+export interface OrganListProps {
     organData: OrganData[],
     onOrganClick: (organ: OrganData) => void,
 }
