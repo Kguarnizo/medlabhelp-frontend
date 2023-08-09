@@ -75,3 +75,7 @@ body {
     #site-name {
       align-self: flex-start;
     }
+
+    #test-detail {
+      background-color: aqua;
+    }

@@ -23,7 +23,7 @@ interface TestDetailProps {
     return (
         <section>
             {selectedTest && (
-            <div>
+            <div id="test-detail">
                 <h2>Test Details</h2>
                 <p>Name: {selectedTest.name}</p>
                 <p>Description: {selectedTest.description}</p>

@@ -68,8 +68,8 @@ const LabTestList: React.FC<LabTestProps> = ({ id, name, description, info_url, 
 
     return (
         <div onClick={testOnClick}>
-            <p >{name} {(altNameData.map(e => e.name).join(' , '))}</p>
-
+            <p>{name} {(altNameData.map(e => e.name).join(' , '))}</p>
+            
             <TestDetail selectedTest={selectedTest} altNameData={altNameData}/>
         </div>
     );

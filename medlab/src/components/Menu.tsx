@@ -66,11 +66,7 @@ const Menu: React.FC<MenuProps> = ({ onAboutClick, handlePanelSelection, panelDa
     const [organVisibility, setOrganVisibility] = useState(false)
 
     const togglePanelVisibility = () => {
-        console.log("PANEL VISIBILITY START");
-        console.log(panelVisibility);
         setPanelVisibility(!panelVisibility)};
-        console.log("PANEL VISIBILITY END");
-        console.log(panelVisibility);
     const toggleOrganVisibility = () => setOrganVisibility(!organVisibility);
 
     function handleOrganClick(organ: OrganData): void {
