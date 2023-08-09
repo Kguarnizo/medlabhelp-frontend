@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Carousel from 'react-bootstrap/Carousel';
+import './home.css';
 
 
 const Homepage: React.FC = () => {
@@ -12,7 +13,8 @@ const Homepage: React.FC = () => {
 
 
     return (
-        <Carousel>
+        <div className='container'>
+        <Carousel style={{width:"70%"}}>
             <Carousel.Item>
             <img className="d-block w-100 " src="images/cdc-XLhDvfz0sUM-unsplash.jpg" alt="First slide"/>
                 <Carousel.Caption>
@@ -37,6 +39,7 @@ const Homepage: React.FC = () => {
                 </Carousel.Caption>
             </Carousel.Item>
             </Carousel>
+        </div>
       );
 }
     
