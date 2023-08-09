@@ -23,12 +23,10 @@ const LabTestList: React.FC<LabTestProps> = ({ id, name, description, info_url, 
     const [labTestData, setlabTestData] = useState<LabTestData | null>(null);
     // handles Modals
     const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
 
     const testOnClick = () => {
         handleLabTestSelection(id);
-        handleShow()
+        setShow(() => true)
         };
 
     useEffect(() => {
@@ -74,11 +72,9 @@ const LabTestList: React.FC<LabTestProps> = ({ id, name, description, info_url, 
         };
 
     return (
-        <div onClick={testOnClick}>
+        <><div onClick={testOnClick}>
             <p>{name} {(altNameData.map(e => e.name).join(' , '))}</p>
-            
-            <TestDetail selectedTest={selectedTest} altNameData={altNameData} handleClose={handleClose} show={show} setShow={setShow}/>
-        </div>
+        </div><TestDetail selectedTest={selectedTest} altNameData={altNameData} show={show} setShow={setShow}/></>
     );
 };
 

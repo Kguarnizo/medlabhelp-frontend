@@ -18,29 +18,21 @@ export interface LabTestData {
 interface TestDetailProps {
     selectedTest: LabTestData | null,
     altNameData: AltNameData[],
-    handleClose: () => void,
     show: boolean,
     setShow: React.Dispatch<React.SetStateAction<boolean>>
     }
 
-const TestDetail: React.FC<TestDetailProps> = ({ selectedTest, altNameData, handleClose, show , setShow}) => {
-    const closeModal = () => setShow(false);
-    // const closeDetail = () => {
-    //     console.log("CLOSE DETAILSSSSS!!!!!!")
-    //     console.log(show);
-    //     handleClose();
-    //     console.log(show);
-    // }
+const TestDetail: React.FC<TestDetailProps> = ({ selectedTest, altNameData, show , setShow}) => {
+    const closeModal = () => {
+        setShow(() => false)
+    };
 
     return (
-        <Modal show={show} onHide={handleClose}>
+        <Modal show={show} onHide={closeModal}>
             {selectedTest && (
             <div id="test-detail">
-                <Modal.Header>
+                <Modal.Header closeButton>
                     <Modal.Title>{selectedTest.name} Test Details</Modal.Title>
-                    <Button variant="secondary" onClick={closeModal}>
-                        Close
-                    </Button>
                 </Modal.Header>
                 <Modal.Body>
                     <p>Description: {selectedTest.description}</p>
