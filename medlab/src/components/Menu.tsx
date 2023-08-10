@@ -13,8 +13,6 @@ interface MenuProps {
     panelData: PanelData[],
     handleOrganSelection: (organID: number) => void;
     organData: OrganData[],
-
-
 }
 
 // const getAllPanels = () => {
@@ -114,7 +112,7 @@ const Menu: React.FC<MenuProps> = ({ onAboutClick, handlePanelSelection, panelDa
             </div>
             {panelVisibility && (
                 <div className="dropdown-item">
-                    <PanelList panelData={panelData} handlePanelSelection={handlePanelSelection} />
+                    <PanelList panelData={panelData} handlePanelSelection={handlePanelSelection} setPanelVisibility={setPanelVisibility}/>
                 </div>
             )}
     </li>

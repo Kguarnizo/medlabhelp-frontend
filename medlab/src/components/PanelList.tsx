@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import Panel from "./Panel";
 import { Link } from "react-router-dom";
 
+
 export interface PanelData {
     id: number,
     name: string,
@@ -11,10 +12,11 @@ export interface PanelData {
 interface PanelListProps {
     panelData: PanelData[],
     handlePanelSelection: (panelID: number) => void,
+    setPanelVisibility: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 
-const PanelList: React.FC<PanelListProps> = ({ panelData, handlePanelSelection }) => {
+const PanelList: React.FC<PanelListProps> = ({ panelData, handlePanelSelection, setPanelVisibility }) => {
 
     const [inputText, setInputText] = useState<string>('');
 
@@ -34,7 +36,7 @@ const PanelList: React.FC<PanelListProps> = ({ panelData, handlePanelSelection }
             {panelData.filter((panel) => {
                 return panel.name.toLowerCase().includes(inputText.toLowerCase());
             }).map((panel) => (
-            
+
             <div><Panel
                 id={panel.id}
                 name={panel.name}
@@ -42,7 +44,7 @@ const PanelList: React.FC<PanelListProps> = ({ panelData, handlePanelSelection }
                 key={panel.id}
                 handlePanelSelection={handlePanelSelection}
             />
-            <Link to={`paneldetails/${panel.id}`}>{panel.name} </Link>
+            <Link onClick={() => {setPanelVisibility(false)}}to={`paneldetails/${panel.id}`}>{panel.name} </Link>
             </div>
             ))}
         </ul>
