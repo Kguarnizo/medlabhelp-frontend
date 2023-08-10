@@ -4,8 +4,8 @@ import PanelList, { PanelData } from './PanelList';
 import OrganList, { OrganData } from './OrganList';
 import axios from 'axios';
 import { LabTestData } from './TestDetail';
-
-;
+import Nav from 'react-bootstrap/Nav';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 
 interface MenuProps {
     onAboutClick: () => void;
@@ -70,6 +70,14 @@ const Menu: React.FC<MenuProps> = ({ onAboutClick, handlePanelSelection, panelDa
     function handleOrganClick(organ: OrganData): void {
         throw new Error('Function not implemented.');
     }
+    
+    const [show, setShow] = useState(false);
+    const showDropdown = ()=>{
+        setShow(!show);
+    }
+    const hideDropdown = () => {
+        setShow(false);
+    }
 
     // useEffect(() => {
     //     getAllPanels().then((panels: React.SetStateAction<PanelData[]>) => {
@@ -100,22 +108,17 @@ const Menu: React.FC<MenuProps> = ({ onAboutClick, handlePanelSelection, panelDa
     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon"></span>
     </button>
-    <div className="collapse navbar-collapse" id="navbarNavDropdown">
+    <Nav className="collapse navbar-collapse" id="navbarNavDropdown">
         <ul className="navbar-nav">
         <li className="nav-item">
             <a href =" " className="nav-link" onClick={onAboutClick}>About</a>
         </li>
         {/* PANAL****************************************** */}
-    <li className="nav-item">
-            <div className="nav-link dropdown-toggle" onClick={togglePanelVisibility}>
-                Panels
-            </div>
-            {panelVisibility && (
-                <div className="dropdown-item">
+    <NavDropdown title="Panels" id="nav-dropdown" show={show} onMouseEnter={showDropdown} onMouseLeave={hideDropdown}>
+                <NavDropdown.Item>
                     <PanelList panelData={panelData} handlePanelSelection={handlePanelSelection} setPanelVisibility={setPanelVisibility}/>
-                </div>
-            )}
-    </li>
+                </NavDropdown.Item>
+    </NavDropdown>
         {/* ORGAN****************************************** */}
     <li className="nav-item">
             <div className="nav-link dropdown-toggle" onClick={toggleOrganVisibility}>
@@ -129,7 +132,7 @@ const Menu: React.FC<MenuProps> = ({ onAboutClick, handlePanelSelection, panelDa
     </li>
 
         </ul>
-    </div>
+    </Nav>
     </nav>
 
     )};
