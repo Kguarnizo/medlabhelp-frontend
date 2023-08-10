@@ -15,29 +15,29 @@ const Homepage: React.FC = () => {
 
     return (
         <div className='container'>
-        <Carousel style={{width:"70%"}}>
+        <Carousel id='carousel-images' >
             <Carousel.Item>
-            <img className="d-block w-100 " src="images/cdc-XLhDvfz0sUM-unsplash.jpg" alt="First slide"/>
-                <Carousel.Caption>
+            <img className=" " src="images/cdc-XLhDvfz0sUM-unsplash.jpg" alt="First slide"/>
+                {/* <Carousel.Caption>
                 <h3>First slide label</h3>
                 <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                </Carousel.Caption>
+                </Carousel.Caption> */}
             </Carousel.Item>
             <Carousel.Item>
-            <img className="d-block w-100 " src="images/cdc-CfS6A4U5g8M-unsplash.jpg" alt="Second slide"/>
-                <Carousel.Caption>
+            <img className=" " src="images/cdc-CfS6A4U5g8M-unsplash.jpg" alt="Second slide"/>
+                {/* <Carousel.Caption>
                 <h3>Second slide label</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                </Carousel.Caption>
+                </Carousel.Caption> */}
             </Carousel.Item>
             <Carousel.Item>
-            <img className="d-block w-100 " src="images/testalize-me-0jE8ynV4mis-unsplash.jpg" alt="Third slide"/>
-                <Carousel.Caption>
+            <img className=" " src="images/testalize-me-0jE8ynV4mis-unsplash.jpg" alt="Third slide"/>
+                {/* <Carousel.Caption>
                 <h3>Third slide label</h3>
                 <p>
                     Praesent commodo cursus magna, vel scelerisque nisl consectetur.
                 </p>
-                </Carousel.Caption>
+                </Carousel.Caption> */}
             </Carousel.Item>
             </Carousel>
         </div>

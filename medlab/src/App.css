@@ -79,3 +79,56 @@ body {
     #test-detail {
       background-color: aqua;
     }
+/* 
+    #carousel-images {
+      float: none;
+      justify-content: center;
+      width: 85vw;
+      height: -100vh;
+    } */
+
+
+    .carousel-item, .carousel-indicators, .carousel-images, .container {
+      height: 60vh;
+    }
+    
+    .carousel-item  > img {
+      width: 100%;
+      /* height: 60vh;
+      justify-content: center;
+      float: none; */
+      
+    }
+    
+    #junk {
+      position: sticky;
+      top: 100vh;
+    }
+  
+    @media screen and (max-width: 769px) {
+      .carousel-item, .carousel-indicators, .carousel-images, .container {
+        /* float: none;
+        justify-content: center; */
+        height: 350px;
+      }
+
+      #junk {
+        position: sticky;
+        bottom: 0;
+        width: 100%;
+      }
+    }
+
+    .carousel-indicators {
+      top: 10px;
+  }
+
+    
+/* .nav-item {
+  position: absolute;
+  z-index: 10; */
+  /* width: 100%; */
+  /* background-color: #f8f9fa
+} */
+
+
