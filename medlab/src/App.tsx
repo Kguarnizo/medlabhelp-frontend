@@ -13,6 +13,7 @@ import PanelDetails from './pages/paneldetails';
 import OrganDetails from './pages/organdetails';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import LabTestList from './components/LabTestList';
+import TestList from './pages/testlist';
 // import Popup from 'react-popup';
 
 const kBaseURL = 'https://medlab-help-api.onrender.com';
@@ -144,6 +145,7 @@ useEffect(() => {
   <>
     <Menu
         onAboutClick={() => navigate('/about')}
+        onTestClick={() => navigate('/tests')}
         handlePanelSelection={handlePanelSelection}
         handleOrganSelection={handleOrganSelection}
         panelData={panelData}
@@ -153,6 +155,7 @@ useEffect(() => {
       <Routes>
         <Route index element={<Home />} />
         <Route path="/about" element={<About />} />
+        <Route path="/tests" element={<TestList labTestData={labTestData} />} />
         <Route path="/paneldetails/:id" element={<PanelDetails panelData={panelData} labTestData={labTestData}  />} />
         <Route path="/organdetails/:id" element={<OrganDetails organData={organData} labTestData={labTestData} />} />
       </Routes>

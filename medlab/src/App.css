@@ -77,16 +77,8 @@ body {
     }
 
     #test-detail {
-      background-color: aqua;
+      background-color: white;
     }
-/* 
-    #carousel-images {
-      float: none;
-      justify-content: center;
-      width: 85vw;
-      height: -100vh;
-    } */
-
 
     .carousel-item, .carousel-indicators, .carousel-images, .container {
       height: 60vh;
@@ -94,10 +86,6 @@ body {
     
     .carousel-item  > img {
       width: 100%;
-      /* height: 60vh;
-      justify-content: center;
-      float: none; */
-      
     }
     
     #junk {
@@ -122,19 +110,6 @@ body {
     .carousel-indicators {
       top: 10px;
   }
-
-    
-/* .nav-item {
-  position: absolute;
-  z-index: 10; */
-  /* width: 100%; */
-  /* background-color: #f8f9fa
-} */
-
-
-/* .nav-item.hover {
-background: black;
-} */
 
 #test-name {
   font-weight: bolder;
