@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { OrganData } from '../components/OrganList';
 import LabTestList from '../components/LabTestList';
 import { LabTestData } from '../components/TestDetail';
+import { kBaseURL } from '../App';
 import axios from 'axios';
 
 
@@ -18,21 +19,18 @@ const OrganDetails: React.FC<OrganDetailsProps> = ({ organData, labTestData }) =
   let { id } = useParams();
 
   const organ = organData.find((organ) => organ.id === Number(id));
-  const organLabTest = organRelatedTests.map((lab) => <LabTestList {...lab} />);
-  console.log("LOOK HERE ORGAN LAB TEST:", organLabTest)
+  const organLabTest = organRelatedTests.map((lab) => <LabTestList key={lab.id} {...lab} />);
 
   useEffect(() => {
-    console.log('request ran');
     if (id && id !== organId) { 
       setOrganId(id);
       axios
-        .get<LabTestData[]>(`https://medlab-help-api.onrender.com/organs/${id}/tests/`)
+        .get<LabTestData[]>(`${kBaseURL}/organs/${id}/tests/`)
         .then((res) => {
           console.log('tests related to organ:', res.data);
           setOrganRelatedTests(res.data);
         })
         .catch((err) => {
-          console.log('Error fetching related tests:', err);
           setOrganRelatedTests([]);
         });
     }
