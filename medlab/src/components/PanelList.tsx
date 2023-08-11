@@ -11,11 +11,9 @@ export interface PanelData {
 
 interface PanelListProps {
     panelData: PanelData[],
-    handlePanelSelection: (panelID: number) => void,
-    setPanelVisibility: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const PanelList: React.FC<PanelListProps> = ({ panelData, handlePanelSelection, setPanelVisibility }) => {
+const PanelList: React.FC<PanelListProps> = ({ panelData}) => {
 
     const [inputText, setInputText] = useState<string>('');
 
@@ -36,7 +34,7 @@ const PanelList: React.FC<PanelListProps> = ({ panelData, handlePanelSelection, 
             }).map((panel) => (
 
             <div key={panel.id}>
-            <Link onClick={() => {setPanelVisibility(false)}}to={`paneldetails/${panel.id}`}>{panel.name} </Link>
+            <Link to={`paneldetails/${panel.id}`}>{panel.name} </Link>
             </div>
             ))}
         </ul>

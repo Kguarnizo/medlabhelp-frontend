@@ -8,11 +8,9 @@ export interface OrganData {
 
 interface OrganListProps {
     organData: OrganData[],
-    handleOrganSelection: (organID: number) => void,
-    setOrganVisibility: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const OrganList: React.FC<OrganListProps> = ({ organData, handleOrganSelection,  setOrganVisibility}) => {
+const OrganList: React.FC<OrganListProps> = ({ organData}) => {
 
     const [inputText, setInputText] = useState<string>('');
 
@@ -33,7 +31,7 @@ const OrganList: React.FC<OrganListProps> = ({ organData, handleOrganSelection, 
                         return organ.name.toLowerCase().includes(inputText.toLowerCase());
                 }).map((organ) => (
                 <div key={organ.id}>
-                <Link onClick={() => {setOrganVisibility(false)}} to={`organdetails/${organ.id}`}>{organ.name} </Link>
+                <Link to={`organdetails/${organ.id}`}>{organ.name} </Link>
                 </div>
                 ))}
             </ul>

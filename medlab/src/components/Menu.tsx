@@ -17,20 +17,20 @@ interface MenuProps {
 
 const Menu: React.FC<MenuProps> = ({ onAboutClick, handlePanelSelection, panelData ,handleOrganSelection, organData }) => {
 
-    const onOrgansClick = () => {setOrganVisibility(!organVisibility)};
+    // const onOrgansClick = () => {setOrganVisibility(!organVisibility)};
 
     // const [organData, setOrganData] = useState<OrganData[]>([]);
-    const [labTestData, setlabTestData] = useState<LabTestData[]>([]);
-    const [panelVisibility, setPanelVisibility] = useState(false)
-    const [organVisibility, setOrganVisibility] = useState(false)
+    // const [labTestData, setlabTestData] = useState<LabTestData[]>([]);
+    // const [panelVisibility, setPanelVisibility] = useState(false)
+    // const [organVisibility, setOrganVisibility] = useState(false)
 
-    const togglePanelVisibility = () => {
-        setPanelVisibility(!panelVisibility)};
-    const toggleOrganVisibility = () => setOrganVisibility(!organVisibility);
+    // const togglePanelVisibility = () => {
+    //     setPanelVisibility(!panelVisibility)};
+    // const toggleOrganVisibility = () => setOrganVisibility(!organVisibility);
 
-    function handleOrganClick(organ: OrganData): void {
-        throw new Error('Function not implemented.');
-    }
+    // function handleOrganClick(organ: OrganData): void {
+    //     throw new Error('Function not implemented.');
+    // }
 
     const [show, setShow] = useState(false);
     const showDropdown = ()=>{
@@ -44,7 +44,7 @@ const Menu: React.FC<MenuProps> = ({ onAboutClick, handlePanelSelection, panelDa
     return (
 
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <Link to="/" className="navbar-brand" id="site-name">MEDLAB HELP</Link>
+        <Link to="/" className="navbar-brand" id="site-name"><img src="/images/newerlogo.png" alt="mlh logo"/></Link>
     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon"></span>
     </button>
@@ -58,14 +58,14 @@ const Menu: React.FC<MenuProps> = ({ onAboutClick, handlePanelSelection, panelDa
 
             <NavDropdown title="Panels" id="nav-dropdown" show={show} onMouseEnter={showDropdown} onMouseLeave={hideDropdown}>
                         <NavDropdown.Item>
-                            <PanelList panelData={panelData} handlePanelSelection={handlePanelSelection} setPanelVisibility={setPanelVisibility}/>
+                            <PanelList panelData={panelData}/>
                         </NavDropdown.Item>
             </NavDropdown>
         </li>
         {/* ORGAN****************************************** */}
         <li className="nav-item"><NavDropdown title="Organs" id="nav-dropdown1" show={show} onMouseEnter={showDropdown} onMouseLeave={hideDropdown}>
                 <NavDropdown.Item>
-                <OrganList organData={organData} handleOrganSelection={handleOrganSelection} setOrganVisibility={setOrganVisibility}/>
+                <OrganList organData={organData}/>
 
                 </NavDropdown.Item>
             </NavDropdown>

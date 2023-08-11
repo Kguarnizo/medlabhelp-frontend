@@ -2,18 +2,15 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import PanelList, { PanelData } from './components/PanelList';
-import OrganList, { OrganData } from './components/OrganList';
-import TestDetail, { LabTestData } from './components/TestDetail';
-// import AltNameList, { AltNameData } from './components/AltNameList';
+import { PanelData } from './components/PanelList';
+import { OrganData } from './components/OrganList';
+import { LabTestData } from './components/TestDetail';
 import Menu from './components/Menu';
 import About from './pages/about';
 import Home from './pages/home';
 import PanelDetails from './pages/paneldetails';
 import OrganDetails from './pages/organdetails';
 import { Route, Routes, useNavigate } from 'react-router-dom';
-import LabTestList from './components/LabTestList';
-// import Popup from 'react-popup';
 
 const kBaseURL = 'https://medlab-help-api.onrender.com';
 
@@ -22,11 +19,9 @@ const getAllPanels = () => {
   return axios
     .get<{ panels: PanelData[] }>(`${kBaseURL}/panels/`)
     .then((res) => {
-      console.log(res);
       return res.data.panels;
     })
     .catch((err) => {
-      console.log('Error fetching panels:', err);
       return [];
     });
 };
@@ -35,11 +30,9 @@ const getAllTests = () => {
   return axios
     .get<{ tests: LabTestData[] }>(`${kBaseURL}/tests/`)
     .then((res) => {
-      console.log(res);
       return res.data.tests;
     })
     .catch((err) => {
-      console.log('Error fetching tests:', err);
       return [];
     });
 };
@@ -48,11 +41,9 @@ const getAllOrgans = () => {
   return axios
     .get<{ organs: OrganData[] }>(`${kBaseURL}/organs/`)
     .then((res) => {
-      console.log(res);
       return res.data.organs;
     })
     .catch((err) => {
-      console.log('Error fetching organs:', err);
       return [];
     });
   };
@@ -67,17 +58,14 @@ const App: React.FC = () => {
 
 useEffect(() => {
   getAllPanels().then((panels) => {
-    console.log('Fetched panels:', panels);
     setPanelData(panels);
   });
 
   getAllOrgans().then((organs) => {
-    console.log('Fetched organs:', organs);
     setOrganData(organs);
   });
 
   getAllTests().then((tests) => {
-    console.log('Fetched tests:', tests);
     setlabTestData(tests);
   });
 }, []);
@@ -85,12 +73,10 @@ useEffect(() => {
 
   const handlePanelSelection = (panelID: number) => {
     const panel = panelData.find((panel) => panel.id === panelID);
-    console.log(panelID, panel, panelData)
     setSelectedPanel(panel || null);
   };
   const handleOrganSelection = (organID: number) => {
     const organ = organData.find((organ) => organ.id === organID);
-    console.log(organID, organ, organData)
     setSelectedOrgan(organ || null);
   };
 
@@ -115,7 +101,5 @@ useEffect(() => {
       </>
 );
 };
-
-
 
 export default App;

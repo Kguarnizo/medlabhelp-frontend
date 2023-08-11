@@ -1,5 +1,5 @@
 import React from "react";
-import AltName from "./AltName"
+// import AltName from "./AltName"
 
 export interface AltNameData {
     id: number,
@@ -20,12 +20,12 @@ const AltNameList: React.FC<AltNameListProps> = ({ altNameData }) => {
             <ul>
                 {altName.map((altNameData) => (
                 <li key={altNameData.id}>
-                    <AltName
+                    {/* <AltName
                         id={altNameData.id}
                         test_id={altNameData.test_id}
                         name={altNameData.name}
-                        key={altNameData.id}
-                    />
+                        key={altNameData.id} */}
+                    {/* /> */}
                 </li>
                     ))}
             </ul>
