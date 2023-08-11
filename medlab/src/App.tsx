@@ -12,8 +12,8 @@ import PanelDetails from './pages/paneldetails';
 import OrganDetails from './pages/organdetails';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 
-const kBaseURL = 'https://medlab-help-api.onrender.com';
-
+export const kBaseURL = 'https://medlab-help-api.onrender.com';
+// export const kBaseURL = process.env.REACT_APP_BACKEND_URL;
 
 const getAllPanels = () => {
   return axios
@@ -52,9 +52,9 @@ const getAllOrgans = () => {
 const App: React.FC = () => {
   const [panelData, setPanelData] = useState<PanelData[]>([]);
   const [organData, setOrganData] = useState<OrganData[]>([]);
-  const [selectedPanel, setSelectedPanel] = useState<PanelData | null>(null);
+  // const [selectedPanel, setSelectedPanel] = useState<PanelData | null>(null);
   const [labTestData, setlabTestData] = useState<LabTestData[]>([]);
-  const [selectedOrgan, setSelectedOrgan] = useState<OrganData | null>(null);
+  // const [selectedOrgan, setSelectedOrgan] = useState<OrganData | null>(null);
 
 useEffect(() => {
   getAllPanels().then((panels) => {
@@ -71,14 +71,14 @@ useEffect(() => {
 }, []);
 
 
-  const handlePanelSelection = (panelID: number) => {
-    const panel = panelData.find((panel) => panel.id === panelID);
-    setSelectedPanel(panel || null);
-  };
-  const handleOrganSelection = (organID: number) => {
-    const organ = organData.find((organ) => organ.id === organID);
-    setSelectedOrgan(organ || null);
-  };
+  // const handlePanelSelection = (panelID: number) => {
+  //   const panel = panelData.find((panel) => panel.id === panelID);
+  //   setSelectedPanel(panel || null);
+  // };
+  // const handleOrganSelection = (organID: number) => {
+  //   const organ = organData.find((organ) => organ.id === organID);
+  //   setSelectedOrgan(organ || null);
+  // };
 
   const navigate = useNavigate();
 
@@ -86,8 +86,6 @@ useEffect(() => {
   <>
     <Menu
         onAboutClick={() => navigate('/about')}
-        handlePanelSelection={handlePanelSelection}
-        handleOrganSelection={handleOrganSelection}
         panelData={panelData}
         organData={organData}
       />
@@ -95,7 +93,7 @@ useEffect(() => {
       <Routes>
         <Route index element={<Home />} />
         <Route path="/about" element={<About />} />
-        <Route path="/paneldetails/:id" element={<PanelDetails panelData={panelData} labTestData={labTestData}  />} />
+        <Route path="/paneldetails/:id" element={<PanelDetails panelData={panelData} labTestData={labTestData} />} />
         <Route path="/organdetails/:id" element={<OrganDetails organData={organData} labTestData={labTestData} />} />
       </Routes>
       </>

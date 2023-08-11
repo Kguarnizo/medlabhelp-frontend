@@ -2,6 +2,7 @@ import React, { useState, useEffect} from "react";
 import { AltNameData } from "./AltNameList";
 import TestDetail, { LabTestData } from './TestDetail';
 import axios from "axios";
+import { kBaseURL } from "../App";
 
 
 export interface LabTestProps {
@@ -16,11 +17,9 @@ export interface LabTestProps {
 }
 
 const LabTestList: React.FC<LabTestProps> = ({ id, name, description, info_url, normal_reference, unit_of_measure }) => {
-    const kBaseURL = 'https://medlab-help-api.onrender.com';
-
     const [selectedTest, setSelectedTest] = useState<LabTestData | null>(null);
     const [altNameData, setAltNameData] = useState<AltNameData[]>([]);
-    const [labTestData, setlabTestData] = useState<LabTestData | null>(null);
+
     // handles Modals
     const [show, setShow] = useState(false);
 
@@ -42,7 +41,6 @@ const LabTestList: React.FC<LabTestProps> = ({ id, name, description, info_url, 
             return res.data;
         })
         .catch((err) => {
-            console.log("Error fetching tests:", err);
             return [];
         })
         }
@@ -62,12 +60,9 @@ const LabTestList: React.FC<LabTestProps> = ({ id, name, description, info_url, 
     const handleLabTestSelection = (labTestID: number) => {
         getTestByID(labTestID)
             .then((labTest) => {
-                console.log("following is our labtest object!!!");
-                console.dir(labTest);
                 setSelectedTest(labTest || null);
             })
             .catch((error) => {
-                console.error("An error occurred:", error);
             });
         };
 

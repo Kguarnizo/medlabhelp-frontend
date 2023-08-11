@@ -12,49 +12,38 @@ interface OrganDetailsProps {
 }
 
 const OrganDetails: React.FC<OrganDetailsProps> = ({ organData, labTestData }) => {
-  const [relatedTests, setRelatedTests] = useState<LabTestData[]>([]);
+  const [organRelatedTests, setOrganRelatedTests] = useState<LabTestData[]>([]);
   const [organId, setOrganId] = useState<string | null>(null);
-  const [selectedOrganTest, setSelectedOrganTest] = useState<LabTestData | null>(null);
 
   let { id } = useParams();
 
   const organ = organData.find((organ) => organ.id === Number(id));
-  const organLabTest = labTestData.filter((test) => test.organ_id === organ?.id).map((test) => <LabTestList {...test} />);
+  const organLabTest = organRelatedTests.map((lab) => <LabTestList {...lab} />);
+  console.log("LOOK HERE ORGAN LAB TEST:", organLabTest)
 
   useEffect(() => {
     console.log('request ran');
-    if (id && id !== organId) { // Check if id is defined before setting organId
+    if (id && id !== organId) { 
       setOrganId(id);
       axios
         .get<LabTestData[]>(`https://medlab-help-api.onrender.com/organs/${id}/tests/`)
         .then((res) => {
           console.log('tests related to organ:', res.data);
-          setRelatedTests(res.data);
+          setOrganRelatedTests(res.data);
         })
         .catch((err) => {
           console.log('Error fetching related tests:', err);
-          setRelatedTests([]);
+          setOrganRelatedTests([]);
         });
     }
   }, [id, organId]);
 
   return (
     <div className="organdetails">
-      {organ && organLabTest && relatedTests.length > 0 && (
+      {organ && organRelatedTests.length > 0 && (
         <div>
-          <p>Name: {organ.name}</p>
-          {relatedTests.map((test) => {
-            return (<p
-              key={test.name}
-              onClick={() => {
-                console.log(test.description)
-                setSelectedOrganTest(test)
-              }}
-            >
-              {test.name}
-            </p>)
-          })}
-          {selectedOrganTest && <p>{selectedOrganTest.description}</p>}
+          <h2>Name: {organ.name}</h2>
+            {organLabTest}
         </div>
       )}
     </div>
