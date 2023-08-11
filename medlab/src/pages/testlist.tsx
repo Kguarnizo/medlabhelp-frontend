@@ -8,16 +8,17 @@ interface TestListProps {
 
 const TestList: React.FC<TestListProps> = ({ labTestData }) => {
 
-    const [inputText, setInputText] = useState<string>('');
+    // const [inputText, setInputText] = useState<string>('');
 
-    const onChange = (e: React.FormEvent<HTMLInputElement>) => {
-        const newValue = e.currentTarget.value;
-        setInputText(newValue);
-    }
+    // const onChange = (e: React.FormEvent<HTMLInputElement>) => {
+    //     const newValue = e.currentTarget.value;
+    //     setInputText(newValue);
+    // }
+    const inputText = '';
 
     return(
         <div>
-            <input type="text" id="search" placeholder="Search..." onChange={onChange}/>
+            {/* <input type="text" id="search" placeholder="Search..." onChange={onChange}/> */}
         <section>
             {labTestData.filter((test) => {
                 return test.name.toLowerCase().includes(inputText.toLowerCase());
