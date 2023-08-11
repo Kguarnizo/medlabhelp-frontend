@@ -15,45 +15,6 @@ interface MenuProps {
     organData: OrganData[],
 }
 
-// const getAllPanels = () => {
-//     return axios
-//         .get<{ panels: PanelData[] }>(`${kBaseURL}/panels/`)
-//         .then((res) => {
-//         console.log(res);
-//         return res.data.panels;
-//         })
-//         .catch((err) => {
-//         console.log('Error fetching panels:', err);
-//         return [];
-//         });
-//     };
-
-//     const getAllOrgans = () => {
-//         return axios
-//             .get<{ organs: OrganData[] }>(`${kBaseURL}/organs/`)
-//             .then((res) => {
-//             console.log(res);
-//             return res.data.organs;
-//             })
-//             .catch((err) => {
-//             console.log('Error fetching organs:', err);
-//             return [];
-//             });
-//         };
-
-//         const getAllTests = () => {
-//             return axios
-//                 .get<{ tests: labTestData[] }>(`${kBaseURL}/tests/`)
-//                 .then((res) => {
-//                 console.log(res);
-//                 return res.data.tests;
-//                 })
-//                 .catch((err) => {
-//                 console.log('Error fetching tests:', err);
-//                 return [];
-//                 });
-//             };
-
 const Menu: React.FC<MenuProps> = ({ onAboutClick, handlePanelSelection, panelData ,handleOrganSelection, organData }) => {
 
     const onOrgansClick = () => {setOrganVisibility(!organVisibility)};
@@ -70,7 +31,7 @@ const Menu: React.FC<MenuProps> = ({ onAboutClick, handlePanelSelection, panelDa
     function handleOrganClick(organ: OrganData): void {
         throw new Error('Function not implemented.');
     }
-    
+
     const [show, setShow] = useState(false);
     const showDropdown = ()=>{
         setShow(!show);
@@ -78,27 +39,6 @@ const Menu: React.FC<MenuProps> = ({ onAboutClick, handlePanelSelection, panelDa
     const hideDropdown = () => {
         setShow(false);
     }
-
-    // useEffect(() => {
-    //     getAllPanels().then((panels: React.SetStateAction<PanelData[]>) => {
-    //         console.log('Fetched panels:', panels);
-    //         setPanelData(panels);
-    //     });
-
-    //     getAllOrgans().then((organs: React.SetStateAction<OrganData[]>) => {
-    //         console.log('Fetched organs:', organs);
-    //         setOrganData(organs);
-    //     });
-
-    //     getAllTests().then((tests) => {
-    //         console.log('Fetched tests:', tests);
-    //         setlabTestData(tests);
-    //         });
-    // }, []);
-
-
-
-
 
 
     return (
@@ -114,24 +54,25 @@ const Menu: React.FC<MenuProps> = ({ onAboutClick, handlePanelSelection, panelDa
             <a href =" " className="nav-link" onClick={onAboutClick}>About</a>
         </li>
         {/* PANAL****************************************** */}
-    <NavDropdown title="Panels" id="nav-dropdown" show={show} onMouseEnter={showDropdown} onMouseLeave={hideDropdown}>
-                <NavDropdown.Item>
-                    <PanelList panelData={panelData} handlePanelSelection={handlePanelSelection} setPanelVisibility={setPanelVisibility}/>
-                </NavDropdown.Item>
-    </NavDropdown>
-        {/* ORGAN****************************************** */}
-    <li className="nav-item">
-            <div className="nav-link dropdown-toggle" onClick={toggleOrganVisibility}>
-                Organs
-            </div>
-            {organVisibility && (
-                <div className="dropdown-item">
-                    <OrganList organData={organData} handleOrganSelection={handleOrganSelection} />
-                </div>
-            )}
-    </li>
+        <li className="nav-item">
 
-        </ul>
+            <NavDropdown title="Panels" id="nav-dropdown" show={show} onMouseEnter={showDropdown} onMouseLeave={hideDropdown}>
+                        <NavDropdown.Item>
+                            <PanelList panelData={panelData} handlePanelSelection={handlePanelSelection} setPanelVisibility={setPanelVisibility}/>
+                        </NavDropdown.Item>
+            </NavDropdown>
+        </li>
+        {/* ORGAN****************************************** */}
+        <li className="nav-item"><NavDropdown title="Organs" id="nav-dropdown1" show={show} onMouseEnter={showDropdown} onMouseLeave={hideDropdown}>
+                <NavDropdown.Item>
+                <OrganList organData={organData} handleOrganSelection={handleOrganSelection} setOrganVisibility={setOrganVisibility}/>
+
+                </NavDropdown.Item>
+            </NavDropdown>
+        </li>
+
+
+    </ul>
     </Nav>
     </nav>
 

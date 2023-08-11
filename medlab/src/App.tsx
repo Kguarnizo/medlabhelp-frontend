@@ -5,7 +5,7 @@ import './App.css';
 import PanelList, { PanelData } from './components/PanelList';
 import OrganList, { OrganData } from './components/OrganList';
 import TestDetail, { LabTestData } from './components/TestDetail';
-import AltNameList, { AltNameData } from './components/AltNameList';
+// import AltNameList, { AltNameData } from './components/AltNameList';
 import Menu from './components/Menu';
 import About from './pages/about';
 import Home from './pages/home';
@@ -63,11 +63,7 @@ const App: React.FC = () => {
   const [organData, setOrganData] = useState<OrganData[]>([]);
   const [selectedPanel, setSelectedPanel] = useState<PanelData | null>(null);
   const [labTestData, setlabTestData] = useState<LabTestData[]>([]);
-  const [selectedTest, setSelectedTest] = useState<LabTestData | null>(null);
   const [selectedOrgan, setSelectedOrgan] = useState<OrganData | null>(null);
-  const [relatedTests, setRelatedTests] = useState<LabTestData[]>([]);
-  const [altNameData, setAltNameData] = useState<AltNameData[]>([]);
-  // const [organRelatedTestDetails, setOrganRelatedTestDetails] = useState<labTestData | null>(null);
 
 useEffect(() => {
   getAllPanels().then((panels) => {
@@ -98,47 +94,7 @@ useEffect(() => {
     setSelectedOrgan(organ || null);
   };
 
-  // const filterTest = labTestData.filter((test) => test.panel_id === selectedPanel?.id);
-
-  // const handleTestClick = (test: LabTestData) => {
-  //   setSelectedTest(test);
-  // };
-
-  const handleOrganClick = (organ: OrganData) => {
-    setSelectedOrgan(organ);
-
-    axios
-      .get<LabTestData[]>(`${kBaseURL}/organs/${organ.id}/tests/`)
-      .then((res) => {
-        console.log('tests related to organ:', res);
-        setRelatedTests(res.data);
-      })
-      .catch((err) => {
-        console.log('Error fetching related tests:', err);
-        setRelatedTests([]);
-      });
-  };
-
-  // const handleOrganRelatedTestClick = (test: labTestData) => {
-  //   setOrganRelatedTestDetails(test);
-  // };
-
-  // const findLabTestById = (labTestID: number) => {
-  //   return labTestData.find((labTest) => {return labTest.id === labTestID})
-  // };
-
-  // const handleLabTestSelection = (labTestID: number)=> {
-  //   let labTest = findLabTestById(labTestID);
-  //   setSelectedTest(labTest || null);
-  //   getAltNamesToTests(labTestID).then((tests)=> {
-  //     console.log(tests);
-  //     setAltNameData(tests);
-  //   });
-  // };
-
   const navigate = useNavigate();
-
-
 
   return (
   <>

@@ -1,8 +1,7 @@
 import React from 'react';
-import LabTestList from './LabTestList';
+
 import { AltNameData } from "./AltNameList";
 import Modal from "react-bootstrap/Modal";
-import Button from 'react-bootstrap/Button';
 
 export interface LabTestData {
     id: number,

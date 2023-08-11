@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import Panel from "./Panel";
+// import Panel from "./Panel";
 import { Link } from "react-router-dom";
 
 
@@ -15,7 +15,6 @@ interface PanelListProps {
     setPanelVisibility: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-
 const PanelList: React.FC<PanelListProps> = ({ panelData, handlePanelSelection, setPanelVisibility }) => {
 
     const [inputText, setInputText] = useState<string>('');
@@ -28,7 +27,6 @@ const PanelList: React.FC<PanelListProps> = ({ panelData, handlePanelSelection, 
         setInputText(newValue);
     }
 
-
     return (
         <section>
             <input type="text" id="search" placeholder="Search..." onChange={onChange}/>
@@ -37,13 +35,7 @@ const PanelList: React.FC<PanelListProps> = ({ panelData, handlePanelSelection, 
                 return panel.name.toLowerCase().includes(inputText.toLowerCase());
             }).map((panel) => (
 
-            <div><Panel
-                id={panel.id}
-                name={panel.name}
-                organ_id={panel.organ_id}
-                key={panel.id}
-                handlePanelSelection={handlePanelSelection}
-            />
+            <div key={panel.id}>
             <Link onClick={() => {setPanelVisibility(false)}}to={`paneldetails/${panel.id}`}>{panel.name} </Link>
             </div>
             ))}

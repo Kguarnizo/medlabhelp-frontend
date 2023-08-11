@@ -77,9 +77,9 @@ body {
     }
 
     #test-detail {
-      background-color: aqua;
+      background-color: white;
     }
-/* 
+/*
     #carousel-images {
       float: none;
       justify-content: center;
@@ -91,20 +91,20 @@ body {
     .carousel-item, .carousel-indicators, .carousel-images, .container {
       height: 60vh;
     }
-    
+
     .carousel-item  > img {
       width: 100%;
       /* height: 60vh;
       justify-content: center;
       float: none; */
-      
+
     }
-    
+
     #junk {
       position: sticky;
       top: 100vh;
     }
-  
+
     @media screen and (max-width: 769px) {
       .carousel-item, .carousel-indicators, .carousel-images, .container {
         /* float: none;
@@ -123,7 +123,7 @@ body {
       top: 10px;
   }
 
-    
+
 /* .nav-item {
   position: absolute;
   z-index: 10; */
@@ -142,4 +142,39 @@ background: black;
 
 #test-alt-name {
   color: mediumblue;
+}
+
+/* #nav-dropdown {
+  color: red;
+} */
+
+/* #nav-dropdown1 {
+  color: green;
+}
+
+#nav-dropdown {
+  .navbar-nav {
+      li.nav-item:last-child {
+          .dropdown-menu {
+              right: 0;
+              left: auto;
+          }
+      }
+  }
+} */
+
+#email-button {
+  -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 10px;
+    border: solid 1px #20538D;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
+    background: royalblue;
+    color: #FFF;
+    padding: 8px 12px;
+    text-decoration: none;
+    font-size: 18px;
 }
