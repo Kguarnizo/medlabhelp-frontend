@@ -13,9 +13,7 @@ interface PanelDetailsProps {
 const PanelDetails: React.FC<PanelDetailsProps> = ({panelData, labTestData }) => {
     let { id } = useParams();
     const panel = panelData.find((panel) => panel.id === Number(id));
-    console.log("What is Panel:" ,panel)
     const panelLabTest = labTestData.filter((test) => test.panel_id === panel?.id).map((lab) => <LabTestList {...lab} />)
-    console.log("What is PanelLabTest:",  panelLabTest )
 
     return (
     <div className="paneldetails">

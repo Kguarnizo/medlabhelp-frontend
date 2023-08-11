@@ -9,11 +9,14 @@ import { LabTestData } from './TestDetail';
 
 interface MenuProps {
     onAboutClick: () => void;
+    onTestClick: () => void;
     handlePanelSelection: (panelID: number) => void;
     panelData: PanelData[],
     handleOrganSelection: (organID: number) => void;
     organData: OrganData[],
 }
+
+
 
 // const getAllPanels = () => {
 //     return axios
@@ -54,7 +57,7 @@ interface MenuProps {
 //                 });
 //             };
 
-const Menu: React.FC<MenuProps> = ({ onAboutClick, handlePanelSelection, panelData ,handleOrganSelection, organData }) => {
+const Menu: React.FC<MenuProps> = ({ onAboutClick, handlePanelSelection, panelData ,handleOrganSelection, organData, onTestClick }) => {
 
     const onOrgansClick = () => {setOrganVisibility(!organVisibility)};
 
@@ -104,6 +107,9 @@ const Menu: React.FC<MenuProps> = ({ onAboutClick, handlePanelSelection, panelDa
         <ul className="navbar-nav">
         <li className="nav-item">
             <a href =" " className="nav-link" onClick={onAboutClick}>About</a>
+        </li>
+        <li className="nav-item">
+            <a href =" " className="nav-link" onClick={onTestClick}>Tests</a>
         </li>
         {/* PANAL****************************************** */}
     <li className="nav-item">
