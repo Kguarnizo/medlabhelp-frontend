@@ -5,13 +5,15 @@ import OrganList, { OrganData } from './OrganList';
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
+
 interface MenuProps {
-    onAboutClick: () => void;
-    panelData: PanelData[];
-    organData: OrganData[];
+    onAboutClick: () => void,
+    panelData: PanelData[],
+    organData: OrganData[],
+    onTestClick: () => void,
 }
 
-const Menu: React.FC<MenuProps> = ({ onAboutClick, panelData, organData }) => {
+const Menu: React.FC<MenuProps> = ({ onAboutClick, panelData, organData, onTestClick }) => {
 
     const [showPanelDropdown, setShowPanelDropdown] = useState(false);
     const [showOrganDropdown, setShowOrganDropdown] = useState(false);
@@ -32,13 +34,13 @@ const Menu: React.FC<MenuProps> = ({ onAboutClick, panelData, organData }) => {
         setShowOrganDropdown(false);
     };
 
-    const togglePanelDropdown = () => {
-        setShowPanelDropdown(!showPanelDropdown);
-    };
+    // const togglePanelDropdown = () => {
+    //     setShowPanelDropdown(!showPanelDropdown);
+    // };
 
-    const toggleOrganDropdown = () => {
-        setShowOrganDropdown(!showOrganDropdown);
-    };
+    // const toggleOrganDropdown = () => {
+    //     setShowOrganDropdown(!showOrganDropdown);
+    // };
 
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -63,7 +65,9 @@ const Menu: React.FC<MenuProps> = ({ onAboutClick, panelData, organData }) => {
                             About
                         </a>
                     </li>
-                    
+                    <li className="nav-item">
+                        <a href =" " className="nav-link" onClick={onTestClick}>Tests</a>
+                    </li>
                     <li className="nav-item">
                         <NavDropdown
                             title="Panels"
@@ -71,7 +75,7 @@ const Menu: React.FC<MenuProps> = ({ onAboutClick, panelData, organData }) => {
                             show={showPanelDropdown}
                             onMouseEnter={showPanel}
                             onMouseLeave={hidePanel}
-                            onClick={togglePanelDropdown}
+                            // onClick={togglePanelDropdown}
                         >
                             <NavDropdown.Item>
                                 <PanelList panelData={panelData} />
@@ -86,7 +90,7 @@ const Menu: React.FC<MenuProps> = ({ onAboutClick, panelData, organData }) => {
                             show={showOrganDropdown}
                             onMouseEnter={showOrgan}
                             onMouseLeave={hideOrgan}
-                            onClick={toggleOrganDropdown}
+                            // onClick={toggleOrganDropdown}
                         >
                             <NavDropdown.Item>
                                 <OrganList organData={organData} />
