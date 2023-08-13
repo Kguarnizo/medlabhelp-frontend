@@ -50,21 +50,21 @@ const Menu: React.FC<MenuProps> = ({ onAboutClick, panelData, organData, onTestC
             <button
                 className="navbar-toggler"
                 type="button"
-                data-toggle="collapse"
-                data-target="#navbarNavDropdown"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNavDropdown"
                 aria-controls="navbarNavDropdown"
                 aria-expanded="false"
                 aria-label="Toggle navigation"
             >
                 <span className="navbar-toggler-icon"></span>
             </button>
-            <Nav className="collapse navbar-collapse" id="navbarNavDropdown">
+            <div className="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul className="navbar-nav">
                     <li className="nav-item">
                         <a href=" " className="nav-link" onClick={onAboutClick}>About</a>
                     </li>
                     <li className="nav-item">
-                        <a href =" " className="nav-link" onClick={onTestClick}>Tests</a>
+                        <a href=" " className="nav-link" onClick={onTestClick}>Tests</a>
                     </li>
                     <li className="nav-item">
                         <NavDropdown
@@ -96,13 +96,8 @@ const Menu: React.FC<MenuProps> = ({ onAboutClick, panelData, organData, onTestC
                         </NavDropdown>
                     </li>
                 </ul>
-            </Nav>
+            </div> 
         </nav>
     );
 };
-
 export default Menu;
-
-
-
-

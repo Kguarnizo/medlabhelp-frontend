@@ -1,0 +1,66 @@
+.wrapper {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    gap: 4px;
+    grid-auto-flow: column;
+    text-align: center;
+
+    }
+
+.desc {
+    text-align: center;
+    margin-top: 10px;
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-bottom: 50px;
+    font-weight: 500;
+}
+
+.meet {
+    text-align: center;
+    margin-top: 10px;
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-bottom: 50px;
+    font-weight: 500;
+
+}
+
+/* .gh-link {
+
+
+} */
+
+.li-link {
+    margin-left: 10px;
+}
+
+.test-list {
+    text-align: center;
+}
+
+.diverse {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.demographics {
+    text-align: center;
+    margin-top: 25px;;
+}
+
+.percent {
+    text-align: center;
+    margin-top: 25px;;
+    color:blueviolet;
+}
+
+.list-of-tests {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.list {
+    text-align: left;
+}

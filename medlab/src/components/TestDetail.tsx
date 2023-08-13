@@ -34,18 +34,19 @@ const TestDetail: React.FC<TestDetailProps> = ({ selectedTest, altNameData, show
                     <Modal.Title>{selectedTest.name} Test Details</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <p>Description: {selectedTest.description}</p>
-                    <p>Learn More:
-                    <a href={selectedTest.info_url} target="_blank" rel="noopener noreferrer">{selectedTest.info_url}</a>
-                    </p>
-                    <p>Normal Reference: {selectedTest.normal_reference}</p>
-                    <p>Unit of Measure: {selectedTest.unit_of_measure}</p>
-                    <p>Alternate Name: </p>
+                    <p><strong>Description:</strong> {selectedTest.description}</p>
+                    <p><strong>Normal Reference:</strong> {selectedTest.normal_reference}</p>
+                    <p><strong>Unit of Measure:</strong> {selectedTest.unit_of_measure}</p>
+                    <p><strong>Alternate Name: </strong></p>
                     <ul>
                         {altNameData.map((altName)=> (
                             <li key={altName.id}>{altName.name}</li>
                         ))}
                     </ul>
+                    {/* <p>Learn More:   */}
+                    <a href={selectedTest.info_url} target="_blank" rel="noopener noreferrer">Learn more
+                    </a>
+                    {/* </p> */}
                 </Modal.Body>
             </div>
             )}
@@ -54,3 +55,12 @@ const TestDetail: React.FC<TestDetailProps> = ({ selectedTest, altNameData, show
     };
 
     export default TestDetail;
+
+
+
+
+
+
+
+
+

@@ -15,14 +15,19 @@ const PanelDetails: React.FC<PanelDetailsProps> = ({panelData, labTestData }) =>
     const panel = panelData.find((panel) => panel.id === Number(id));
     const panelLabTest = labTestData.filter((test) => test.panel_id === panel?.id).map((lab) => <LabTestList key={lab.id} {...lab} />)
 
-
     return (
-    <div className="paneldetails">
+    <div className="panel-details">
         {panel && panelLabTest.length && (
-            <div>
-                <h2>Name: {panel.name}</h2>
-                {panelLabTest}
+            <div className="panel-header">
+                <h2 className='panel-name'>{panel.name}</h2>
             </div>
+            )}
+            {panelLabTest.length > 0 && (
+                <ul className="lab-test-list">
+                {panelLabTest.map((lab) => (
+                    <li key={lab.key}>{lab}</li>
+                ))}
+                </ul>
             )}
     </div>
     );

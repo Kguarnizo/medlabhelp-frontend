@@ -67,18 +67,23 @@ const LabTestList: React.FC<LabTestProps> = ({ id, name, description, info_url, 
         };
 
     return (
-        <><div onClick={testOnClick}>
+        <>
+            <div className="lab-test-item" onClick={testOnClick}>
             <p>
-                <span id="test-name">
-                    {name}
-                </span>
+                <span id="test-name">{name}</span>
                 <span id="test-alt-name">
-                    {" "}{(altNameData.map(e => e.name).join(' , '))}
+                {" "}{altNameData.map((e) => e.name).join(" , ")}
                 </span>
             </p>
-        </div><TestDetail selectedTest={selectedTest} altNameData={altNameData} show={show} setShow={setShow}/>
+            </div>
+            <TestDetail
+            selectedTest={selectedTest}
+            altNameData={altNameData}
+            show={show}
+            setShow={setShow}
+            />
         </>
-    );
-};
+        );
+    };
 
 export default LabTestList;
