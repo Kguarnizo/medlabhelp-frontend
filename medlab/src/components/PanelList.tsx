@@ -34,7 +34,7 @@ const PanelList: React.FC<PanelListProps> = ({ panelData}) => {
             }).map((panel) => (
 
             <div key={panel.id}>
-            <Link to={`paneldetails/${panel.id}`}>{panel.name} </Link>
+                <Link to={`paneldetails/${panel.id}`}>{panel.name} </Link>
             </div>
             ))}
         </ul>

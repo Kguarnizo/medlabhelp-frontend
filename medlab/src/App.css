@@ -227,11 +227,12 @@ body {
   cursor: pointer;
   background-color: #f9f9f9;
   border-radius: 500px;
-  transition: background-color 0.1s ease-in-out;
 }
 
 .lab-test-item:hover {
   background-color:mediumpurple;
+  display:inline-block
+
 }
 
 #test-name {
@@ -264,13 +265,25 @@ body {
   font-size: 24px;
   font-weight:bolder;
   color: #007bff;
-  margin-left: 600px;
+  /* margin-left: 600px; */
+  text-align: center;
 }
 
 #test-detail {
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-.description-color, .normal-reference-color,.unit-of-measure-color, .alternate-name-color, .learn-more{
+/* .description-color, .normal-reference-color,.unit-of-measure-color, .alternate-name-color, .learn-more{
   color: brown;
   font-size:large;
+} */
+
+#test-detail-color {
+  font-weight: bolder;
+  background-color: #DDA0DD;
+}
+
+.name-detail-logo{
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
 }

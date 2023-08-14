@@ -31,7 +31,7 @@ const TestDetail: React.FC<TestDetailProps> = ({ selectedTest, altNameData, show
             {selectedTest && (
             <div id="test-detail">
                 <Modal.Header closeButton>
-                    <Modal.Title>{selectedTest.name} Test Details</Modal.Title>
+                    <Modal.Title><span id='test-detail-color'>{selectedTest.name} Test Details</span></Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <p><strong>Description:</strong> {selectedTest.description}</p>
@@ -43,10 +43,12 @@ const TestDetail: React.FC<TestDetailProps> = ({ selectedTest, altNameData, show
                             <li key={altName.id}>{altName.name}</li>
                         ))}
                     </ul>
-                    {/* <p>Learn More:   */}
                     <a href={selectedTest.info_url} target="_blank" rel="noopener noreferrer">Learn more
                     </a>
-                    {/* </p> */}
+                    <div>
+                        <img className="name-detail-logo" src="../images/test-detail-logo.png" alt="mlh logo" />
+                    </div>
+
                 </Modal.Body>
             </div>
             )}
@@ -55,12 +57,3 @@ const TestDetail: React.FC<TestDetailProps> = ({ selectedTest, altNameData, show
     };
 
     export default TestDetail;
-
-
-
-
-
-
-
-
-

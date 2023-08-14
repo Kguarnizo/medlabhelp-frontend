@@ -19,7 +19,7 @@ const TestList: React.FC<TestListProps> = ({ labTestData }) => {
         <div>
             <input type="text" id="search" placeholder="Search..." onChange={onChange}/>
         <section>
-            {labTestData.filter((test) => {
+            {inputText && labTestData.filter((test) => {
                 return test.name.toLowerCase().includes(inputText.toLowerCase());
             }).map((lab) => <LabTestList key={lab.id} {...lab} />)}
         </section>
