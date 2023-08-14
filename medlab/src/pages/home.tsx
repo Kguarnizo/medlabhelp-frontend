@@ -4,35 +4,18 @@ import './home.css'
 
 const Homepage: React.FC = () => {
 
-
-
-
     return (
     <div>
         <div className='container'>
         <Carousel id='carousel-images' >
             <Carousel.Item>
             <img className=" " src="images/cdc-XLhDvfz0sUM-unsplash.jpg" alt="First slide"/>
-                {/* <Carousel.Caption>
-                <h3>First slide label</h3>
-                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                </Carousel.Caption> */}
             </Carousel.Item>
             <Carousel.Item>
             <img className=" " src="images/cdc-CfS6A4U5g8M-unsplash.jpg" alt="Second slide"/>
-                {/* <Carousel.Caption>
-                <h3>Second slide label</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                </Carousel.Caption> */}
             </Carousel.Item>
             <Carousel.Item>
             <img className=" " src="images/testalize-me-0jE8ynV4mis-unsplash.jpg" alt="Third slide"/>
-                {/* <Carousel.Caption>
-                <h3>Third slide label</h3>
-                <p>
-                    Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-                </p>
-                </Carousel.Caption> */}
             </Carousel.Item>
             </Carousel>
         </div>
@@ -53,10 +36,6 @@ const Homepage: React.FC = () => {
     </div>
     </div>
 
-    <div className="color-container">
-        <h3 id="big-heading">We're here for you!</h3>
-        <p className="box">Contact us at any time and one of our friendly associates will be happy to assist you!</p>
-    </div>
     </div>
 );
 };
