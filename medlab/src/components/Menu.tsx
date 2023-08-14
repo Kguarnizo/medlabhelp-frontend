@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PanelList, { PanelData } from './PanelList';
 import OrganList, { OrganData } from './OrganList';
-import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
 
@@ -96,7 +95,7 @@ const Menu: React.FC<MenuProps> = ({ onAboutClick, panelData, organData, onTestC
                         </NavDropdown>
                     </li>
                 </ul>
-            </div> 
+            </div>
         </nav>
     );
 };
