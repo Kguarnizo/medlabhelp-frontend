@@ -23,6 +23,15 @@ header {
     margin-right: 15px; 
 }
 
+.vl {
+    border-left: 2px solid #7ba6f8;
+    border-right: 2px solid #7ba6f8;
+    height: 250px;
+    position:absolute;
+    right: 430px;
+    top: 10;
+}
+
 #contact-us-btn {
     padding-right: 170px; 
     display: flex; 
@@ -31,12 +40,21 @@ header {
     font-size: larger;
     font-weight: bold;
     text-decoration: underline;
-    /* border-radius: 10px;
-    border: solid 2px white; */
-    /* display: inline-block; */
+}
+.copyright {
+    padding-left: 30px;
+    display: flex; 
+    justify-content: left;
+}
+
+.disclaimer {
+    padding-left: 80px;
+    display: flex; 
+    justify-content: left;
 }
 
 #help-desc-top {
+    top: 100;
     padding-right: 50px;
     display: flex; 
     justify-content: right;
@@ -53,14 +71,5 @@ header {
     padding-right: 105px; 
     display: flex; 
     justify-content: right;
-
 }
 
-.vl {
-    border-left: 2px solid #7ba6f8;
-    border-right: 2px solid #7ba6f8;
-    height: 250px;
-    position:absolute;
-    right: 430px;
-    top: 10
-}
