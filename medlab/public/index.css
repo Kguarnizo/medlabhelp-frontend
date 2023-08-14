@@ -55,3 +55,12 @@ header {
     justify-content: right;
 
 }
+
+.vl {
+    border-left: 2px solid #7ba6f8;
+    border-right: 2px solid #7ba6f8;
+    height: 250px;
+    position:absolute;
+    right: 430px;
+    top: 10
+}
