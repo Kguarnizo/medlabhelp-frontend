@@ -57,7 +57,8 @@ body {
 
   /* Custom footer styles */
     footer {
-    background-color: var(--secondary-color);
+    /* background-color: #6a31fa; */
+    background: linear-gradient(0deg, rgba(123,166,248,1) 6%, rgba(49,109,244,1) 62%);
     color: #fff;
     padding: 10px;
     text-align: center;
@@ -287,3 +288,16 @@ body {
   right: 15px;
   bottom: 15px;
 }
+
+.icons {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+li {
+  float: left;
+  padding-left: 10px;
+}
+
