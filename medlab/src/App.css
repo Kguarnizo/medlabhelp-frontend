@@ -87,8 +87,9 @@ justify-content: space-between;
 align-items: center;
 width: 100%;
 padding: 0;
-background-color: royalblue;
+background-color: #007bff;
 border-radius: 8px;
+margin-right: 20px;
 }
 
 .navbar-nav .nav-item {
@@ -152,7 +153,9 @@ font-weight:bolder;
 .panel-details {
 display: flex;
 flex-direction: column;
-padding-left:20px;
+padding-left: 80px;
+padding-right: 80px;
+
 }
 
 .panel-header {
@@ -194,7 +197,8 @@ bottom: 15px;
 .organdetails {
   display: flex;
   flex-direction: column;
-  padding-left:20px;
+  padding-left: 80px;
+  padding-right: 80px;  
 }
 
 .organ-header {
@@ -210,29 +214,4 @@ bottom: 15px;
   border-bottom: 1px solid #ccc;
   display: inline-block;
   font-weight:bolder;
-}
-
-.lab-test-search {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  background-image: url("./test-backgound-2.jpg");
-  background-size: contain;
-  background-position: center;
-  color: white;
-  padding: 50px;
-  min-height: 120vh;
-  min-width: 100vw
-}
-.lab-test-search input[type="text"] {
-  background-color: rgb(255, 255, 255);
-  border: 1px solid #ccc;
-  color: #333;
-  padding: 4px;
-  height: 26px;
-  width: 100%;
-  max-width: 250px;
-  font-size: 12px;
-  width: 400px;
-  border-radius: 5%;
 }

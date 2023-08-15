@@ -33,14 +33,6 @@ const Menu: React.FC<MenuProps> = ({ onAboutClick, panelData, organData, onTestC
         setShowOrganDropdown(false);
     };
 
-    // const togglePanelDropdown = () => {
-    //     setShowPanelDropdown(!showPanelDropdown);
-    // };
-
-    // const toggleOrganDropdown = () => {
-    //     setShowOrganDropdown(!showOrganDropdown);
-    // };
-
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <Link to="/" className="navbar-brand" id="site-name">
@@ -72,7 +64,6 @@ const Menu: React.FC<MenuProps> = ({ onAboutClick, panelData, organData, onTestC
                             show={showPanelDropdown}
                             onMouseEnter={showPanel}
                             onMouseLeave={hidePanel}
-                            // onClick={togglePanelDropdown}
                         >
                             <NavDropdown.Item>
                                 <PanelList panelData={panelData} />
@@ -87,7 +78,6 @@ const Menu: React.FC<MenuProps> = ({ onAboutClick, panelData, organData, onTestC
                             show={showOrganDropdown}
                             onMouseEnter={showOrgan}
                             onMouseLeave={hideOrgan}
-                            // onClick={toggleOrganDropdown}
                         >
                             <NavDropdown.Item>
                                 <OrganList organData={organData} />
