@@ -35,7 +35,52 @@ width: 100%;
 border-radius: 5%;
 }
 
-#knowledge-head {
+/* #knowledge-head {
 display: inline;
+} */
+
+body, h1, h2, h3, p {
+    margin: 0;
+    padding: 0;
+}
+
+.top-img-container {
+    display: flex;
+    align-items: center;
+}
+
+.image-container {
+    flex: 1;
+    margin-right: 30px;
+    text-align: center;
+}
+
+#lab-lady-img {
+    width: 700px;
+}
+
+#accurate-head {
+    margin: 10px 0;
+}
+
+.content-container {
+    flex: 2;
+}
+
+#accurate-desc {
+    margin-bottom: 80px;
+}
+
+#care {
+    text-align: center;
+    margin-top: 50px;
+    /* margin: 20px 0; */
+    margin-bottom: 50px;
+}
+
+.top-container {
+    max-width: 80rem;
+    margin-left: auto;
+    margin-right: auto;
 }
 
