@@ -40,9 +40,16 @@ const OrganDetails: React.FC<OrganDetailsProps> = ({ organData, labTestData }) =
     <div className="organdetails">
       {organ && organRelatedTests.length > 0 && (
         <div>
-          <h2>Name: {organ.name}</h2>
-            {organLabTest}
+          <h2 className="organ-header">{organ.name}</h2>
+            {/* {organLabTest} */}
         </div>
+      )}
+      {organLabTest.length > 0 && (
+        <ul className="lab-test-list">
+          {organLabTest.map((lab) => (
+            <li key={lab.key}>{lab}</li>
+          ))}
+        </ul>
       )}
     </div>
   )

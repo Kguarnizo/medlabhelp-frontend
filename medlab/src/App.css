@@ -256,3 +256,27 @@ position: absolute;
 right: 15px;
 bottom: 15px;
 }
+
+
+.organ-details {
+  display: flex;
+  flex-direction: column;
+  padding-left:20px;
+  }
+  
+.organ-header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 10px;
+border-bottom: 1px solid #ccc;
+padding-bottom: 5px;
+}
+  
+.organ-name {
+font-size: 24px;
+font-weight:bolder;
+color: #007bff;
+/* margin-left: 600px; */
+text-align: center;
+}
