@@ -22,7 +22,7 @@ const Homepage: React.FC = () => {
         <h2 id="care">We care about your health</h2>
         <div className="top-container">
             <div className="top-img-container">
-            <div className="image-container">
+            <div className="first-image-container">
                 <img id="lab-lady-img" src="images/louis-reed-pwcKF7L4-no-unsplash.jpg" alt=""/>
                 <h3 id="accurate-head">Providing accurate information</h3>
             </div>
@@ -36,7 +36,7 @@ const Homepage: React.FC = () => {
 
         <div className="bottom-container">
             <div className="bottom-img-container">
-            <div className="second-container">
+            <div className="second-img-container">
                 <img id="lab-people-img" src="images/national-cancer-institute-ysv6k_gPOZM-unsplash.jpg" alt=""/>
                 <h3 id="helping-head">Helping you take charge of your health</h3>
             </div>

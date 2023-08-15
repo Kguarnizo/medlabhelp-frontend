@@ -1,10 +1,22 @@
 #care {
-    margin-top: 75px;
-    text-align: center;
-    text-decoration: underline #0d6efd
+text-align: center;
+margin-top: 50px;
+margin-bottom: 50px;
+text-decoration: underline #0d6efd
 }
 
-.first-container {
+/* body, h1, h2, h3, p {
+margin: 0;
+padding: 0;
+} */
+
+.top-container {
+max-width: 80rem;
+margin-left: auto;
+margin-right: auto;
+}
+
+/* .first-container {
 display: grid;
 padding: 2rem;
 grid-template-columns: 500px 1fr;
@@ -13,35 +25,11 @@ align-items: center;
 max-width: 800px;
 margin-top: 75px;
 margin-left: 50px;
-}
-
-#lab-lady-img {
-width: 100%;
-border-radius: 5%;
-}
-
-.second-container {
-display: grid;
-padding: 2rem;
-grid-template-columns: 500px 1fr;
-gap: 1rem;
-align-items: center;
-max-width: 800px;
-margin-left: 750px;
-}
-
-#lab-people-img {
-width: 100%;
-border-radius: 5%;
-}
-
-/* #knowledge-head {
-display: inline;
 } */
 
-body, h1, h2, h3, p {
-    margin: 0;
-    padding: 0;
+#lab-lady-img {
+width: 700px;
+border-radius: 5%;
 }
 
 .top-img-container {
@@ -49,14 +37,10 @@ body, h1, h2, h3, p {
     align-items: center;
 }
 
-.image-container {
-    flex: 1;
-    margin-right: 30px;
-    text-align: center;
-}
-
-#lab-lady-img {
-    width: 700px;
+.first-image-container {
+    /* flex: 1; */
+    margin-right: 50px;
+    /* text-align: center; */
 }
 
 #accurate-head {
@@ -69,18 +53,41 @@ body, h1, h2, h3, p {
 
 #accurate-desc {
     margin-bottom: 80px;
+    font-size: large;
 }
 
-#care {
-    text-align: center;
-    margin-top: 50px;
-    /* margin: 20px 0; */
-    margin-bottom: 50px;
+
+.bottom-container {
+max-width: 85rem;
+margin-left: auto;
+margin-right: auto;
 }
 
-.top-container {
-    max-width: 80rem;
-    margin-left: auto;
-    margin-right: auto;
+#lab-people-img {
+width: 700px;
+border-radius: 5%;
+}
+
+
+.bottom-img-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    padding: 0 20px;
+    flex-direction: row-reverse; 
+}
+
+.second-content-container {
+    flex: 1; 
+    margin-right: 20px; 
+}
+
+#second-accurate-desc {
+    margin-bottom: 80px;
+    font-size: large;
+}
+
+#helping-head {
+    margin: 10px 0;
 }
 
