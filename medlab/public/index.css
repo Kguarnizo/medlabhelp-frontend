@@ -26,10 +26,10 @@ header {
 .vl {
     border-left: 2px solid #7ba6f8;
     border-right: 2px solid #7ba6f8;
-    height: 250px;
-    position:absolute;
+    height: 200px;
+    /* position:absolute;
     right: 430px;
-    top: 10;
+    top: 10; */
 }
 
 #contact-us-btn {
@@ -47,8 +47,25 @@ header {
     justify-content: left;
 }
 
-.disclaimer {
-    padding-left: 80px;
+#address, #logo {
+    font-weight: bold;
+    padding-left: 30px;
+    display: flex; 
+    text-align: left;
+}
+
+#logo {
+    height: 75px;
+}
+
+#disclaimer-bottom {
+    padding-left: 30px;
+    display: flex; 
+    justify-content: left;
+}
+
+#disclaimer-top {
+    padding-left: 30px;
     display: flex; 
     justify-content: left;
 }
@@ -73,3 +90,38 @@ header {
     justify-content: right;
 }
 
+#footer {
+    display: flex;
+    flex-direction: column;
+}
+
+#footer-container {
+    display: flex;
+    flex-direction: column;
+}
+
+#footer-container-top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#foot-container-top-left {
+    width: 30%;
+}
+
+#foot-container-top-middle {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+#foot-container-top-right {
+    width: 30%;
+}
+
+#footer-container-bottom {
+    display: flex;
+    flex-direction: column;
+}

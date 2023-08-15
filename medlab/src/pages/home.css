@@ -13,15 +13,12 @@ align-items: center;
 max-width: 800px;
 margin-top: 75px;
 margin-left: 50px;
-/* margin: 0 auto; */
 }
 
 #lab-lady-img {
 width: 100%;
-/* height: auto; */
 border-radius: 5%;
 }
-
 
 .second-container {
 display: grid;
@@ -35,7 +32,6 @@ margin-left: 750px;
 
 #lab-people-img {
 width: 100%;
-/* height: auto; */
 border-radius: 5%;
 }
 
