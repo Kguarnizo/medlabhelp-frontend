@@ -14,7 +14,6 @@ header {
 
 .icons {
     list-style: none;
-    /* padding-right: 100px;  */
     display: flex;
     justify-content: right;
 }
@@ -27,13 +26,9 @@ header {
     border-left: 2px solid #7ba6f8;
     border-right: 2px solid #7ba6f8;
     height: 200px;
-    /* position:absolute;
-    right: 430px;
-    top: 10; */
 }
 
 #contact-us-btn {
-    /* padding-right: 170px;  */
     display: flex;
     justify-content: right;
     color: white;
@@ -42,11 +37,6 @@ header {
     text-decoration: underline;
     box-shadow:#7ba6f8;
 }
-/* .copyright {
-    padding-left: 30px;
-    display: flex;
-    justify-content: left;
-} */
 
 #address {
     font-weight: bold;
@@ -59,18 +49,6 @@ header {
     text-align: center;
     display: flex;
 }
-
-/* #disclaimer-bottom {
-    padding-left: 30px;
-    display: flex;
-    justify-content: left;
-}
-
-#disclaimer-top {
-    padding-left: 30px;
-    display: flex;
-    justify-content: left;
-} */
 
 #help-desc-top {
     top: 100;
@@ -87,7 +65,6 @@ header {
 }
 
 #help-heading {
-    /* padding-right: 105px;  */
     display: flex;
     justify-content: right;
 }

@@ -5,8 +5,7 @@
     gap: 4px;
     grid-auto-flow: column;
     text-align: center;
-
-    }
+}
 
 .desc {
     text-align: center;
@@ -24,13 +23,7 @@
     margin-right: 100px;
     margin-bottom: 50px;
     font-weight: 500;
-
 }
-
-/* .gh-link {
-
-
-} */
 
 .li-link {
     margin-left: 10px;

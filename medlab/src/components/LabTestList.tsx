@@ -20,7 +20,6 @@ const LabTestList: React.FC<LabTestProps> = ({ id, name, description, info_url, 
     const [selectedTest, setSelectedTest] = useState<LabTestData | null>(null);
     const [altNameData, setAltNameData] = useState<AltNameData[]>([]);
 
-    // handles Modals
     const [show, setShow] = useState(false);
 
     const testOnClick = () => {

@@ -41,7 +41,6 @@ const OrganDetails: React.FC<OrganDetailsProps> = ({ organData, labTestData }) =
       {organ && organRelatedTests.length > 0 && (
         <div className="organ-section">
           <h2 className="organ-header">{organ.name}</h2>
-            {/* {organLabTest} */}
         </div>
       )}
       {organLabTest.length > 0 && (

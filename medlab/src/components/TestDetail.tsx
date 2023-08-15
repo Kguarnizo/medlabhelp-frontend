@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { AltNameData } from "./AltNameList";
 import Modal from "react-bootstrap/Modal";
 
@@ -56,4 +55,4 @@ const TestDetail: React.FC<TestDetailProps> = ({ selectedTest, altNameData, show
         );
     };
 
-    export default TestDetail;
+export default TestDetail;

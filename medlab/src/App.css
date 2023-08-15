@@ -53,8 +53,6 @@ body {
 
   }
 
-
-
   @media screen and (max-width: 769px) {
     .carousel-item, .carousel-indicators, .carousel-images, .container {
       height: 350px;
@@ -134,7 +132,7 @@ border-radius: 500px;
 }
 
 .lab-test-item:hover {
-background-color:mediumpurple;
+background-color: rgba( 147, 112, 219, .3);
 display:inline-block
 
 }

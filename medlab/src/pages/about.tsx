@@ -17,7 +17,7 @@ const About=()=>{
         <div className="card">
         <img src="images/icon.png" className="card-img-top" alt="" />
         <div className="card-body">
-            <h1 className="card-title">Tigist</h1>
+            <h1 className="card-title">Tigist Woldearegai</h1>
             <h5 className="title">CEO</h5>
             <a className="links" href="www.github.com">GitHub </a>
             <a className="links" href="www.linkedin.com">LinkedIn</a>
@@ -29,7 +29,7 @@ const About=()=>{
         <div className="card">
         <img src="images/icon.png" className="card-img-top" alt="" />
         <div className="card-body">
-        <h1 className="card-title">Katherine</h1>
+        <h1 className="card-title">Katherine Guarnizo</h1>
             <h5 className="title">COO</h5>
             <a className="links" href="www.github.com">GitHub </a>
             <a className="links" href="www.linkedin.com">LinkedIn</a>
@@ -41,7 +41,7 @@ const About=()=>{
         <div className="card">
         <img src="images/icon.png" className="card-img-top" alt="" />
         <div className="card-body">
-        <h1 className="card-title">Jasmin</h1>
+        <h1 className="card-title">Jasmin Worthy</h1>
             <h5 className="title">CFO</h5>
             <a className="links" href="www.github.com">GitHub </a>
             <a className="links" href="www.linkedin.com">LinkedIn</a>
@@ -53,7 +53,7 @@ const About=()=>{
         <div className="card">
         <img src="images/icon.png" className="card-img-top" alt="" />
         <div className="card-body">
-        <h1 className="card-title">Areeg</h1>
+        <h1 className="card-title">Areeg Jibrin</h1>
             <h5 className="title">CLO</h5>
             <a className="links" href="www.github.com">GitHub </a>
             <a className="links" href="www.linkedin.com">LinkedIn</a>

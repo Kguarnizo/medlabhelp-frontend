@@ -1,16 +1,32 @@
 .container {
-    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.box-container {
+    margin: 25px 100px 0 0;
+    width: 45%;
 }
 
 #content {
-    padding: 0px 550px 5px;  
-    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    width: 55%;
+    margin: 25px 0 100px 0;
+    padding: 0 100px;
+    overflow-y: scroll;
 }
 
 .search-form {
     border-radius: 30px 0 0 30px;
 }
 
+#test-search {
+    background-color: #DDA0DD;
+}
 .input-group {
     width:100%;
 }
@@ -28,4 +44,24 @@ input-group-btn {
     border-radius: 0 30px 30px 0; 
     background-color:#fff;
     color:#669;  
+}
+
+.box {
+    background-color: #007bff;
+    padding: 10px ;
+    border-radius: 5px;
+}
+
+.box-content{
+    color: #fff;
+    padding: 25px;
+    /* padding-top: 50px; */
+    text-align: center;
+}
+
+.box-desc {
+    color: white;
+    text-align: justify;
+    padding-left: 25px;
+    padding-right: 25px;
 }

@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-// import Panel from "./Panel";
 import { Link } from "react-router-dom";
 
 
