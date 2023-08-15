@@ -22,7 +22,7 @@ const OrganDetails: React.FC<OrganDetailsProps> = ({ organData, labTestData }) =
   const organLabTest = organRelatedTests.map((lab) => <LabTestList key={lab.id} {...lab} />);
 
   useEffect(() => {
-    if (id && id !== organId) { 
+    if (id && id !== organId) {
       setOrganId(id);
       axios
         .get<LabTestData[]>(`${kBaseURL}/organs/${id}/tests/`)
@@ -39,7 +39,7 @@ const OrganDetails: React.FC<OrganDetailsProps> = ({ organData, labTestData }) =
   return (
     <div className="organdetails">
       {organ && organRelatedTests.length > 0 && (
-        <div>
+        <div className="organ-section">
           <h2 className="organ-header">{organ.name}</h2>
             {/* {organLabTest} */}
         </div>

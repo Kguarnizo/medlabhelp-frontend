@@ -141,50 +141,7 @@ background-color: rgb(27, 87, 165);
     font-size: 12px;
 }
 }
-/*
-.navbar-nav {
-display: flex;
-width: 100%;
-padding: 0;
-background-color: royalblue;
-list-style: none;
-margin: 0;
-}
 
-.navbar-nav .nav-item {
-text-align: center;
-flex: 1;
-margin: 0 50px;
-display: flex;
-align-items: center;
-}
-
-.navbar-nav .nav-item a.nav-link {
-font-weight: bold;
-color: white;
-text-decoration: none;
-display: block;
-padding: 10px 20px;
-background-color: royalblue;
-border-radius: 8px;
-}
-
-.navbar-nav .nav-item a.nav-link:hover {
-background-color: rgb(27, 87, 165);
-}
-
-.navbar-nav .nav-item .dropdown-menu {
-background-color: white;
-border: 1px solid gray;
-}
-
-/* Media query for smaller screens */
-/* @media (max-width: 768px) {
-.navbar-nav .nav-item a.nav-link {
-  padding: 5px 10px;
-  font-size: 12px;
-}
-} */ 
 .lab-test-list {
 padding-left: 10px;
 /* list-style: disc; */
@@ -223,28 +180,28 @@ padding-left:20px;
 
 .panel-header {
 display: flex;
-justify-content: space-between;
-align-items: center;
+justify-content:center;
 margin-bottom: 10px;
 border-bottom: 1px solid #ccc;
 padding-bottom: 5px;
+font-size: 1.5em;
+margin-bottom: 10px;
+font-weight:bolder;
+color: #007bff;
+text-align: center;
 }
 
 .panel-name {
 font-size: 24px;
 font-weight:bolder;
 color: #007bff;
-/* margin-left: 600px; */
 text-align: center;
 }
 
 #test-detail {
 font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-/* .description-color, .normal-reference-color,.unit-of-measure-color, .alternate-name-color, .learn-more{
-color: brown;
-font-size:large;
-} */
+
 
 #test-detail-color {
 font-weight: bolder;
@@ -257,26 +214,49 @@ right: 15px;
 bottom: 15px;
 }
 
-
-.organ-details {
+.organdetails {
   display: flex;
   flex-direction: column;
   padding-left:20px;
-  }
-  
-.organ-header {
-display: flex;
-justify-content: space-between;
-align-items: center;
-margin-bottom: 10px;
-border-bottom: 1px solid #ccc;
-padding-bottom: 5px;
 }
-  
-.organ-name {
-font-size: 24px;
-font-weight:bolder;
-color: #007bff;
-/* margin-left: 600px; */
-text-align: center;
+
+.organ-header {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  font-weight:bolder;
+  color: #007bff;
+  /* margin-left: 600px; */
+  text-align: center;
+  font-size: 24px;
+}
+
+.organ-section {
+  border-bottom: 1px solid #ccc;
+  display: inline-block;
+  font-weight:bolder;
+}
+
+.lab-test-search {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* Align items to the right */
+  background-image: url("./test-backgound-2.jpg");
+  background-size: contain; /* Use 'contain' instead of 'cover' */
+  background-position: center;
+  color: white;
+  padding: 50px;
+  min-height: 120vh;
+  min-width: 100vw
+}
+.lab-test-search input[type="text"] {
+  background-color: rgb(255, 255, 255);
+  border: 1px solid #ccc;
+  color: #333;
+  padding: 4px;
+  height: 26px;
+  width: 100%;
+  max-width: 250px;
+  font-size: 12px;
+  width: 400px;
+  border-radius: 5%;
 }

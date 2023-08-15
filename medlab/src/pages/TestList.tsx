@@ -16,7 +16,7 @@ const TestList: React.FC<TestListProps> = ({ labTestData }) => {
     }
 
     return(
-        <div>
+        <div className="lab-test-search">
             <input type="text" id="search" placeholder="Search..." onChange={onChange}/>
         <section>
             {inputText && labTestData.filter((test) => {
