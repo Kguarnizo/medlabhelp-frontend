@@ -87,3 +87,10 @@ input-group-btn {
     padding-left: 25px;
     padding-right: 25px;
 }
+
+.locations {
+    color: white;
+    font-weight: bold;
+    text-decoration: underline;
+    padding-left: 160px;
+}
