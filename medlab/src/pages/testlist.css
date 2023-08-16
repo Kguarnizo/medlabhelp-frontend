@@ -16,8 +16,30 @@
     align-items: flex-start;
     width: 55%;
     margin: 25px 0 100px 0;
-    padding: 0 100px;
+    padding: 0 10px 0 100px;
     overflow-y: scroll;
+}
+
+#content::-webkit-scrollbar {
+    background-color: transparent;
+    width: 8px;
+}
+
+#content::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+#content::-webkit-scrollbar-track-piece {
+    background-color: transparent;
+}
+
+#content::-webkit-scrollbar-thumb {
+    background-color: #DDA0DD;
+    border: 0px;
+}
+
+#content::-webkit-scrollbar-corner {
+background-color: transparent;
 }
 
 .search-form {
@@ -27,6 +49,7 @@
 #test-search {
     background-color: #DDA0DD;
 }
+
 .input-group {
     width:100%;
 }
@@ -55,7 +78,6 @@ input-group-btn {
 .box-content{
     color: #fff;
     padding: 25px;
-    /* padding-top: 50px; */
     text-align: center;
 }
 

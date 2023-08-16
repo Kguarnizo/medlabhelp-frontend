@@ -133,8 +133,7 @@ border-radius: 500px;
 
 .lab-test-item:hover {
 background-color: rgba( 147, 112, 219, .3);
-display:inline-block
-
+display:inline-block;
 }
 
 #test-name {
@@ -153,7 +152,6 @@ display: flex;
 flex-direction: column;
 padding-left: 80px;
 padding-right: 80px;
-
 }
 
 .panel-header {
@@ -192,7 +190,7 @@ right: 15px;
 bottom: 15px;
 }
 
-.organdetails {
+.organ-details {
   display: flex;
   flex-direction: column;
   padding-left: 80px;
@@ -213,4 +211,3 @@ bottom: 15px;
   display: inline-block;
   font-weight:bolder;
 }
-

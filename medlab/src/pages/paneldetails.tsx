@@ -17,7 +17,7 @@ const PanelDetails: React.FC<PanelDetailsProps> = ({panelData, labTestData }) =>
 
     return (
     <div className="panel-details">
-        {panel && panelLabTest.length && (
+        {panel && panelLabTest.length > 0 && (
             <div className="panel-header">
                 <h2 className='panel-name'>{panel.name}</h2>
             </div>

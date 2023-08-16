@@ -6,7 +6,6 @@ import { LabTestData } from '../components/TestDetail';
 import { kBaseURL } from '../App';
 import axios from 'axios';
 
-
 interface OrganDetailsProps {
   organData: OrganData[];
   labTestData: LabTestData[];
@@ -37,7 +36,7 @@ const OrganDetails: React.FC<OrganDetailsProps> = ({ organData, labTestData }) =
   }, [id, organId]);
 
   return (
-    <div className="organdetails">
+    <div className="organ-details">
       {organ && organRelatedTests.length > 0 && (
         <div className="organ-section">
           <h2 className="organ-header">{organ.name}</h2>

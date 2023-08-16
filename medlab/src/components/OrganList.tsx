@@ -25,7 +25,7 @@ const OrganList: React.FC<OrganListProps> = ({ organData}) => {
 
     return (
         <section className="col-md-4">
-            <input type="text" id="search" placeholder="Search..." onChange={onChange}/>
+            <input type="text" placeholder="Search..." onChange={onChange}/>
             <ul>
                 {organData.filter((organ) => {
                         return organ.name.toLowerCase().includes(inputText.toLowerCase());

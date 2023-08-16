@@ -26,7 +26,7 @@ const PanelList: React.FC<PanelListProps> = ({ panelData}) => {
 
     return (
         <section>
-            <input type="text" id="search" placeholder="Search..." onChange={onChange}/>
+            <input type="text" placeholder="Search..." onChange={onChange}/>
         <ul>
             {panelData.filter((panel) => {
                 return panel.name.toLowerCase().includes(inputText.toLowerCase());

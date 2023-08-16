@@ -40,7 +40,8 @@
 
 .demographics {
     text-align: center;
-    margin-top: 25px;;
+    margin-top: 25px;
+    margin-bottom: 25px;
 }
 
 .percent {
@@ -56,4 +57,12 @@
 
 .list {
     text-align: left;
+}
+
+.about-us, .meet {
+    font-weight: bolder;
+}
+
+.para {
+    font-size: 20px;
 }
