@@ -21,7 +21,7 @@ const TestList: React.FC<TestListProps> = ({ labTestData }) => {
             <div className='box-container'>
                 <div className='box'>
                     <h3 className='box-content'>Discover the convenience of MedLab-Help, your one-stop destination to learn about over 100 comprehensive lab tests.</h3>
-                    <p className='box-desc'>At MedLab-Help, we offer an extensive selection of over 100 lab tests that cater to a diverse range of health needs. Our goal is to provide you with the information you need to make informed decisions about your well-being. Here's a glimpse of some of the tests you can explore: nutrional deficiency panels, STIs, liver and kidney function tests, cancer markers, and much more.</p>
+                    <p className='box-desc'>At MedLab-Help, we offer an extensive selection of over 100 lab tests that cater to a diverse range of health needs. Our goal is to provide you with the information you need to make informed decisions about your well-being. Here's a glimpse of some of the tests you can explore: nutritional deficiency panels, STIs, liver and kidney function tests, cancer markers, and much more.</p>
                 </div>
             </div>
             <div id='content'>
@@ -46,4 +46,3 @@ const TestList: React.FC<TestListProps> = ({ labTestData }) => {
 };
 
 export default TestList;
-
