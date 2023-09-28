@@ -13,8 +13,7 @@ import OrganDetails from './pages/organdetails';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import TestList from './pages/TestList';
 
-// export const kBaseURL = process.env.REACT_APP_BACKEND_URL;
-export const kBaseURL = "http://localhost:8000";
+export const kBaseURL = process.env.REACT_APP_BACKEND_URL;
 
 const getAllPanels = () => {
   return axios
