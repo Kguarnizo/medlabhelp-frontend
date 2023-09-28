@@ -1,92 +1,121 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 import PanelList, { PanelData } from './PanelList';
 import OrganList, { OrganData } from './OrganList';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-
 
 interface MenuProps {
-    onAboutClick: () => void,
-    panelData: PanelData[],
-    organData: OrganData[],
-    onTestClick: () => void,
+  onAboutClick: () => void;
+  panelData: PanelData[];
+  organData: OrganData[];
+  onTestClick: () => void;
 }
 
 const Menu: React.FC<MenuProps> = ({ onAboutClick, panelData, organData, onTestClick }) => {
+  const [showPanelDropdown, setShowPanelDropdown] = useState(false);
+  const [showOrganDropdown, setShowOrganDropdown] = useState(false);
+  const [showNavbarCollapse, setShowNavbarCollapse] = useState(false);
 
-    const [showPanelDropdown, setShowPanelDropdown] = useState(false);
-    const [showOrganDropdown, setShowOrganDropdown] = useState(false);
+  const navigate = useNavigate();
 
-    const showPanel = () => {
-        setShowPanelDropdown(true);
-    };
+  const showPanel = () => {
+    setShowPanelDropdown(true);
+  };
 
-    const hidePanel = () => {
-        setShowPanelDropdown(false);
-    };
+  const hidePanel = () => {
+    setShowPanelDropdown(false);
+  };
 
-    const showOrgan = () => {
-        setShowOrganDropdown(true);
-    };
+  const showOrgan = () => {
+    setShowOrganDropdown(true);
+  };
 
-    const hideOrgan = () => {
-        setShowOrganDropdown(false);
-    };
+  const hideOrgan = () => {
+    setShowOrganDropdown(false);
+  };
 
-    return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <Link to="/" className="navbar-brand" id="site-name">
-                <img src="/images/newerlogo.png" alt="mlh logo" />
-            </Link>
-            <button
-                className="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarNavDropdown"
-                aria-controls="navbarNavDropdown"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
+  const toggleNavbar = () => {
+    setShowNavbarCollapse(!showNavbarCollapse);
+  };
+
+  const closeNavbar = () => {
+    setShowNavbarCollapse(false);
+  };
+
+  const handleNavLinkClick = () => {
+    closeNavbar();
+  };
+
+  return (
+    <Navbar bg="light" expand="lg" className="menu-overlay">
+      <Link to="/" className="navbar-brand" id="site-name">
+        <img src="/images/newerlogo.png" alt="mlh logo" />
+      </Link>
+      <Navbar.Toggle
+        aria-controls="navbarNavDropdown"
+        onClick={toggleNavbar}
+      />
+      <Navbar.Collapse
+        id="navbarNavDropdown"
+        in={showNavbarCollapse}
+      >
+        <Nav className="ml-auto nav-wrapper">
+          <Nav.Link className="nav-item">
+            <Link
+              to="/about"
+              className="nav-link"
+              onClick={() => {
+                onAboutClick();
+                handleNavLinkClick();
+                navigate('/about');
+              }}
             >
-                <span className="navbar-toggler-icon"></span>
-            </button>
-            <div className="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul className="navbar-nav">
-                    <li className="nav-item">
-                        <a href=" " className="nav-link" onClick={onAboutClick}>About</a>
-                    </li>
-                    <li className="nav-item">
-                        <a href=" " className="nav-link" onClick={onTestClick}>Tests</a>
-                    </li>
-                    <li className="nav-item">
-                        <NavDropdown
-                            title="Panels"
-                            id="nav-dropdown"
-                            show={showPanelDropdown}
-                            onMouseEnter={showPanel}
-                            onMouseLeave={hidePanel}
-                        >
-                            <NavDropdown.Item>
-                                <PanelList panelData={panelData} />
-                            </NavDropdown.Item>
-                        </NavDropdown>
-                    </li>
-
-                    <li className="nav-item">
-                        <NavDropdown
-                            title="Organs"
-                            id="nav-dropdown1"
-                            show={showOrganDropdown}
-                            onMouseEnter={showOrgan}
-                            onMouseLeave={hideOrgan}
-                        >
-                            <NavDropdown.Item>
-                                <OrganList organData={organData} />
-                            </NavDropdown.Item>
-                        </NavDropdown>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    );
+              About
+            </Link>
+          </Nav.Link>
+          <Nav.Link className="nav-item">
+            <Link
+              to="/tests"
+              className="nav-link"
+              onClick={() => {
+                onTestClick();
+                handleNavLinkClick();
+                navigate('/tests');
+              }}
+            >
+              Tests
+            </Link>
+          </Nav.Link>
+          <NavDropdown
+            title="Panels"
+            id="nav-dropdown"
+            show={showPanelDropdown}
+            onMouseEnter={showPanel}
+            onMouseLeave={hidePanel}
+            className="nav-item"
+          >
+            <NavDropdown.Item className="nav-dropdown-menu">
+              <PanelList panelData={panelData} handleNavLinkClick={handleNavLinkClick}/>
+            </NavDropdown.Item>
+          </NavDropdown>
+          <NavDropdown
+            title="Organs"
+            id="nav-dropdown1"
+            show={showOrganDropdown}
+            onMouseEnter={showOrgan}
+            onMouseLeave={hideOrgan}
+            className="nav-item"
+          >
+            <NavDropdown.Item className="nav-dropdown-menu">
+              <OrganList organData={organData} handleNavLinkClick={handleNavLinkClick}/>
+            </NavDropdown.Item>
+          </NavDropdown>
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
+  );
 };
+
 export default Menu;

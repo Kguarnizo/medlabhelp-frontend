@@ -2,11 +2,12 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+    width: fit-content;
+    margin-bottom: 50px;
 }
 
 .box-container {
-    margin: 25px 100px 0 0;
-    width: 45%;
+    width: 50%;
 }
 
 #content {
@@ -15,7 +16,7 @@
     justify-content: center;
     align-items: flex-start;
     width: 55%;
-    margin: 25px 0 100px 0;
+    margin: 0 0 100px 0;
     padding: 0 10px 0 100px;
     overflow-y: scroll;
 }
@@ -39,7 +40,7 @@
 }
 
 #content::-webkit-scrollbar-corner {
-background-color: transparent;
+    background-color: transparent;
 }
 
 .search-form {
@@ -48,10 +49,6 @@ background-color: transparent;
 
 #test-search {
     background-color: #DDA0DD;
-}
-
-.input-group {
-    width:100%;
 }
 
 input-group-btn {
@@ -73,6 +70,7 @@ input-group-btn {
     background-color: #007bff;
     padding: 10px ;
     border-radius: 5px;
+    margin-left: 20px;
 }
 
 .box-content{
@@ -86,11 +84,67 @@ input-group-btn {
     text-align: justify;
     padding-left: 25px;
     padding-right: 25px;
-}
+} 
 
 .locations {
     color: white;
     font-weight: bold;
     text-decoration: underline;
-    padding-left: 160px;
+    display: flex;
+    justify-content: center;
 }
+
+/* Adjust styles for smaller screens (e.g., mobile) */
+@media (max-width: 991px) {
+    .container {
+        flex-direction: column; 
+        align-items: center;
+    }
+
+    .box-container {
+        width: 100%; 
+        padding: 10px;
+        margin-top: 10px; 
+        margin-bottom: 20px; 
+    }
+
+    #content {
+        width: 100%;
+        padding: 10px 40px 80px 40px;
+        overflow-y: scroll;
+    }
+
+    .box-content {
+        margin-top: 10px; 
+        font-size: 16px;
+    }
+
+    .box-desc {
+        font-size: 12px;
+        text-align: left;
+    }
+
+    .search-form {
+        border-radius: 30px;
+    }
+
+    .input-group-btn {
+        max-width: none; 
+    }
+
+    .search-btn {
+        border-radius: 30px; 
+    }
+
+    #test-search-results{
+        display: flex;
+        flex-direction: column; 
+        align-items: space-between;
+    }
+
+    .lab-test-item {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+

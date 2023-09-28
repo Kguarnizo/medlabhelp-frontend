@@ -7,7 +7,7 @@ const Homepage: React.FC = () => {
     return (
     <div>
         <div className='container'>
-        <Carousel id='carousel-images' >
+        <Carousel id='carousel-images'>
             <Carousel.Item>
             <img className=" " src="images/cdc-XLhDvfz0sUM-unsplash.jpg" alt="First slide"/>
             </Carousel.Item>
@@ -42,7 +42,7 @@ const Homepage: React.FC = () => {
             </div>
             <div className="second-content-container">
                 <div id="second-accurate-desc">
-                    <p>We believe that knowledge is the best tool to help a patient advocate for their health.Empowering individuals with informed decisions for a healthier tomorrow.</p>
+                    <p>We believe that knowledge is the best tool to help a patient advocate for their health. Empowering individuals with informed decisions for a healthier tomorrow.</p>
                 </div>
             </div>
             </div>

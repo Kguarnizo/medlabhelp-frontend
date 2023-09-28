@@ -1,19 +1,18 @@
 #care {
-text-align: center;
-margin-top: 50px;
-margin-bottom: 50px;
-text-decoration: underline #0d6efd
+    text-align: center;
+    margin-bottom: 50px;
+    text-decoration: underline #0d6efd
 }
 
 .top-container {
-max-width: 80rem;
-margin-left: auto;
-margin-right: auto;
+    max-width: 80rem;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #lab-lady-img {
-width: 700px;
-border-radius: 5%;
+    width: 700px;
+    border-radius: 5%;
 }
 
 .top-img-container {
@@ -40,14 +39,14 @@ border-radius: 5%;
 
 
 .bottom-container {
-max-width: 85rem;
-margin-left: auto;
-margin-right: auto;
+    max-width: 85rem;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #lab-people-img {
-width: 700px;
-border-radius: 5%;
+    width: 700px;
+    border-radius: 5%;
 }
 
 
@@ -70,5 +69,46 @@ border-radius: 5%;
 }
 
 #helping-head {
-    margin: 10px 0;
+    margin: 10px 0 100px 0;
+}
+
+/* Add styles for smaller screens (max-width: 768px) */
+@media (max-width: 768px) {
+    #care {
+        margin-top: 80px;
+    }
+
+    .top-container, .bottom-container { 
+        max-width: 80rem;
+        margin: auto;
+        padding-right: 20px; 
+        padding-left: 20px; 
+}
+
+    .first-image-container, .second-content-container {
+        margin-right: 0; 
+    }
+
+    #lab-lady-img {
+        width: 100%; 
+        border-radius: 5%;
+        }
+
+    #lab-people-img {
+        width: 120%; 
+        border-radius: 10%;
+        padding-right: 20px;
+        }
+
+    #accurate-desc {
+        font-size: 14px; 
+        margin-bottom: 80px; 
+        padding: 15px;
+    }
+
+    #second-accurate-desc {
+        font-size: 14px; 
+        margin-bottom: 80px; 
+        padding-right: 15px;
+    }
 }

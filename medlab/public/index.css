@@ -5,6 +5,12 @@ footer {
     text-align: center;
 }
 
+@media (max-width: 768px) {
+    footer {
+        margin-top: 100px;
+    }
+}
+
 header {
     background-color: var(--primary-color);
     color: #fff;
@@ -15,11 +21,26 @@ header {
 .icons {
     list-style: none;
     display: flex;
-    justify-content: right;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0;
+    margin: 0;
 }
 
 .icons li {
-    margin-right: 15px;
+    margin-right: 5px;
+}
+
+@media (max-width: 768px) {
+    .icons {
+        justify-content: center;
+        padding-right: 20px
+    }
+
+    .icons li {
+        margin: 3px;
+    }
+    
 }
 
 .vl {
@@ -40,7 +61,6 @@ header {
 
 #address {
     font-weight: bold;
-    /* padding-left: 30px; */
     display: flex;
     text-align: left;
 }

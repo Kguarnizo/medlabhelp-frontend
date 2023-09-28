@@ -9,192 +9,155 @@ body {
   color: var(--text-color);
   }
 
-  :root {
+:root {
   --primary-color: #007bff;
   --secondary-color: #6c757d;
   --bg-color: #f8f9fa;
   --text-color: #333;
-  }
+}
 
-  a {
+a {
   color: var(--primary-color);
   text-decoration: none;
-  }
+}
 
-  a:hover {
+a:hover {
   color: #0056b3;
   text-decoration: underline;
-  }
+}
 
 /* Custom image styles */
-  .img-fluid {
+.img-fluid {
   width: 100%;
   max-height: 200px;
   object-fit: cover;
   border-radius: 8px;
   margin-bottom: 10px;
-  }
-
-  #site-name {
-    align-self: flex-start;
-  }
-
-  #test-detail {
-    background-color: white;
-  }
-
-
-  .carousel-item, .carousel-indicators, .carousel-images, .container {
-    height: 60vh;
-  }
-
-  .carousel-item  > img {
-    width: 100%;
-
-  }
-
-  @media screen and (max-width: 769px) {
-    .carousel-item, .carousel-indicators, .carousel-images, .container {
-      height: 350px;
-    }
-
-    #junk {
-      position: sticky;
-      bottom: 0;
-      width: 100%;
-    }
-  }
-
-  .carousel-indicators {
-    top: 10px;
 }
 
-#test-name {
-font-weight: bolder;
-}
-
-#test-alt-name {
-color: mediumblue;
-}
-
-
-
-.navbar-nav {
-display: flex;
-justify-content: space-between;
-align-items: center;
-width: 100%;
-padding: 0;
-background-color: #007bff;
-border-radius: 8px;
-margin-right: 20px;
-}
-
-.navbar-nav .nav-item {
-flex: 1;
-text-align: center;
-padding: 0;
-}
-
-
-.navbar-nav .nav-item a.nav-link {
-font-weight: bold;
-color: white;
-padding: 10px 20px;
-text-decoration: none;
-transition: background-color 0.3s ease;
-display: block;
-}
-
-.navbar-nav .nav-item a.nav-link:hover {
-background-color: rgb(27, 87, 165);
-}
-
-/* Media query for smaller screens */
-@media (max-width: 768px) {
-.navbar-nav .nav-item a.nav-link {
-    padding: 5px 10px;
-    font-size: 12px;
-}
-}
-
-.lab-test-list {
-padding-left: 10px;
-
-}
-.lab-test-item {
-border: 1px ;
-padding: 10px;
-margin: 1px 0;
-cursor: pointer;
-background-color: #f9f9f9;
-border-radius: 500px;
-}
-
-.lab-test-item:hover {
-background-color: rgba( 147, 112, 219, .3);
-display:inline-block;
-}
-
-#test-name {
-font-weight: bold;
-font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-#test-alt-name {
-font-size: 0.8em;
-color:#007bff;
-font-weight:bolder;
-}
-
-.panel-details {
-display: flex;
-flex-direction: column;
-padding-left: 80px;
-padding-right: 80px;
-}
-
-.panel-header {
-display: flex;
-justify-content:center;
-margin-bottom: 10px;
-border-bottom: 1px solid #ccc;
-padding-bottom: 5px;
-font-size: 1.5em;
-margin-bottom: 10px;
-font-weight:bolder;
-color: #007bff;
-text-align: center;
-}
-
-.panel-name {
-font-size: 24px;
-font-weight:bolder;
-color: #007bff;
-text-align: center;
+#site-name {
+  align-self: flex-start;
+  margin-left: 10px;
 }
 
 #test-detail {
-font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: white;
 }
 
+.carousel-item, .carousel-indicators, .carousel-images, .container {
+  height: 60vh;
+}
+
+.carousel-item  > img {
+  width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .carousel {
+    margin-top: 150px;
+  }
+
+  .carousel-item, .carousel-indicators, .carousel-images, .container {
+    height: 350px;
+  }
+
+  #junk {
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+  }
+}
+
+.carousel-indicators {
+  top: 10px;
+}
+
+#test-name {
+  font-weight: bolder;
+}
+
+#test-alt-name {
+  color: mediumblue;
+}
+
+.lab-test-list {
+  padding-left: 10px;
+}
+
+.lab-test-item {
+  border: 1px ;
+  padding: 10px;
+  margin: 1px 0;
+  cursor: pointer;
+  background-color: #f9f9f9;
+  border-radius: 500px;
+}
+
+.lab-test-item:hover {
+  background-color: rgba( 147, 112, 219, .3);
+  display:inline-block;
+}
+
+#test-name {
+  font-weight: bold;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#test-alt-name {
+  font-size: 0.8em;
+  color:#007bff;
+  font-weight:bolder;
+}
+
+.panel-details {
+  display: flex;
+  flex-direction: column;
+  padding-left: 80px;
+  padding-right: 80px;
+  margin: 20px 0 125px 0;
+}
+
+.panel-header {
+  display: flex;
+  justify-content:center;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  font-weight:bolder;
+  color: #007bff;
+  text-align: center;
+}
+
+.panel-name {
+  font-size: 24px;
+  font-weight:bolder;
+  color: #007bff;
+  text-align: center;
+}
+
+#test-detail {
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
 #test-detail-color {
-font-weight: bolder;
-background-color: #DDA0DD;
+  font-weight: bolder;
+  background-color: #DDA0DD;
 }
 
 .name-detail-logo{
-position: absolute;
-right: 15px;
-bottom: 15px;
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
 }
 
 .organ-details {
   display: flex;
   flex-direction: column;
   padding-left: 80px;
-  padding-right: 80px;  
+  padding-right: 80px;
+  margin: 20px 0 125px 0;
 }
 
 .organ-header {
@@ -210,4 +173,96 @@ bottom: 15px;
   border-bottom: 1px solid #ccc;
   display: inline-block;
   font-weight:bolder;
+}
+
+.menu-overlay {
+  width: 100%;
+  z-index: 1000; 
+}
+
+.nav-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background-color: #007bff;
+  border-radius: 8px;
+  margin-right: 20px;
+  height: 50px;
+}
+
+.nav-wrapper .nav-item {
+  flex: 1;
+  text-align: center;
+}
+
+.nav-wrapper .nav-item a.nav-link {
+  font-weight: bold;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  display: block;
+}
+
+.nav-wrapper .nav-item a.nav-link:hover {
+  background-color: rgb(27, 87, 165);
+}
+
+.navbar-nav .nav-item .nav-dropdown-menu {
+  position: relative;
+  z-index: 1; 
+}
+
+.nav-dropdown-menu {
+  background-color: #fff; 
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: none;
+  min-width: 10rem; 
+  z-index: 2; 
+}
+
+.navbar-nav .nav-item:hover .nav-dropdown-menu {
+  display: block; 
+}
+
+/* Media query for smaller screens (mobile) */
+@media (max-width: 991px) {
+  .menu-overlay {
+    background-color: rgba(0, 123, 255, 0.9); 
+  }
+
+  .nav-wrapper {
+    background-color: #007bff; 
+  }
+
+  .nav-wrapper .nav-item a.nav-link {
+    color: white; 
+    background-color: #007bff;
+  }
+
+  .nav-wrapper .nav-item {
+    flex: 1;
+    text-align: center;
+    padding: 0;
+    width: 100%;  
+  }
+
+  .panel-name {
+    margin-top: 70px;
+  }
+
+  .organ-section {
+    margin-top: 50px;
+  }
+
+  .organ-details {
+    margin-bottom: 50px;
+  }
+
+  .panel-details {
+    margin-bottom: 50px;
+  }
 }

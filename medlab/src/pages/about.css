@@ -18,10 +18,9 @@
 
 .meet {
     text-align: center;
-    margin-top: 10px;
     margin-left: 100px;
     margin-right: 100px;
-    margin-bottom: 50px;
+    margin-bottom: 25px;
     font-weight: 500;
 }
 
@@ -65,4 +64,19 @@
 
 .para {
     font-size: 20px;
+}
+
+/* Mobile styles (for screens 768px and smaller) */
+@media (max-width: 768px) {
+    .para {
+        font-size: 16px; 
+    }
+
+    .diverse {
+        font-size: 18px;
+    }
+    
+    .demographics {
+        font-size: 18px;
+    }
 }

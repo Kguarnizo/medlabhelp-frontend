@@ -1,7 +1,6 @@
 import React from 'react';
 import './about.css'
 
-
 const About=()=>{
     return(
     <div>
@@ -63,7 +62,7 @@ const About=()=>{
     </div>
     </div>
 
-    <h3 className='diverse'>A diverse team dedicated to bringing quality resources.</h3>
+    <h3 className='diverse'>A diverse team dedicated to brining quality resources.</h3>
     <h4 className='demographics'>We are proudly</h4>
     <h1 className='percent'><strong>100%</strong></h1>
     <h4 className='demographics'>women of color | technical backgrounds | owned & operated</h4>
