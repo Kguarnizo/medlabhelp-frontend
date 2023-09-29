@@ -14,7 +14,6 @@ const About=()=>{
     <div className="row row-cols-1 row-cols-md-2 g-4" >
     <div className="col">
         <div className="card">
-        <img src="images/icon.png" className="card-img-top" alt="" />
         <div className="card-body">
             <h1 className="card-title">Tigist Woldearegai</h1>
             <h5 className="title">CEO</h5>
@@ -26,7 +25,6 @@ const About=()=>{
 
     <div className="col">
         <div className="card">
-        <img src="images/icon.png" className="card-img-top" alt="" />
         <div className="card-body">
         <h1 className="card-title">Katherine Guarnizo</h1>
             <h5 className="title">COO</h5>
@@ -38,7 +36,6 @@ const About=()=>{
 
     <div className="col">
         <div className="card">
-        <img src="images/icon.png" className="card-img-top" alt="" />
         <div className="card-body">
         <h1 className="card-title">Jasmin Worthy</h1>
             <h5 className="title">CFO</h5>
@@ -50,7 +47,6 @@ const About=()=>{
 
     <div className="col">
         <div className="card">
-        <img src="images/icon.png" className="card-img-top" alt="" />
         <div className="card-body">
         <h1 className="card-title">Areeg Jibrin</h1>
             <h5 className="title">CLO</h5>
