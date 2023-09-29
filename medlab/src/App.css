@@ -54,7 +54,7 @@ a:hover {
 
 @media screen and (max-width: 768px) {
   .carousel {
-    margin-top: 150px;
+    margin-top: 50px;
   }
 
   .carousel-item, .carousel-indicators, .carousel-images, .container {
@@ -231,7 +231,8 @@ a:hover {
 /* Media query for smaller screens (mobile) */
 @media (max-width: 991px) {
   .menu-overlay {
-    background-color: rgba(0, 123, 255, 0.9); 
+    background-color: rgba(0, 123, 255, 0.9);
+    margin-bottom: 50px;
   }
 
   .nav-wrapper {
@@ -251,18 +252,10 @@ a:hover {
   }
 
   .panel-name {
-    margin-top: 70px;
+    margin-top: 10px;
   }
 
   .organ-section {
-    margin-top: 50px;
-  }
-
-  .organ-details {
-    margin-bottom: 50px;
-  }
-
-  .panel-details {
-    margin-bottom: 50px;
+    margin-top: 10px;
   }
 }

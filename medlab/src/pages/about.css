@@ -37,10 +37,15 @@
     text-align: center;
 }
 
-.demographics {
+.demographics-one {
     text-align: center;
     margin-top: 25px;
-    margin-bottom: 25px;
+}
+
+.demographics-two {
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 80px;
 }
 
 .percent {
@@ -60,6 +65,10 @@
 
 .about-us, .meet {
     font-weight: bolder;
+}
+
+.about-us {
+    margin-top: 70px;
 }
 
 .para {

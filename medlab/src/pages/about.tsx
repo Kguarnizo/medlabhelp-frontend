@@ -59,9 +59,9 @@ const About=()=>{
     </div>
 
     <h3 className='diverse'>A diverse team dedicated to brining quality resources.</h3>
-    <h4 className='demographics'>We are proudly</h4>
+    <h4 className='demographics-one'>We are proudly</h4>
     <h1 className='percent'><strong>100%</strong></h1>
-    <h4 className='demographics'>women of color | technical backgrounds | owned & operated</h4>
+    <h4 className='demographics-two'>women of color | technical backgrounds | owned & operated</h4>
     </div>
     )
 };
