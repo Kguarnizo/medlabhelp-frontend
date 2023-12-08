@@ -10,7 +10,7 @@ import About from './pages/about';
 import Home from './pages/home';
 import PanelDetails from './pages/paneldetails';
 import OrganDetails from './pages/organdetails';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import TestList from './pages/TestList';
 
 export const kBaseURL = process.env.REACT_APP_BACKEND_URL;
@@ -69,13 +69,9 @@ useEffect(() => {
   });
 }, []);
 
-  const navigate = useNavigate();
-
   return (
-  <>
+    <>
     <Menu
-        onAboutClick={() => navigate('/about')}
-        onTestClick={() => navigate('/tests')}
         panelData={panelData}
         organData={organData}
       />
@@ -87,8 +83,8 @@ useEffect(() => {
         <Route path="/paneldetails/:id" element={<PanelDetails panelData={panelData} labTestData={labTestData} />} />
         <Route path="/organdetails/:id" element={<OrganDetails organData={organData} labTestData={labTestData} />} />
       </Routes>
-      </>
-);
+    </>
+  );
 };
 
 export default App;

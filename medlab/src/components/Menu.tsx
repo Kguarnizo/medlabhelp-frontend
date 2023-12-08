@@ -1,120 +1,104 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import { Link } from 'react-router-dom';
 import PanelList, { PanelData } from './PanelList';
 import OrganList, { OrganData } from './OrganList';
 
 interface MenuProps {
-  onAboutClick: () => void;
   panelData: PanelData[];
   organData: OrganData[];
-  onTestClick: () => void;
 }
 
-const Menu: React.FC<MenuProps> = ({ onAboutClick, panelData, organData, onTestClick }) => {
-  const [showPanelDropdown, setShowPanelDropdown] = useState(false);
-  const [showOrganDropdown, setShowOrganDropdown] = useState(false);
+const Menu: React.FC<MenuProps> = ({  panelData, organData  }) => {
   const [showNavbarCollapse, setShowNavbarCollapse] = useState(false);
 
-  const navigate = useNavigate();
-
-  const showPanel = () => {
-    setShowPanelDropdown(true);
-  };
-
-  const hidePanel = () => {
-    setShowPanelDropdown(false);
-  };
-
-  const showOrgan = () => {
-    setShowOrganDropdown(true);
-  };
-
-  const hideOrgan = () => {
-    setShowOrganDropdown(false);
-  };
-
-  const toggleNavbar = () => {
-    setShowNavbarCollapse(!showNavbarCollapse);
-  };
-
-  const closeNavbar = () => {
+  const closeNavBar = () => {
     setShowNavbarCollapse(false);
   };
 
-  const handleNavLinkClick = () => {
-    closeNavbar();
-  };
-
   return (
-    <Navbar bg="light" expand="lg" className="menu-overlay">
-      <Link to="/" className="navbar-brand" id="site-name">
-        <img src="/images/newerlogo.png" alt="mlh logo" />
-      </Link>
-      <Navbar.Toggle
-        aria-controls="navbarNavDropdown"
-        onClick={toggleNavbar}
-      />
-      <Navbar.Collapse
-        id="navbarNavDropdown"
-        in={showNavbarCollapse}
+    <nav className="navbar navbar-expand-md">
+      <Link 
+        to="/" 
+        className="navbar-brand"
+        onClick={() => {
+          closeNavBar();
+        }}
       >
-        <Nav className="ml-auto nav-wrapper">
-          <Nav.Link className="nav-item">
-            <Link
-              to="/about"
-              className="nav-link"
-              onClick={() => {
-                onAboutClick();
-                handleNavLinkClick();
-                navigate('/about');
-              }}
-            >
-              About
-            </Link>
-          </Nav.Link>
-          <Nav.Link className="nav-item">
-            <Link
-              to="/tests"
-              className="nav-link"
-              onClick={() => {
-                onTestClick();
-                handleNavLinkClick();
-                navigate('/tests');
-              }}
-            >
-              Tests
-            </Link>
-          </Nav.Link>
-          <NavDropdown
-            title="Panels"
-            id="nav-dropdown"
-            show={showPanelDropdown}
-            onMouseEnter={showPanel}
-            onMouseLeave={hidePanel}
-            className="nav-item"
-          >
-            <NavDropdown.Item className="nav-dropdown-menu">
-              <PanelList panelData={panelData} handleNavLinkClick={handleNavLinkClick}/>
-            </NavDropdown.Item>
-          </NavDropdown>
-          <NavDropdown
-            title="Organs"
-            id="nav-dropdown1"
-            show={showOrganDropdown}
-            onMouseEnter={showOrgan}
-            onMouseLeave={hideOrgan}
-            className="nav-item"
-          >
-            <NavDropdown.Item className="nav-dropdown-menu">
-              <OrganList organData={organData} handleNavLinkClick={handleNavLinkClick}/>
-            </NavDropdown.Item>
-          </NavDropdown>
-        </Nav>
-      </Navbar.Collapse>
-    </Navbar>
+        <img className="logo horizontal-logo logo-image" src="/images/newerlogo.png" alt="mlh logo" />
+      </Link>
+      <button
+        className={`navbar-toggler ${showNavbarCollapse ? "collapsed" : ""}`}
+        type="button"
+        aria-controls="navbarSupportedContent"
+        aria-expanded={showNavbarCollapse}
+        aria-label="Toggle navigation"
+        onClick={() => setShowNavbarCollapse(!showNavbarCollapse)}
+      >
+        <span className="navbar-toggler-icon"></span>
+      </button>
+      <div className={`collapse navbar-collapse ${showNavbarCollapse ? "show" : ""}`} id="navbarSupportedContent">
+        <ul className="navbar-nav custom-navbar">
+            <li className="nav-item">
+              <Link
+                to="/about"
+                className="nav-link"
+                onClick={() => {
+                closeNavBar();
+                }}
+              >
+                About
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                to="/tests"
+                className="nav-link"
+                onClick={() => {
+                closeNavBar();
+                }}
+              >
+                Tests
+              </Link>
+            </li>
+            <li className="nav-item dropdown">
+              <Link 
+                to="#" 
+                className="nav-link dropdown-toggle" 
+                id="navbarDropdownMenuLink" 
+                role="button" 
+                data-toggle="dropdown" 
+                aria-haspopup="true" 
+                aria-expanded="false"
+              >
+                Panels
+              </Link>
+              <div className="dropdown-menu" aria-labelledby="navbarDropdown3">
+                <Link to="#" className="dropdown-item">
+                  <PanelList panelData={panelData} closeNavBar={closeNavBar}/>
+                </Link>
+              </div>
+            </li>
+            <li className="nav-item dropdown">
+              <Link 
+                to="#" 
+                className="nav-link dropdown-toggle" 
+                id="navbarDropdownMenuLink" 
+                role="button" 
+                data-toggle="dropdown" 
+                aria-haspopup="true" 
+                aria-expanded="false"
+              >
+                Organs
+              </Link>
+              <div className="dropdown-menu" aria-labelledby="navbarDropdown3">
+                <Link to="#" className="dropdown-item">
+                  <OrganList organData={organData} closeNavBar={closeNavBar}/>
+                </Link>
+              </div>
+            </li>
+          </ul>
+        </div>
+    </nav>
   );
 };
 

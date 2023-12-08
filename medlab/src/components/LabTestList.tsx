@@ -67,13 +67,13 @@ const LabTestList: React.FC<LabTestProps> = ({ id, name, description, info_url, 
 
     return (
         <>
-            <div className="lab-test-item" onClick={testOnClick}>
-            <p>
+            <div>
+                <div className="lab-test-item" onClick={testOnClick}>
                 <span id="test-name">{name}</span>
                 <span id="test-alt-name">
                 {" "}{altNameData.map((e) => e.name).join(" , ")}
                 </span>
-            </p>
+                </div>
             </div>
             <TestDetail
             selectedTest={selectedTest}

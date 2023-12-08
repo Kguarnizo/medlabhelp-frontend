@@ -11,13 +11,6 @@ footer {
     }
 }
 
-header {
-    background-color: var(--primary-color);
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-}
-
 .icons {
     list-style: none;
     display: flex;

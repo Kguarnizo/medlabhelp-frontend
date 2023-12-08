@@ -9,10 +9,10 @@ export interface OrganData {
 
 interface OrganListProps {
   organData: OrganData[];
-  handleNavLinkClick: () => void; 
+  closeNavBar: () => void; 
 }
 
-const OrganList: React.FC<OrganListProps> = ({ organData, handleNavLinkClick }) => {
+const OrganList: React.FC<OrganListProps> = ({ organData, closeNavBar }) => {
   const [inputText, setInputText] = useState<string>("");
 
   const navigate = useNavigate();
@@ -27,11 +27,10 @@ const OrganList: React.FC<OrganListProps> = ({ organData, handleNavLinkClick }) 
   };
 
   return (
-    <section className="col-md-4">
+    <section>
       <input type="text" placeholder="Search..." onChange={onChange} />
       <ul>
-        {organData
-          .filter((organ) => {
+        {organData.filter((organ) => {
             return organ.name.toLowerCase().includes(inputText.toLowerCase());
           })
           .map((organ) => (
@@ -39,7 +38,7 @@ const OrganList: React.FC<OrganListProps> = ({ organData, handleNavLinkClick }) 
               <Link
                 to={`organdetails/${organ.id}`}
                 onClick={() => {
-                  handleNavLinkClick(); 
+                  closeNavBar(); 
                   navigate(`/organdetails/${organ.id}`);
                 }}
               >

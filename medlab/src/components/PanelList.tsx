@@ -11,10 +11,10 @@ export interface PanelData {
 
 interface PanelListProps {
   panelData: PanelData[];
-  handleNavLinkClick: () => void; 
+  closeNavBar: () => void; 
 }
 
-const PanelList: React.FC<PanelListProps> = ({ panelData, handleNavLinkClick }) => {
+const PanelList: React.FC<PanelListProps> = ({ panelData, closeNavBar }) => {
   const [inputText, setInputText] = useState<string>("");
 
   const navigate = useNavigate();
@@ -32,22 +32,21 @@ const PanelList: React.FC<PanelListProps> = ({ panelData, handleNavLinkClick }) 
     <section>
       <input type="text" placeholder="Search..." onChange={onChange} />
       <ul>
-        {panelData
-          .filter((panel) => {
+        {panelData.filter((panel) => {
             return panel.name.toLowerCase().includes(inputText.toLowerCase());
           })
           .map((panel) => (
-            <div key={panel.id}>
-              <Link
-                to={`paneldetails/${panel.id}`}
-                onClick={() => {
-                  handleNavLinkClick(); 
-                  navigate(`/paneldetails/${panel.id}`);
-                }}
-              >
-                {panel.name}
-              </Link>
-            </div>
+          <div key={panel.id}>
+            <Link
+              to={`paneldetails/${panel.id}`}
+              onClick={() => {
+                closeNavBar(); 
+                navigate(`/paneldetails/${panel.id}`);
+              }}
+            >
+              {panel.name}
+            </Link>
+          </div>
           ))}
       </ul>
     </section>
