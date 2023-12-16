@@ -1,19 +1,21 @@
-.wrapper {
-    display: grid;
+.about-container {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-content: center;
-    gap: 4px;
-    grid-auto-flow: column;
+    align-items: center;
+    max-width: 100%;
+}
+
+.card-container {
     text-align: center;
+    width: 90%;
 }
 
 .desc {
     text-align: center;
-    margin-top: 10px;
-    margin-left: 100px;
-    margin-right: 100px;
-    margin-bottom: 50px;
-    font-weight: 500;
+    width: 80%;
+    margin-bottom: 30px;
+    font-weight: 500; 
 }
 
 .meet {
@@ -35,23 +37,27 @@
 .diverse {
     margin-top: 50px;
     text-align: center;
+    width: 85%;
 }
 
 .demographics-one {
     text-align: center;
     margin-top: 25px;
+    width: 90%;
 }
 
 .demographics-two {
     text-align: center;
     margin-top: 25px;
     margin-bottom: 80px;
+    width: 90%;
 }
 
 .percent {
     text-align: center;
     margin-top: 25px;;
     color:blueviolet;
+    width: 90%;
 }
 
 .list-of-tests {
@@ -73,10 +79,14 @@
 
 .para {
     font-size: 20px;
+
 }
 
 /* Mobile styles (for screens 768px and smaller) */
 @media (max-width: 768px) {
+    .card-container {
+        width: 80%;
+    }
     .para {
         font-size: 16px; 
     }

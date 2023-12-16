@@ -60,7 +60,7 @@ a:hover {
     height: 50%;
   }
 
-  .carousel-control-next, .active.carousel-control-prev, .carousel-item{
+  .carousel-item{
     color:transparent;
     height: 50%;
   }
@@ -118,7 +118,7 @@ a:hover {
   flex-direction: column;
   padding-left: 80px;
   padding-right: 80px;
-  margin: 20px 0 125px 0;
+  margin: 20px 0 80px 0;
 }
 
 .panel-header {
@@ -160,7 +160,7 @@ a:hover {
   flex-direction: column;
   padding-left: 80px;
   padding-right: 80px;
-  margin: 20px 0 125px 0;
+  margin: 20px 0 80px 0;
 }
 
 .organ-header {

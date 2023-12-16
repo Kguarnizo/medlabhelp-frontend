@@ -3,14 +3,14 @@ import './about.css'
 
 const About=()=>{
     return(
-    <div>
+    <div className="about-container">
         <div className='desc'>
             <h3 className='about-us'>About Us</h3>
             <p className='para'>As every patient knows, medical jargon can be confusing for even the most routine of tests. That's why we created MedLab Help. We wanted a user-friendly guide to help you understand lab tests and give you the knowledge to allow you to be proactive in your healthcare by explaining why a test may be ordered by your doctor and what the normal range of reference for your results should be.</p>
         </div>
 
     <h3 className='meet'>Meet Our Team</h3>
-    <div className='wrapper'>
+    <div className='card-container'>
     <div className="row row-cols-1 row-cols-md-2 g-4" >
     <div className="col">
         <div className="card">

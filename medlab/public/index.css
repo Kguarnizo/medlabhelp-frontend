@@ -5,11 +5,11 @@ footer {
     text-align: center;
 }
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
     footer {
         margin-top: 100px;
     }
-}
+} */
 
 .icons {
     list-style: none;
@@ -122,3 +122,4 @@ footer {
     display: flex;
     flex-direction: column;
 }
+
